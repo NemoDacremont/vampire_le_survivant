@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://5vu2n6l6ynqc"]
+[gd_scene load_steps=5 format=3 uid="uid://5vu2n6l6ynqc"]
+
+[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_hbecg"]
+
+[sub_resource type="Gradient" id="Gradient_pxuvj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.764706, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kka5g"]
+gradient = SubResource("Gradient_pxuvj")
+width = 48
+height = 48
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmunj"]
+size = Vector2(32, 32)
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_hbecg")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_kka5g")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_vmunj")
