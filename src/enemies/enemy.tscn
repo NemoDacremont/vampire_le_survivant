@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://5vu2n6l6ynqc"]
+
+[ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_hbecg"]
+
+[sub_resource type="Gradient" id="Gradient_pxuvj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.764706, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kka5g"]
+gradient = SubResource("Gradient_pxuvj")
+width = 48
+height = 48
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5byu"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmunj"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_hbecg")
+metadata/_edit_horizontal_guides_ = [-61.0]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_kka5g")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+shape = SubResource("RectangleShape2D_e5byu")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="BodyHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyHitbox"]
+shape = SubResource("RectangleShape2D_vmunj")
+debug_color = Color(0, 0, 0, 0.419608)
+
+[connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
