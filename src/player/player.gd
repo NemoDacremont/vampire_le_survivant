@@ -1,5 +1,7 @@
 extends Node2D
 
+const PLAYER_DEFAULT_VELOCITY: int = 300
+
 var velocity: Vector2
 var direction: Vector2
 @export var speed: int
@@ -8,7 +10,7 @@ var direction: Vector2
 func _ready():
 	velocity = Vector2(0, 0)
 	direction = Vector2(0, 0)
-	speed = 500
+	speed = PLAYER_DEFAULT_VELOCITY
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
