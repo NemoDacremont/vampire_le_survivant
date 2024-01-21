@@ -6,24 +6,22 @@ const DEFAULT_SPAWN_RATE: float = 3
 @onready var first_enemy = load("res://src/enemies/enemy.tscn")
 var enemies: Array
 var player: Node2D
-var spawn_timer: float
 var spawn_rate: float
 
 func _ready():
+	enemies.append(first_enemy)
 	start_game()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	spawn_timer += delta
-	
-	if spawn_timer > spawn_rate:
-		spawn_enemy(first_enemy, Vector2(0, 0))
-		spawn_timer = 0
+	pass
 	
 
 func start_game():
 	set_up_player()
 	set_up_enemies()
+	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
+	$Timers/SpawnEnemyTimer.start()
 
 func game_over(player: Node2D) -> void:
 	player.queue_free()
@@ -42,3 +40,12 @@ func spawn_enemy(enemy_scene: Object, spawn_position: Vector2) -> void:
 	enemy.init(player)
 	enemy.position = spawn_position
 	self.get_node("Enemies").add_child(enemy)
+
+func randomEnemy() -> int:
+	return 0
+
+func randomSpawn(origin: Node2D) -> Vector2:
+	return Vector2(0, 0)
+
+func _on_spawn_enemy_timer_timeout():
+	spawn_enemy(enemies[randomEnemy()], randomSpawn(player))
