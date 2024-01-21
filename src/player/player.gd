@@ -1,5 +1,8 @@
 extends Node2D
 
+signal on_death
+signal on_hit
+
 var velocity: Vector2
 var direction: Vector2
 @export var speed: int
@@ -16,7 +19,8 @@ func _physics_process(delta):
 	set_direction()
 	velocity = direction.normalized() * speed
 	self.position += velocity * delta
-	
+
 func set_direction() -> void:
-	direction = Vector2(Input.is_action_pressed("ui_right"), Input.is_action_pressed("ui_down"))\
+	direction = Vector2(Input.is_action_pressed("ui_right"), Input.is_action_pressed("ui_down")) \
 	- Vector2(Input.is_action_pressed("ui_left"), Input.is_action_pressed("ui_up"))
+
