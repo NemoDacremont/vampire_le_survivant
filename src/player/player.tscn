@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://o4hyy68u331l"]
+[gd_scene load_steps=7 format=3 uid="uid://o4hyy68u331l"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_16vid"]
+[ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_e21j6"]
+[ext_resource type="PackedScene" uid="uid://dcie4unskisrs" path="res://src/components/health_component/health_component.tscn" id="3_xfuwq"]
 
 [sub_resource type="Gradient" id="Gradient_mryy5"]
 interpolation_mode = 1
@@ -20,7 +22,11 @@ script = ExtResource("1_16vid")
 [node name="BodySprite" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_i2e6y")
 
-[node name="BodyHitBox" type="Area2D" parent="."]
+[node name="BodyCollisionComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_e21j6")]
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyHitBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyCollisionComponent"]
 shape = SubResource("RectangleShape2D_k53jh")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_xfuwq")]

@@ -15,6 +15,8 @@ func _ready():
 	direction = Vector2(0, 0)
 	speed = PLAYER_DEFAULT_VELOCITY
 
+	$HealthComponent.connect("health_lost", print_hp)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -25,3 +27,8 @@ func _physics_process(delta):
 func set_direction() -> void:
 	direction = Vector2(Input.is_action_pressed("ui_right"), Input.is_action_pressed("ui_down"))\
 	- Vector2(Input.is_action_pressed("ui_left"), Input.is_action_pressed("ui_up"))
+
+
+func print_hp(new_hps) -> void:
+	print("hit ! new hp = ", new_hps)
+

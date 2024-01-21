@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://5vu2n6l6ynqc"]
+[gd_scene load_steps=9 format=3 uid="uid://5vu2n6l6ynqc"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_hbecg"]
+[ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_vx7h5"]
+[ext_resource type="PackedScene" uid="uid://xce6v051cpqc" path="res://src/components/attack_component/attack_component.tscn" id="2_yeuwv"]
+[ext_resource type="PackedScene" uid="uid://dcie4unskisrs" path="res://src/components/health_component/health_component.tscn" id="3_88tou"]
 
 [sub_resource type="Gradient" id="Gradient_pxuvj"]
 interpolation_mode = 1
@@ -25,18 +28,23 @@ metadata/_edit_horizontal_guides_ = [-61.0]
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_kka5g")
 
-[node name="AttackHitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
+[node name="AttackCollisionComponent" parent="." instance=ExtResource("2_vx7h5")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCollisionComponent"]
 shape = SubResource("RectangleShape2D_e5byu")
 debug_color = Color(1, 1, 1, 0.419608)
 
-[node name="BodyHitbox" type="Area2D" parent="."]
+[node name="BodyCollisionComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_vx7h5")]
+collision_layer = 4
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyCollisionComponent"]
 shape = SubResource("RectangleShape2D_vmunj")
 debug_color = Color(0, 0, 0, 0.419608)
 
-[connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
+[node name="HealthComponent" parent="." instance=ExtResource("3_88tou")]
+MAX_HEALTH = 1.0
+
+[node name="AttackComponent" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("2_yeuwv")]
+hitbox = NodePath("../AttackCollisionComponent")
