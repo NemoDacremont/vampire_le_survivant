@@ -1,4 +1,5 @@
 extends Node2D
+class_name Enemy
 
 signal on_death
 signal on_hit(dmg: int)
