@@ -1,5 +1,8 @@
 extends Node2D
 
+signal on_death
+signal on_hit
+
 const PLAYER_DEFAULT_VELOCITY: int = 300
 
 var velocity: Vector2
