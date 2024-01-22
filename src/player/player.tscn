@@ -30,3 +30,6 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_k53jh")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xfuwq")]
+
+[connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
+[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
