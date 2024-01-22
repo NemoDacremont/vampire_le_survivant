@@ -11,3 +11,10 @@ position_smoothing_enabled = true
 script = ExtResource("2_ayhjx")
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SpawnEnemyTimer" type="Timer" parent="Timers"]
+process_callback = 0
+
+[connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]

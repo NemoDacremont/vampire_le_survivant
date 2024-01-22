@@ -18,6 +18,7 @@ size = Vector2(50, 50)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_16vid")
+PLAYER_DEFAULT_VELOCITY = 300
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_i2e6y")

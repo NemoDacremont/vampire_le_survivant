@@ -6,27 +6,22 @@ const DEFAULT_SPAWN_RATE: float = 3
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
 
 var _enemies: Array[Enemy]
+var _Enemies: Array[Resource]
 var _player: Node2D
-var spawn_timer: float
 var spawn_rate: float
+var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
+	_Enemies.append(_Enemy)
 	start_game()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta) -> void:
-	spawn_timer += delta
-
-	if spawn_timer > spawn_rate:
-		spawn_enemy(_Enemy, Vector2.ZERO)
-		spawn_timer = 0
 
 
 func start_game() -> void:
 	set_up_player()
 	set_up_enemies()
+	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
+	$Timers/SpawnEnemyTimer.start()
 
 
 func game_over(player: Node2D) -> void:
@@ -49,7 +44,18 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
 	enemy.init(_player)
 	enemy.position = spawn_position
-
-	_enemies.append(enemy)
+	_Enemies.append(enemy)
 	$Enemies.add_child(enemy)
 
+	self.get_node("Enemies").add_child(enemy)
+
+func randomEnemy() -> int:
+	return 0
+
+func randomSpawn(origin: Node2D) -> Vector2:
+	var length = random.randi_range(50,100)
+	var angle = random.randf_range(0, 2*PI)
+	return Vector2(cos(angle), sin(angle)) * length
+
+func _on_spawn_enemy_timer_timeout():
+	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player))

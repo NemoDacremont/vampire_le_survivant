@@ -8,14 +8,12 @@ signal hit
 var speed: float = PLAYER_DEFAULT_VELOCITY
 
 
-var velocity: Vector2
-var direction: Vector2
+var velocity: Vector2 = Vector2.ZERO
+var direction: Vector2 = Vector2.ZERO
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity = Vector2.ZERO
-	direction = Vector2.ZERO
 	speed = PLAYER_DEFAULT_VELOCITY
 
 
