@@ -7,11 +7,12 @@ const DEFAULT_SPAWN_RATE: float = 3
 var enemies: Array
 var player: Node2D
 var spawn_rate: float
+var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready():
 	enemies.append(first_enemy)
 	start_game()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -45,7 +46,9 @@ func randomEnemy() -> int:
 	return 0
 
 func randomSpawn(origin: Node2D) -> Vector2:
-	return Vector2(0, 0)
+	var length = random.randi_range(50,100)
+	var angle = random.randf_range(0, 2*PI)
+	return Vector2(cos(angle), sin(angle)) * length
 
 func _on_spawn_enemy_timer_timeout():
 	spawn_enemy(enemies[randomEnemy()], randomSpawn(player))

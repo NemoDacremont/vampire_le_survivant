@@ -11,8 +11,6 @@ var direction: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity = Vector2(0, 0)
-	direction = Vector2(0, 0)
 	speed = PLAYER_DEFAULT_VELOCITY
 
 	$HealthComponent.connect("health_lost", print_hp)
