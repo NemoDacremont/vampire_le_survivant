@@ -18,7 +18,6 @@ size = Vector2(50, 50)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_16vid")
-PLAYER_DEFAULT_VELOCITY = 300
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_i2e6y")
@@ -31,6 +30,8 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_k53jh")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xfuwq")]
+
+[node name="Attacks" type="Node" parent="."]
 
 [connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
 [connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]

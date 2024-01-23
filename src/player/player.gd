@@ -7,6 +7,9 @@ signal hit
 @export var PLAYER_DEFAULT_VELOCITY: float = 300.0
 var speed: float = PLAYER_DEFAULT_VELOCITY
 
+var _Fireball: Resource = load("res://src/attacks/player_attacks/fireball/fireball.tscn")
+var new_fireball: Fireball
+@onready var _attacks_node: Node = $Attacks
 
 var velocity: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.ZERO
@@ -23,6 +26,14 @@ func _physics_process(delta):
 	velocity = direction.normalized() * speed
 
 	position += velocity * delta
+
+
+func _process(_delta):
+	if Input.is_action_just_pressed("fireball"):
+		new_fireball = _Fireball.instantiate()
+		new_fireball.init(position, direction.normalized(), 2 * speed)
+
+		_attacks_node.add_child(new_fireball)
 
 
 func set_direction() -> void:
