@@ -1,4 +1,5 @@
-extends Node2D
+extends CharacterBody2D
+class_name Player
 
 signal death
 signal hit
@@ -11,7 +12,6 @@ var _Fireball: Resource = load("res://src/attacks/player_attacks/fireball/fireba
 var new_fireball: Fireball
 @onready var _attacks_node: Node = $Attacks
 
-var velocity: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.ZERO
 
 static var _context: Node2D
@@ -32,7 +32,7 @@ func _physics_process(delta):
 	set_direction()
 	velocity = direction.normalized() * speed
 
-	position += velocity * delta
+	move_and_collide(velocity * delta)
 
 
 func _process(_delta):

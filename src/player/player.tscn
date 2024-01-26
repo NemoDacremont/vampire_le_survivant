@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://o4hyy68u331l"]
+[gd_scene load_steps=18 format=3 uid="uid://o4hyy68u331l"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_16vid"]
 [ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_e21j6"]
 [ext_resource type="PackedScene" uid="uid://dcie4unskisrs" path="res://src/components/health_component/health_component.tscn" id="3_xfuwq"]
 [ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="4_2xby6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_snu32"]
+radius = 24.0
+height = 64.0
 
 [sub_resource type="Gradient" id="Gradient_mryy5"]
 interpolation_mode = 1
@@ -81,8 +85,14 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_16vid")
+PLAYER_DEFAULT_VELOCITY = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_snu32")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 visible = false
@@ -104,6 +114,3 @@ position = Vector2(3.8147e-06, 3.8147e-06)
 scale = Vector2(1.26, 1.26)
 sprite_frames = SubResource("SpriteFrames_41rr0")
 autoplay = "default"
-
-[connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
-[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
