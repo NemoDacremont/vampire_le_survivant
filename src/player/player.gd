@@ -14,10 +14,17 @@ var new_fireball: Fireball
 var velocity: Vector2 = Vector2.ZERO
 var direction: Vector2 = Vector2.ZERO
 
+static var _context: Node2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = PLAYER_DEFAULT_VELOCITY
+
+
+# Context should be the map
+func init(context: Node2D):
+	_context = context
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,9 +36,11 @@ func _physics_process(delta):
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("fireball"):
+	if _context && Input.is_action_just_pressed("fireball"):
+		var dir: Vector2 = _context.get_nearest_enemy(position)
+
 		new_fireball = _Fireball.instantiate()
-		new_fireball.init(position, direction.normalized(), 2 * speed)
+		new_fireball.init(position, (dir - position).normalized(), 2 * speed)
 
 		_attacks_node.add_child(new_fireball)
 

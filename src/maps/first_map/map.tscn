@@ -16,5 +16,6 @@ script = ExtResource("2_ayhjx")
 
 [node name="SpawnEnemyTimer" type="Timer" parent="Timers"]
 process_callback = 0
+wait_time = 0.2
 
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]

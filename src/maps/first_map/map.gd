@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEFAULT_SPAWN_RATE: float = 3
+const DEFAULT_SPAWN_RATE: float = .2
 
 @onready var _Player = load("res://src/player/player.tscn")
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
@@ -17,6 +17,7 @@ func _ready() -> void:
 	start_game()
 
 
+
 func start_game() -> void:
 	set_up_player()
 	set_up_enemies()
@@ -31,6 +32,7 @@ func game_over(player: Node2D) -> void:
 func set_up_player() -> void:
 	_player = _Player.instantiate()
 	_player.position = Vector2(0, 0)
+	_player.init(self)
 	add_child(_player)
 
 	$Camera.track(_player)
@@ -52,10 +54,32 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 func randomEnemy() -> int:
 	return 0
 
+
+func get_nearest_enemy(pos: Vector2) -> Vector2:
+	var enemies = $Enemies.get_children()
+
+	if len(enemies) == 0:
+		return Vector2.ZERO
+
+	var nearest = enemies[0]
+	var min_dist: float = pos.distance_to(nearest.position)
+	var dist: float
+
+	for enemy in enemies:
+		dist = pos.distance_to(enemy.position)
+
+		if (dist < min_dist):
+			nearest = enemy
+			min_dist = dist
+
+	return nearest.position
+
+
 func randomSpawn(origin: Node2D) -> Vector2:
 	var length = random.randi_range(50,100)
 	var angle = random.randf_range(0, 2*PI)
 	return Vector2(cos(angle), sin(angle)) * length
+
 
 func _on_spawn_enemy_timer_timeout():
 	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player))
