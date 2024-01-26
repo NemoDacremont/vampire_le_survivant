@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cocv5cejfqdmt"]
+[gd_scene load_steps=6 format=3 uid="uid://cocv5cejfqdmt"]
 
 [ext_resource type="PackedScene" uid="uid://c2du4q41d6bsm" path="res://src/attacks/player_attacks/player_attack.tscn" id="1_878un"]
 [ext_resource type="Script" path="res://src/attacks/player_attacks/fireball/fireball.gd" id="2_totg1"]
 [ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="3_n33bo"]
+[ext_resource type="PackedScene" uid="uid://xce6v051cpqc" path="res://src/components/attack_component/attack_component.tscn" id="4_mpp37"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n38dw"]
 radius = 16.0
@@ -16,5 +17,8 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionComponent" index="0"]
 shape = SubResource("CircleShape2D_n38dw")
+
+[node name="AttackComponent" parent="." index="2" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_mpp37")]
+hitbox = NodePath("../CollisionComponent")
 
 [connection signal="collision" from="CollisionComponent" to="." method="_on_collision_component_collision"]
