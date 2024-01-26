@@ -12,9 +12,9 @@ var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 
 func _ready() -> void:
+	Context.set_context(self)
 	_Enemies.append(_Enemy)
 	start_game()
-
 
 
 func start_game() -> void:

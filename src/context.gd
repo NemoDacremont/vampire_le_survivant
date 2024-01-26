@@ -1,11 +1,33 @@
 extends Node
 
+var _context
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func set_context(map: Node2D):
+	_context = map
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func get_nearest_enemy(pos: Vector2) -> Vector2:
+	var enemies_node = _context.get_node("Enemies")
+
+	if not enemies_node:
+		return Vector2.RIGHT
+
+	var enemies = enemies_node.get_children()
+
+	if len(enemies) == 0:
+		return Vector2.ZERO
+
+	var nearest = enemies[0]
+	var min_dist: float = pos.distance_to(nearest.position)
+	var dist: float
+
+	for enemy in enemies:
+		dist = pos.distance_to(enemy.position)
+
+		if (dist < min_dist):
+			nearest = enemy
+			min_dist = dist
+
+	return nearest.position
+
+

@@ -37,7 +37,7 @@ func _physics_process(delta):
 
 func _process(_delta):
 	if _context && Input.is_action_just_pressed("fireball"):
-		var dir: Vector2 = _context.get_nearest_enemy(position)
+		var dir: Vector2 = Context.get_nearest_enemy(position)
 
 		new_fireball = _Fireball.instantiate()
 		new_fireball.init(position, (dir - position).normalized(), 2 * speed)
