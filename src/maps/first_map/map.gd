@@ -5,7 +5,6 @@ const DEFAULT_SPAWN_RATE: float = .2
 @onready var _Player = load("res://src/player/player.tscn")
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
 
-var _enemies: Array[Enemy]
 var _Enemies: Array[Resource]
 var _player: Node2D
 var spawn_rate: float
@@ -46,10 +45,10 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
 	enemy.init(_player)
 	enemy.position = spawn_position
-	_Enemies.append(enemy)
+
 	$Enemies.add_child(enemy)
 
-	self.get_node("Enemies").add_child(enemy)
+
 
 func randomEnemy() -> int:
 	return 0
@@ -75,11 +74,14 @@ func get_nearest_enemy(pos: Vector2) -> Vector2:
 	return nearest.position
 
 
-func randomSpawn(origin: Node2D) -> Vector2:
-	var length = random.randi_range(50,100)
+func randomSpawn(origin: Vector2) -> Vector2:
+	var length = random.randi_range(500, 600)
 	var angle = random.randf_range(0, 2*PI)
-	return Vector2(cos(angle), sin(angle)) * length
+
+	return origin + Vector2(cos(angle), sin(angle)) * length
 
 
 func _on_spawn_enemy_timer_timeout():
-	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player))
+	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player.position))
+
+

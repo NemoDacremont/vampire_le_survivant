@@ -7,6 +7,7 @@
 script = ExtResource("1_xx1c6")
 
 [node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(1.75, 1.75)
 position_smoothing_enabled = true
 script = ExtResource("2_ayhjx")
 
@@ -17,5 +18,8 @@ script = ExtResource("2_ayhjx")
 [node name="SpawnEnemyTimer" type="Timer" parent="Timers"]
 process_callback = 0
 wait_time = 0.2
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
 
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
