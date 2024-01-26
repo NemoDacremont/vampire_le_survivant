@@ -4,7 +4,7 @@ class_name HealthComponent
 signal health_lost(new_hp: float)
 signal death
 
-@export var MAX_HEALTH: float = 3.0
+@export var MAX_HEALTH: float
 var _hp: float = MAX_HEALTH
 
 

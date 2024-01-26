@@ -48,3 +48,5 @@ MAX_HEALTH = 1.0
 
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("2_yeuwv")]
 hitbox = NodePath("../AttackCollisionComponent")
+
+[connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]

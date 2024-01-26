@@ -29,3 +29,7 @@ func _physics_process(delta) -> void:
 func _process(_delta) -> void:
 	pass
 
+
+func _on_health_component_death():
+	queue_free()
+
