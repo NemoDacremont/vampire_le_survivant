@@ -1,7 +1,7 @@
 extends Node2D
 class_name Background
 
-var noise: Noise
+@onready var noise: Noise = FastNoiseLite.new()
 
 var _center_position: Vector2 = Vector2.ZERO
 
@@ -22,19 +22,18 @@ var probas: Array[float]
 
 
 func init(init_center_position: Vector2):
-	blocks_node.init()
+	# blocks_node.init()
 
 	_center_position = init_center_position
 	origin = init_center_position - (height / 2.0) * Vector2.UP - (width / 2.0) * Vector2.RIGHT
 
-	noise = FastNoiseLite.new()
+	# noise = FastNoiseLite.new()
 	noise.seed = randi();
-	noise.frequency = 0.5
+	noise.frequency = 999
+
 
 	maps = blocks_node.get_tilemaps()
 
-	for chunk in tilemaps_node.get_children():
-		chunk.queue_free()
 
 	load_all_chunks()
 
@@ -50,6 +49,9 @@ func load_chunk(pos: Vector2i) -> void:
 
 
 func load_all_chunks():
+	for chunk in tilemaps_node.get_children():
+		chunk.queue_free()
+
 	for x in range(width):
 		for y in range(height):
 			load_chunk(Vector2i(x - width / 2, y - height / 2))
@@ -101,6 +103,14 @@ func update_chunks(diff: Vector2i) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	player_cur_pos = round(Context.get_player_position() / tile_width)
+
+	if Input.is_action_just_pressed("fireball"):
+		load_all_chunks()
+		print(player_cur_pos)
+		print(noise.seed)
+		print(noise.frequency)
+		print(noise.get_noise_2d(1, 0))
+		print(noise.get_noise_2d(1, 0))
 
 	if (player_cur_pos != player_old_pos):
 		var diff = player_old_pos - player_cur_pos

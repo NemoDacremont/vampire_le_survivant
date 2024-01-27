@@ -22,26 +22,26 @@ var tilemaps: Array[Resource] = [
 
 
 var probas: Array[float] = [
-	1,
-	10,
-	10,
-	10,
-	10,
-	10,
-	200,
-	100,
-	100,
 	10,
 	50,
-	10,
 	50,
-	10,
+	50,
+	50,
+	50,
+	300,
+	100,
+	100,
+	50,
+	50,
+	50,
+	50,
+	50,
 	50
 ]
 
 var sum: float = -1
 
-func init():
+func _ready():
 	sum = 0
 
 	for proba in probas:
@@ -58,6 +58,7 @@ func get_tilemaps() -> Array[Resource]:
 
 # 0 <= n <= 1; randomly generated number
 func get_tilemap(n: float) -> Resource:
+	print("GET TILEMAP: ", n)
 	for i in range(len(probas)):
 		if n <= probas[i]:
 			return tilemaps[i]

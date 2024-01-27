@@ -20,6 +20,7 @@ script = ExtResource("2_ayhjx")
 
 [node name="Player" parent="." instance=ExtResource("4_37owa")]
 z_index = 1
+scale = Vector2(0.75, 0.75)
 
 [node name="Timers" type="Node" parent="."]
 
