@@ -27,7 +27,7 @@ func _ready() -> void:
 func start_game() -> void:
 	set_up_player()
 	set_up_enemies()
-
+	$TimerHUD.init()
 	$Background.call_deferred("init", get_player_position())
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
