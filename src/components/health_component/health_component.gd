@@ -8,8 +8,8 @@ signal death
 var _hp: float = MAX_HEALTH
 
 
-func _ready() -> void:
-	print(_hp)
+# func _ready() -> void:
+# 	print(_hp)
 
 
 func get_hps() -> float:

@@ -26,12 +26,12 @@ func _physics_process(delta):
 
 func _process(_delta):
 	if _max_distance <= _distance:
-		print("FREE FIREBALL !!!")
+		# print("FREE FIREBALL !!!")
 		queue_free()
 
 	
 
 func _on_collision_component_collision(_node: CollisionComponent):
-	print("COLLISION -> FREE FIREBALL !!!")
+	# print("COLLISION -> FREE FIREBALL !!!")
 	queue_free()
 
