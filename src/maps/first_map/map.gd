@@ -2,7 +2,6 @@ extends Node2D
 
 const DEFAULT_SPAWN_RATE: float = .2
 
-@onready var _Player = load("res://src/player/player.tscn")
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
 
 var _Enemies: Array[Resource]
@@ -14,11 +13,9 @@ var random: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	Context.set_context(self)
 
-	$Background.init(Vector2.ZERO)
 	_Enemies.append(_Enemy)
 	
-	_player = _Player.instantiate()
-	add_child(_player)
+	_player = $Player
 	_player.connect("death", start_game)
 	start_game()
 
@@ -26,6 +23,7 @@ func _ready() -> void:
 func start_game() -> void:
 	set_up_player()
 	set_up_enemies()
+	$Background.init(Vector2.ZERO)
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
 
