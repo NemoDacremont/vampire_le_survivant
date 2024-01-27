@@ -1,16 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2mke82kyruxp"]
+[gd_scene load_steps=6 format=3 uid="uid://b2mke82kyruxp"]
 
 [ext_resource type="PackedScene" uid="uid://cocv5cejfqdmt" path="res://src/attacks/player_attacks/fireball/fireball.tscn" id="1_r3ibj"]
 [ext_resource type="Script" path="res://src/attacks/player_attacks/fireball/sniper_bullet/sniper_bullet.gd" id="2_lmxud"]
 
 [sub_resource type="Gradient" id="Gradient_o1jey"]
-colors = PackedColorArray(0.0834662, 0.5688, 0.598091, 1, 0.834602, 0.386249, 0.0608496, 1)
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 0.835294, 0.384314, 0.0627451, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xsbjh"]
 gradient = SubResource("Gradient_o1jey")
+width = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ax2xx"]
+radius = 16.0
+height = 68.0
 
 [node name="SniperBullet" instance=ExtResource("1_r3ibj")]
 script = ExtResource("2_lmxud")
 
 [node name="Sprite" parent="." index="0"]
 texture = SubResource("GradientTexture2D_xsbjh")
+
+[node name="CollisionShape2D" parent="CollisionComponent" index="0"]
+shape = SubResource("CapsuleShape2D_ax2xx")
+
+[node name="AttackComponent" parent="." index="2"]
+dmg = 50.0

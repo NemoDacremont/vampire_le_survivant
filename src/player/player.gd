@@ -27,6 +27,7 @@ func _ready():
 	$Weapons/AssaultRiffle.init(self)
 	$Weapons/Pistol.init(self)
 	$Weapons/Sniper.init(self)
+	$Weapons/Shotgun.init(self)
 
 
 # Context should be the map

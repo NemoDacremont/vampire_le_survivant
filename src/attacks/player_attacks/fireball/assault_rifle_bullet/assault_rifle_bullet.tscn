@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8pfht0b7ynxv"]
+[gd_scene load_steps=6 format=3 uid="uid://c8pfht0b7ynxv"]
 
 [ext_resource type="PackedScene" uid="uid://cocv5cejfqdmt" path="res://src/attacks/player_attacks/fireball/fireball.tscn" id="1_8kdfc"]
 [ext_resource type="Script" path="res://src/attacks/player_attacks/fireball/assault_rifle_bullet/assault_rifle_bullet.gd" id="2_7gh8g"]
 
 [sub_resource type="Gradient" id="Gradient_6lvbm"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.945943, 3.7542e-06, 0.583262, 1)
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5xrhk"]
 gradient = SubResource("Gradient_6lvbm")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iu1er"]
+radius = 4.0
 
 [node name="AssaultRifleBullet" instance=ExtResource("1_8kdfc")]
 script = ExtResource("2_7gh8g")
@@ -17,3 +25,6 @@ script = ExtResource("2_7gh8g")
 position = Vector2(4.76837e-07, 0)
 scale = Vector2(0.5, 0.5)
 texture = SubResource("GradientTexture2D_5xrhk")
+
+[node name="CollisionShape2D" parent="CollisionComponent" index="0"]
+shape = SubResource("CircleShape2D_iu1er")
