@@ -1,15 +1,15 @@
-[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://c2ewsq5jgk8af"]
+[gd_scene load_steps=10 format=3 uid="uid://dl0nymgdcwhtb"]
 
-[ext_resource type="Texture2D" uid="uid://h87e644io8cm" path="res://assets/fantasy_ [version 2.0]/forest_/forest_ [fencesAndWalls].png" id="1_6x8ki"]
-[ext_resource type="PhysicsMaterial" uid="uid://bojhlo50v5w0a" path="res://src/maps/blocks_map/blocks_physics.tres" id="1_oalrr"]
-[ext_resource type="Texture2D" uid="uid://dmajgbsmkmxgv" path="res://assets/fantasy_ [version 2.0]/fantasy_/tundraSwampTaigaForestDesert_0.png" id="2_wrfgb"]
-[ext_resource type="Texture2D" uid="uid://dqliyieae240a" path="res://assets/fantasy_ [version 2.0]/fantasy_/tundraSwampTaigaForestDesert_1.png" id="3_qmsci"]
+[ext_resource type="Texture2D" uid="uid://h87e644io8cm" path="res://assets/fantasy_ [version 2.0]/forest_/forest_ [fencesAndWalls].png" id="1_lxrkl"]
+[ext_resource type="PhysicsMaterial" uid="uid://bojhlo50v5w0a" path="res://src/maps/blocks_map/blocks_physics.tres" id="1_sk0ha"]
+[ext_resource type="Texture2D" uid="uid://dmajgbsmkmxgv" path="res://assets/fantasy_ [version 2.0]/fantasy_/tundraSwampTaigaForestDesert_0.png" id="2_hgqnh"]
+[ext_resource type="Texture2D" uid="uid://dqliyieae240a" path="res://assets/fantasy_ [version 2.0]/fantasy_/tundraSwampTaigaForestDesert_1.png" id="3_xnsik"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ukkh7"]
 tile_data = PackedInt32Array(0, 524289, 2, 65536, 524289, 2, 131072, 524289, 2, 196608, 524289, 2, 262144, 524289, 2, 327680, 524289, 2, 393216, 524289, 2, 458752, 524289, 2, 524288, 524289, 2, 589824, 524289, 2, 1, 524289, 2, 65537, 524289, 2, 131073, 524289, 2, 196609, 524289, 2, 262145, 524289, 2, 327681, 524289, 2, 393217, 524289, 2, 458753, 524289, 2, 524289, 524289, 2, 589825, 524289, 2, 2, 524289, 2, 65538, 524289, 2, 131074, 524289, 2, 196610, 524289, 2, 262146, 524289, 2, 327682, 524289, 2, 393218, 524289, 2, 458754, 524289, 2, 524290, 524289, 2, 589826, 524289, 2, 3, 524289, 2, 65539, 524289, 2, 131075, 524289, 2, 196611, 524289, 2, 262147, 524289, 2, 327683, 524289, 2, 393219, 524289, 2, 458755, 524289, 2, 524291, 524289, 2, 589827, 524289, 2, 4, 524289, 2, 65540, 524289, 2, 131076, 524289, 2, 196612, 524289, 2, 262148, 524289, 2, 327684, 524289, 2, 393220, 524289, 2, 458756, 524289, 2, 524292, 524289, 2, 589828, 524289, 2, 5, 524289, 2, 65541, 524289, 2, 131077, 524289, 2, 196613, 524289, 2, 262149, 524289, 2, 327685, 524289, 2, 393221, 524289, 2, 458757, 524289, 2, 524293, 524289, 2, 589829, 524289, 2, 6, 524289, 2, 65542, 524289, 2, 131078, 524289, 2, 196614, 524289, 2, 262150, 524289, 2, 327686, 524289, 2, 393222, 524289, 2, 458758, 524289, 2, 524294, 524289, 2, 589830, 524289, 2, 7, 524289, 2, 65543, 524289, 2, 131079, 524289, 2, 196615, 524289, 2, 262151, 524289, 2, 327687, 524289, 2, 393223, 524289, 2, 458759, 524289, 2, 524295, 524289, 2, 589831, 524289, 2, 8, 524289, 2, 65544, 524289, 2, 131080, 524289, 2, 196616, 524289, 2, 262152, 524289, 2, 327688, 524289, 2, 393224, 524289, 2, 458760, 524289, 2, 524296, 524289, 2, 589832, 524289, 2, 9, 524289, 2, 65545, 524289, 2, 131081, 524289, 2, 196617, 524289, 2, 262153, 524289, 2, 327689, 524289, 2, 393225, 524289, 2, 458761, 524289, 2, 524297, 524289, 2, 589833, 524289, 2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tqcq4"]
-texture = ExtResource("1_6x8ki")
+texture = ExtResource("1_lxrkl")
 11:0/0 = 0
 11:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:0/0/physics_layer_0/angular_velocity = 0.0
@@ -681,7 +681,7 @@ texture = ExtResource("1_6x8ki")
 7:10/0/terrains_peering_bit/top_side = 3
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dm327"]
-texture = ExtResource("2_wrfgb")
+texture = ExtResource("2_hgqnh")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -1070,7 +1070,7 @@ texture = ExtResource("2_wrfgb")
 15:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xx1n8"]
-texture = ExtResource("3_qmsci")
+texture = ExtResource("3_xnsik")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -1264,10 +1264,10 @@ texture = ExtResource("3_qmsci")
 10:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:4/0/physics_layer_0/angular_velocity = 0.0
 
-[resource]
+[sub_resource type="TileSet" id="TileSet_rgxgp"]
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
-physics_layer_0/physics_material = ExtResource("1_oalrr")
+physics_layer_0/physics_material = ExtResource("1_sk0ha")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Grass"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -1281,3 +1281,13 @@ sources/0 = SubResource("TileSetAtlasSource_tqcq4")
 sources/1 = SubResource("TileSetAtlasSource_dm327")
 sources/2 = SubResource("TileSetAtlasSource_xx1n8")
 pattern_0 = SubResource("TileMapPattern_ukkh7")
+
+[node name="Block1" type="TileMap"]
+tile_set = SubResource("TileSet_rgxgp")
+format = 2
+layer_0/name = "L0"
+layer_0/tile_data = PackedInt32Array(262150, 524289, 2, 327686, 524289, 2, 393222, 524289, 2, 458758, 524289, 2, 524294, 524289, 2, 589830, 524289, 2, 262151, 524289, 2, 327687, 524289, 2, 393223, 524289, 2, 458759, 524289, 2, 524295, 524289, 2, 589831, 524289, 2, 262152, 524289, 2, 327688, 524289, 2, 393224, 524289, 2, 458760, 524289, 2, 524296, 524289, 2, 589832, 524289, 2, 262153, 524289, 2, 327689, 524289, 2, 393225, 524289, 2, 458761, 524289, 2, 524297, 524289, 2, 589833, 524289, 2, 0, 524289, 2, 65536, 524289, 2, 131072, 524289, 2, 196608, 524289, 2, 262144, 524289, 2, 327680, 524289, 2, 393216, 524289, 2, 458752, 524289, 2, 524288, 524289, 2, 589824, 524289, 2, 1, 524289, 2, 65537, 524289, 2, 131073, 524289, 2, 196609, 524289, 2, 262145, 524289, 2, 327681, 524289, 2, 393217, 524289, 2, 458753, 524289, 2, 524289, 524289, 2, 589825, 524289, 2, 2, 524289, 2, 65538, 524289, 2, 131074, 524289, 2, 196610, 524289, 2, 262146, 524289, 2, 327682, 524289, 2, 393218, 524289, 2, 458754, 524289, 2, 524290, 524289, 2, 589826, 524289, 2, 3, 524289, 2, 65539, 524289, 2, 131075, 524289, 2, 196611, 524289, 2, 262147, 524289, 2, 327683, 524289, 2, 393219, 524289, 2, 458755, 524289, 2, 524291, 524289, 2, 589827, 524289, 2, 4, 524289, 2, 65540, 524289, 2, 131076, 524289, 2, 196612, 524289, 2, 262148, 524289, 2, 327684, 524289, 2, 393220, 524289, 2, 458756, 524289, 2, 524292, 524289, 2, 589828, 524289, 2, 5, 524289, 2, 65541, 524289, 2, 131077, 524289, 2, 196613, 524289, 2, 262149, 524289, 2, 327685, 524289, 2, 393221, 524289, 2, 458757, 524289, 2, 524293, 524289, 2, 589829, 524289, 2, 6, 524289, 2, 65542, 524289, 2, 131078, 524289, 2, 196614, 524289, 2, 7, 524289, 2, 65543, 524289, 2, 131079, 524289, 2, 196615, 524289, 2, 8, 524289, 2, 65544, 524289, 2, 131080, 524289, 2, 196616, 524289, 2, 9, 524289, 2, 65545, 524289, 2, 131081, 524289, 2, 196617, 524289, 2)
+layer_1/name = "L1"
+layer_1/tile_data = PackedInt32Array(393224, 983041, 1, 458760, 983041, 2, 393217, 851969, 1, 458753, 851969, 2, 524289, 851969, 3, 131074, 851969, 1, 196610, 851969, 3, 393218, 983041, 1, 458754, 589826, 2, 524290, 917505, 3, 131075, 983041, 1, 196611, 983041, 3, 458755, 917505, 1, 524291, 917505, 3, 458756, 917505, 1, 524292, 917505, 3, 458757, 917505, 1, 524293, 917505, 3, 131078, 851969, 1, 196614, 851969, 3, 458758, 917505, 1, 524294, 917505, 3, 131079, 983041, 1, 196615, 983041, 3, 393223, 851969, 1, 458759, 655362, 2, 524295, 917505, 3, 524296, 983041, 3)
+layer_2/name = "L2"
+layer_2/tile_data = PackedInt32Array()
