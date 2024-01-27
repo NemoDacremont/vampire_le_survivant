@@ -8,3 +8,4 @@ func init(parent_position: Node):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super(delta)
+

@@ -13,6 +13,8 @@ var _theta: float = 0
 var _wanted_theta: float = 0
 var dir: Vector2 = Vector2.RIGHT
 
+var _is_enabled: bool = false
+
 @onready var bullets_node: Node = $Bullets
 @onready var sprite_node: Sprite2D = $Sprite
 
@@ -23,6 +25,8 @@ var nearest_enemy_pos: Vector2 = Vector2.ZERO
 # parent_position is a node, the weapon will follow it
 func init(parent_position: Node):
 	_parent = parent_position
+	$Sprite.visible = false
+	
 
 
 func _process(delta):
@@ -52,5 +56,14 @@ func shoot():
 
 
 func _on_timer_shots_timeout():
-	shoot()
+	if _is_enabled:
+		shoot()
+	
+func enable_weapon():
+	$Sprite.visible = true
+	_is_enabled = true
+	
+func disable_weapon():
+	$Sprite.visible = false
+	_is_enabled = false
 

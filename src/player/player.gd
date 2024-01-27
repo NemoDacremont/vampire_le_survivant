@@ -35,6 +35,8 @@ func _ready():
 func init(context: Node2D, spawn_position: Vector2, hp: float):
 	_context = context
 	position = spawn_position
+	
+	$SegwaySprite.visible = true
 	xp = 0
 	level = 0
 	$HealthComponent.init(hp)
@@ -57,6 +59,20 @@ func _process(_delta):
 		new_fireball.init(position, (dir - position).normalized(), 2 * speed)
 
 		_attacks_node.add_child(new_fireball)
+	if Input.is_action_pressed("segway"):
+		
+		$SegwaySprite.visible = false
+		speed = PLAYER_DEFAULT_VELOCITY * 0.2
+		for weapon in $Weapons.get_children():
+			weapon.enable_weapon()
+		
+	if Input.is_action_just_released("segway"):
+		
+		$SegwaySprite.visible = true
+		speed = PLAYER_DEFAULT_VELOCITY
+		for weapon in $Weapons.get_children():
+			weapon.disable_weapon()
+		
 
 
 func set_direction() -> void:
