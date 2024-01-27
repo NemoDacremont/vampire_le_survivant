@@ -121,3 +121,6 @@ autoplay = "default"
 
 [node name="Weapon2" parent="Weapons" instance=ExtResource("5_m4lca")]
 w_idle = 314.0
+
+[connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
+[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]

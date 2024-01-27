@@ -14,6 +14,10 @@ var random: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	Context.set_context(self)
 	_Enemies.append(_Enemy)
+	
+	_player = _Player.instantiate()
+	add_child(_player)
+	_player.connect("death", start_game)
 	start_game()
 
 
@@ -29,15 +33,13 @@ func game_over(player: Node2D) -> void:
 
 
 func set_up_player() -> void:
-	_player = _Player.instantiate()
-	_player.position = Vector2(0, 0)
-	_player.init(self)
-	add_child(_player)
-
+	_player.init(self, Vector2.ZERO)
 	$Camera.track(_player)
 
 
 func set_up_enemies() -> void:
+	for enemy in $Enemies.get_children():
+		enemy.queue_free()
 	spawn_rate = DEFAULT_SPAWN_RATE
 
 

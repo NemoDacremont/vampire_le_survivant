@@ -25,8 +25,9 @@ func _ready():
 
 
 # Context should be the map
-func init(context: Node2D):
+func init(context: Node2D, spawn_position: Vector2):
 	_context = context
+	position = spawn_position
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

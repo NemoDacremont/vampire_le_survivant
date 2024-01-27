@@ -16,7 +16,6 @@ w_idle = 1.0
 texture = SubResource("GradientTexture2D_qb0s8")
 
 [node name="TimerShots" type="Timer" parent="."]
-wait_time = 0.1
 autostart = true
 
 [node name="Bullets" type="Node" parent="."]
