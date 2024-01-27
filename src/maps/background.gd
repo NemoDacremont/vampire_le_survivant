@@ -48,7 +48,7 @@ func load_chunk(pos: Vector2i):
 				source = tilemap.get_cell_atlas_coords(z, tmp_pos)
 
 				if (sourceid >= 0):
-					print("Set: ", Vector2i(pos.x * tile_width + x, pos.y * tile_height), ", ", z, " ; ", sourceid)
+					#print("Set: ", Vector2i(pos.x * tile_width + x, pos.y * tile_height), ", ", z, " ; ", sourceid)
 					set_cell(z, Vector2i(pos.x * tile_width + x, pos.y * tile_height), sourceid)
 
 

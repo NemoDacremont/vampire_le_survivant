@@ -33,7 +33,7 @@ func _process(delta):
 	_theta = _theta + w * delta
 
 	dir = Vector2(cos(_theta), sin(_theta)).normalized()
-	print(_theta)
+	#print(_theta)
 
 	position = _parent.position + pos_offset * dir
 	sprite_node.rotation = _theta

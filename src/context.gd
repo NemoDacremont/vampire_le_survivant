@@ -31,7 +31,7 @@ func get_nearest_enemy(pos: Vector2) -> Vector2:
 	for enemy in enemies:
 		dist = pos.distance_to(enemy.position)
 
-		if (dist < min_dist):
+		if (enemy.is_alive && dist < min_dist):
 			nearest = enemy
 			min_dist = dist
 

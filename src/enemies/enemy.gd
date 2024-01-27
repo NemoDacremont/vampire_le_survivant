@@ -11,7 +11,7 @@ const ENEMY_DEFAULT_VELOCITY: float = 2 * 48;
 var _movement_direction: Vector2
 @onready var _sprite: Sprite2D = $Sprite
 
-var dead: bool = 0
+var is_alive: bool = true
 
 # var _velocity: Vector2
 
@@ -21,7 +21,7 @@ func init(target: Node2D) -> void:
 
 
 func _physics_process(_delta) -> void:
-	if not dead:
+	if is_alive:
 		_movement_direction = _target.position - position
 		_movement_direction = _movement_direction.normalized()
 
