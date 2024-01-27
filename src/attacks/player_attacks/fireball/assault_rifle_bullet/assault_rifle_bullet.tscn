@@ -28,3 +28,6 @@ texture = SubResource("GradientTexture2D_5xrhk")
 
 [node name="CollisionShape2D" parent="CollisionComponent" index="0"]
 shape = SubResource("CircleShape2D_iu1er")
+
+[node name="AttackComponent" parent="." index="2"]
+dmg = 20.0
