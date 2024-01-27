@@ -16,8 +16,10 @@ var is_alive: bool = true
 # var _velocity: Vector2
 
 
-func init(target: Node2D) -> void:
+func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> void:
 	_target = target
+	position = spawn_position
+	$HealthComponent.init(hp)
 
 
 func _physics_process(_delta) -> void:

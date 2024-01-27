@@ -1,6 +1,7 @@
 extends Node2D
 
 const DEFAULT_SPAWN_RATE: float = .2
+const DEFAULT_MAX_HP_PLAYER: float = 5
 
 @onready var _Player = load("res://src/player/player.tscn")
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
@@ -37,7 +38,7 @@ func game_over(player: Node2D) -> void:
 
 
 func set_up_player() -> void:
-	_player.init(self, Vector2.ZERO)
+	_player.init(self, Vector2.ZERO, DEFAULT_MAX_HP_PLAYER)
 	$Camera.track(_player)
 
 
@@ -49,7 +50,7 @@ func set_up_enemies() -> void:
 
 func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
-	enemy.init(_player)
+	enemy.init(_player, spawn_position, 0, 3)
 	enemy.position = spawn_position
 	enemy.death.connect(_player.give_xp)
 

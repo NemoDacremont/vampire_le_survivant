@@ -5,8 +5,9 @@ var areas: Array[CollisionShape2D] = [$enemy_collision, $AttackCollisionComponen
 
 var xp: float = 1
 
-func init(target: Node2D) -> void:
-	super(target)
+
+func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> void:
+	super(target, spawn_position, speed, hp)
 	$Sprite.frame = randi() % SPRITE_MAX_NUMBER
 
 func _on_health_component_death():

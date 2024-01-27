@@ -54,7 +54,6 @@ visible = false
 shape = SubResource("RectangleShape2D_aagsn")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_88tou")]
-MAX_HEALTH = 1.0
 
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("2_yeuwv")]
 hitbox = NodePath("../AttackCollisionComponent")

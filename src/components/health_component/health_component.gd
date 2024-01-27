@@ -4,18 +4,18 @@ class_name HealthComponent
 signal health_lost(new_hp: float)
 signal death
 
-@export var MAX_HEALTH: float
-var _hp: float = MAX_HEALTH
+@export var max_health: float
+var _hp: float = max_health
 
+func init(spawn_max_health: float):
+	max_health = spawn_max_health
+	_hp = spawn_max_health
 
-func _ready() -> void:
-	#print(_hp)
-	pass
-
+func heal(heal_amount):
+	_hp = max(_hp + heal_amount, max_health)
 
 func get_hps() -> float:
 	return _hp
-
 
 # Returns hps after applying dmg
 func recieve_dmg(dmgs: float) -> float:

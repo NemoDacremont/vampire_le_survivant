@@ -30,11 +30,12 @@ func _ready():
 
 
 # Context should be the map
-func init(context: Node2D, spawn_position: Vector2):
+func init(context: Node2D, spawn_position: Vector2, hp: float):
 	_context = context
 	position = spawn_position
 	xp = 0
 	level = 0
+	$HealthComponent.init(hp)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
