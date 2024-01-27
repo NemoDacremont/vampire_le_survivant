@@ -21,6 +21,7 @@ static var _context: Node2D
 func _ready():
 	speed = PLAYER_DEFAULT_VELOCITY
 	$Weapons/Weapon.init(self)
+	$Weapons/Weapon2.init(self)
 
 
 # Context should be the map
