@@ -7,4 +7,6 @@ func init(target: Node2D) -> void:
 	$Sprite.frame = randi() % SPRITE_MAX_NUMBER
 
 func _on_health_component_death():
-	queue_free()
+	dead = true
+	$Sprite.frame = randi() % SPRITE_MAX_NUMBER + SPRITE_MAX_NUMBER
+	$AnimationPlayer.play("death")

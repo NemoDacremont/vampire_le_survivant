@@ -11,6 +11,8 @@ const ENEMY_DEFAULT_VELOCITY: float = 2 * 48;
 var _movement_direction: Vector2
 @onready var _sprite: Sprite2D = $Sprite
 
+var dead: bool = 0
+
 # var _velocity: Vector2
 
 
@@ -19,12 +21,13 @@ func init(target: Node2D) -> void:
 
 
 func _physics_process(_delta) -> void:
-	_movement_direction = _target.position - position
-	_movement_direction = _movement_direction.normalized()
+	if not dead:
+		_movement_direction = _target.position - position
+		_movement_direction = _movement_direction.normalized()
 
-	velocity = ENEMY_DEFAULT_VELOCITY * _movement_direction
+		velocity = ENEMY_DEFAULT_VELOCITY * _movement_direction
 
-	move_and_collide(velocity * _delta)
+		move_and_collide(velocity * _delta)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
