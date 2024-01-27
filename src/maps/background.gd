@@ -11,7 +11,7 @@ var tile_height: int = 160
 var width: int = 16
 var height: int = 8
 
-var origin: Vector2
+var _origin: Vector2
 var player_old_pos: Vector2i = Vector2i.ZERO
 var player_cur_pos: Vector2i = Vector2i.ZERO
 
@@ -23,21 +23,18 @@ var probas: Array[float]
 
 func init(init_center_position: Vector2):
 	# blocks_node.init()
+	maps = blocks_node.get_tilemaps()
 
-	_center_position = init_center_position
-	origin = init_center_position - (height / 2.0) * Vector2.UP - (width / 2.0) * Vector2.RIGHT
+	player_cur_pos = Vector2i(init_center_position / tile_width)
 
 	# noise = FastNoiseLite.new()
 	noise.seed = randi();
 	noise.frequency = 999
 
 
-	maps = blocks_node.get_tilemaps()
+	load_all_chunks(player_cur_pos)
 
-
-	load_all_chunks()
-
-
+	
 
 func load_chunk(pos: Vector2i) -> void:
 	var n: float = (noise.get_noise_2d(pos.x, pos.y) + 1) / 2
@@ -48,13 +45,14 @@ func load_chunk(pos: Vector2i) -> void:
 	tilemaps_node.add_child(tilemap)
 
 
-func load_all_chunks():
+func load_all_chunks(origin: Vector2i):
 	for chunk in tilemaps_node.get_children():
+		print("FREE")
 		chunk.queue_free()
 
 	for x in range(width):
 		for y in range(height):
-			load_chunk(Vector2i(x - width / 2, y - height / 2))
+			load_chunk(origin + Vector2i(x - width / 2, y - height / 2))
 
 
 func update_chunks(diff: Vector2i) -> void:
@@ -65,7 +63,7 @@ func update_chunks(diff: Vector2i) -> void:
 	for chunk in chunks:
 		pos = Vector2i(chunk.position.x / tile_width, chunk.position.y / tile_height)
 
-		if diff.x > 0 && pos.x - player_cur_pos.x - width / 2 == diff.x:
+		if diff.x > 0 && pos.x - player_cur_pos.x - width / 2 + 1 == diff.x:
 			chunk.queue_free()
 
 		elif diff.x < 0 && player_cur_pos.x - pos.x - width / 2 - 2 == diff.x:
@@ -74,7 +72,7 @@ func update_chunks(diff: Vector2i) -> void:
 		if diff.y < 0 && player_cur_pos.y - pos.y - height / 2 - 2 == diff.y:
 			chunk.queue_free()
 
-		elif diff.y > 0 && pos.y - player_cur_pos.y - height / 2 == diff.y:
+		elif diff.y > 0 && pos.y - player_cur_pos.y - height / 2 + 1 == diff.y:
 			chunk.queue_free()
 
 
@@ -104,13 +102,6 @@ func update_chunks(diff: Vector2i) -> void:
 func _process(_delta):
 	player_cur_pos = round(Context.get_player_position() / tile_width)
 
-	if Input.is_action_just_pressed("fireball"):
-		load_all_chunks()
-		print(player_cur_pos)
-		print(noise.seed)
-		print(noise.frequency)
-		print(noise.get_noise_2d(1, 0))
-		print(noise.get_noise_2d(1, 0))
 
 	if (player_cur_pos != player_old_pos):
 		var diff = player_old_pos - player_cur_pos

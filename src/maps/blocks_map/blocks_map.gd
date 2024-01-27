@@ -58,7 +58,6 @@ func get_tilemaps() -> Array[Resource]:
 
 # 0 <= n <= 1; randomly generated number
 func get_tilemap(n: float) -> Resource:
-	print("GET TILEMAP: ", n)
 	for i in range(len(probas)):
 		if n <= probas[i]:
 			return tilemaps[i]
