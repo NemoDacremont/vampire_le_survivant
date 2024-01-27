@@ -4,6 +4,7 @@ const DEFAULT_SPAWN_RATE: float = .2
 
 @onready var _Player = load("res://src/player/player.tscn")
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
+@onready var _Little_Enemy = load("res://src/enemies/little_enemy.tscn")
 
 var _Enemies: Array[Resource]
 var _player: Node2D
@@ -14,6 +15,7 @@ var random: RandomNumberGenerator = RandomNumberGenerator.new()
 func _ready() -> void:
 	Context.set_context(self)
 	_Enemies.append(_Enemy)
+	_Enemies.append(_Little_Enemy)
 	
 	_player = _Player.instantiate()
 	add_child(_player)
@@ -50,10 +52,8 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 
 	$Enemies.add_child(enemy)
 
-
-
 func randomEnemy() -> int:
-	return 0
+	return 1
 
 
 func get_nearest_enemy(pos: Vector2) -> Vector2:

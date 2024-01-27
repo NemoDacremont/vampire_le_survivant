@@ -9,6 +9,8 @@ static var _target: Node2D
 
 const ENEMY_DEFAULT_VELOCITY: float = 2 * 48;
 var _movement_direction: Vector2
+@onready var _sprite: Sprite2D = $Sprite
+
 # var _velocity: Vector2
 
 
@@ -32,4 +34,3 @@ func _process(_delta) -> void:
 
 func _on_health_component_death():
 	queue_free()
-
