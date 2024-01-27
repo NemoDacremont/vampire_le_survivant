@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cx7mytbgvieh4"]
+[gd_scene load_steps=10 format=3 uid="uid://cx7mytbgvieh4"]
 
 [ext_resource type="Texture2D" uid="uid://h87e644io8cm" path="res://assets/fantasy_ [version 2.0]/forest_/forest_ [fencesAndWalls].png" id="1_ajwgc"]
+[ext_resource type="Script" path="res://src/maps/blocks_map/blocks_map.gd" id="1_wi674"]
 [ext_resource type="Texture2D" uid="uid://dmajgbsmkmxgv" path="res://assets/fantasy_ [version 2.0]/fantasy_/tundraSwampTaigaForestDesert_0.png" id="2_e4j6y"]
 [ext_resource type="Texture2D" uid="uid://dqliyieae240a" path="res://assets/fantasy_ [version 2.0]/fantasy_/tundraSwampTaigaForestDesert_1.png" id="3_w8inh"]
 
@@ -1280,6 +1281,7 @@ sources/2 = SubResource("TileSetAtlasSource_xx1n8")
 pattern_0 = SubResource("TileMapPattern_ukkh7")
 
 [node name="BlocksMap" type="Node2D"]
+script = ExtResource("1_wi674")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v2wts")
