@@ -51,8 +51,10 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
 	enemy.init(_player)
 	enemy.position = spawn_position
+	enemy.death.connect(_player.give_xp)
 
 	$Enemies.add_child(enemy)
+
 
 func randomEnemy() -> int:
 	return 1
@@ -91,5 +93,4 @@ func get_player_position() -> Vector2:
 
 func _on_spawn_enemy_timer_timeout():
 	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player.position))
-
 

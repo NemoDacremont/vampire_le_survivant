@@ -9,7 +9,8 @@ var _hp: float = MAX_HEALTH
 
 
 func _ready() -> void:
-	print(_hp)
+	#print(_hp)
+	pass
 
 
 func get_hps() -> float:

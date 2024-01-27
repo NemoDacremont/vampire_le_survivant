@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-signal death
+signal death(xp_given: float)
 signal hit(dmg: int)
 
 

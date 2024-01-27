@@ -25,7 +25,7 @@ func get_nearest_enemy(pos: Vector2) -> Vector2:
 		return Vector2.RIGHT
 
 	var nearest = enemies[0]
-	var min_dist: float = pos.distance_to(nearest.position)
+	var min_dist: float = 2**32 #pos.distance_to(nearest.position)
 	var dist: float
 
 	for enemy in enemies:
@@ -36,5 +36,4 @@ func get_nearest_enemy(pos: Vector2) -> Vector2:
 			min_dist = dist
 
 	return nearest.position
-
 

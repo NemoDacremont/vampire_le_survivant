@@ -46,9 +46,9 @@ func shoot():
 	shoot_direction = (nearest_enemy_pos - position).normalized()
 
 	_wanted_theta = atan2(shoot_direction.y, shoot_direction.x)
-	print(_wanted_theta)
-	print(_wanted_theta)
-	print(_wanted_theta)
+	#print(_wanted_theta)
+	#print(_wanted_theta)
+	#print(_wanted_theta)
 
 	bullet.init(position, shoot_direction, 500)
 

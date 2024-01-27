@@ -4,13 +4,16 @@ class_name Player
 signal death
 signal hit
 
-
 @export var PLAYER_DEFAULT_VELOCITY: float = 300.0
 var speed: float = PLAYER_DEFAULT_VELOCITY
 
 var _Fireball: Resource = load("res://src/attacks/player_attacks/fireball/fireball.tscn")
 var new_fireball: Fireball
 @onready var _attacks_node: Node = $Attacks
+
+var xp: float
+var level: int
+var xp_required: float = 1
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -29,6 +32,8 @@ func _ready():
 func init(context: Node2D, spawn_position: Vector2):
 	_context = context
 	position = spawn_position
+	xp = 0
+	level = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,3 +71,14 @@ func _on_health_component_health_lost(new_hps: float):
 	print_hp(new_hps)
 	emit_signal("hit")
 
+func give_xp(xp_given: float):
+	xp += xp_given
+	while (xp >= xp_required):
+		level += 1
+		xp = xp - xp_required
+		level_up()
+
+func level_up():
+	print("level up "+str(level))
+	if level > 20:
+		emit_signal("death")
