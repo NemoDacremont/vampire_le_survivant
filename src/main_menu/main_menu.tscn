@@ -3,22 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://djvnnhkb5e5fl" path="res://assets/main_menu/background_main_menu.png" id="1_4ks1l"]
 [ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="1_vf3o2"]
 
-[sub_resource type="Animation" id="Animation_7fa4q"]
-resource_name = "RESET"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VBoxContainer:theme_override_constants/separation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-400, 0]
-}
-
 [sub_resource type="Animation" id="Animation_hi3vu"]
 resource_name = "RESET"
 length = 0.001
@@ -33,6 +17,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7fa4q"]
+resource_name = "RESET"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-400, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yabrf"]

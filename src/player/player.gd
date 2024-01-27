@@ -14,7 +14,7 @@ var new_fireball: Fireball
 var xp: float
 var level: int
 var xp_required: float = 1
-const MAX_LEVEL: int = 40
+const MAX_LEVEL: int = 100
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -37,6 +37,7 @@ func init(context: Node2D, spawn_position: Vector2, hp: float):
 	xp = 0
 	level = 0
 	$HealthComponent.init(hp)
+	$HealthBar.init(hp, $HealthComponent)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

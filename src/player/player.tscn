@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://o4hyy68u331l"]
+[gd_scene load_steps=23 format=3 uid="uid://o4hyy68u331l"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_16vid"]
 [ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_e21j6"]
 [ext_resource type="PackedScene" uid="uid://dcie4unskisrs" path="res://src/components/health_component/health_component.tscn" id="3_xfuwq"]
 [ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="4_2xby6"]
+[ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="4_asecx"]
 [ext_resource type="PackedScene" uid="uid://dact1hn100x2h" path="res://src/attacks/weapons/assault_rifle/assault_rifle.tscn" id="5_7b8pn"]
 [ext_resource type="PackedScene" uid="uid://t0skqbmj0pl7" path="res://src/attacks/weapons/pistol/pistol.tscn" id="6_kd7q8"]
 [ext_resource type="PackedScene" uid="uid://6mha7d6cl2er" path="res://src/attacks/weapons/sniper/sniper.tscn" id="7_vmnes"]
@@ -112,6 +113,13 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("RectangleShape2D_k53jh")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_xfuwq")]
+
+[node name="HealthBar" parent="." instance=ExtResource("4_asecx")]
+offset_left = -28.0
+offset_top = 0.0
+offset_right = 28.0
+offset_bottom = 4.0
+offset_display = Vector2(0, -60)
 
 [node name="Attacks" type="Node" parent="."]
 
