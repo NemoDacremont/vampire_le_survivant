@@ -3,6 +3,7 @@ class_name Player
 
 signal death
 signal hit
+signal choose_augment
 
 @export var PLAYER_DEFAULT_VELOCITY: float = 300.0
 var speed: float = PLAYER_DEFAULT_VELOCITY
@@ -13,7 +14,7 @@ var new_fireball: Fireball
 
 var xp: float
 var level: int
-var xp_required: float = 1
+var xp_required: float = 1000000
 const MAX_LEVEL: int = 100
 
 var direction: Vector2 = Vector2.ZERO
@@ -84,5 +85,6 @@ func give_xp(xp_given: float):
 
 func level_up():
 	print("level up "+str(level))
+	emit_signal("choose_augment")
 	if level > MAX_LEVEL:
 		emit_signal("death")

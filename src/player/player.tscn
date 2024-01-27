@@ -132,6 +132,7 @@ autoplay = "default"
 [node name="Weapons" type="Node" parent="."]
 
 [node name="AssaultRiffle" parent="Weapons" instance=ExtResource("5_7b8pn")]
+process_mode = 4
 pos_offset = 75.0
 w_idle = 1.0
 

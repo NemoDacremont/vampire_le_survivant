@@ -1,0 +1,40 @@
+{
+	"gun" :
+		{
+			"0" :
+				{
+					"description" : "Unlock [color=purple]Gun[/color]",
+					"fire rate" : 1,
+					"damage" : 1,
+				},
+			"1" :
+				{
+					"description" : "Increase fire rate : 1 -> [color=green]1.25[/color]",
+					"fire rate" : 0.8,
+					"damage" : 1,
+				},
+			"2" :
+				{
+					"description" : "Increase damage : 1 -> [color=green]2[/color]",
+					"fire rate" : 0.8,
+					"damage" : 2,
+				}
+		},
+	"shotgun" :
+		{
+			"0" :
+				{
+					"description" : "Unlock [color=purple]Shotgun[/color]",
+					"fire rate" : 1,
+					"damage" : 1,
+					"bullet number" : 3
+				},
+			"1" :
+				{
+					"description" : "Increase number of bullet 1 -> [color=green]0.8[/color]\nbut reduce fire rate : 1 -> [color=red]0.8[/color]",
+					"fire rate" : 1.25,
+					"damage" : 1,
+					"bullet number" : 4
+				}
+		}
+}
