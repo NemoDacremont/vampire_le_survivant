@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var secondChoiceLabel: Node = $Panel/VBoxContainer/HBoxContainer/VBoxContainer/Button2/RichTextLabel
 @onready var thirdChoiceLabel: Node = $Panel/VBoxContainer/HBoxContainer/VBoxContainer/Button3/RichTextLabel
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	clear_labels()
 	visible = false
@@ -16,7 +16,6 @@ func clear_labels():
 	secondChoiceLabel.append_text("[center]")
 	thirdChoiceLabel.clear()
 	thirdChoiceLabel.append_text("[center]")
-
 
 func _on_button_1_pressed():
 	choice(1)
@@ -36,4 +35,3 @@ func generate_choices():
 	self.visible = true
 	print("ratio")
 	clear_labels()
-	#choice(0)
