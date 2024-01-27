@@ -24,5 +24,3 @@ func _physics_process(delta):
 func _process(_delta):
 	super(_delta)
 
-func _on_collision_component_collision(_node: CollisionComponent):
-	pass

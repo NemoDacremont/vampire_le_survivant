@@ -32,4 +32,4 @@ scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_kceua")
 
 [node name="AttackComponent" parent="." index="2"]
-dmg = 120.0
+dmg = 30.0
