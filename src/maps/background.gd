@@ -32,7 +32,12 @@ func init(init_center_position: Vector2):
 	noise.frequency = 0.5
 
 	maps = blocks_node.get_tilemaps()
+
+	for chunk in tilemaps_node.get_children():
+		chunk.queue_free()
+
 	load_all_chunks()
+
 
 
 func load_chunk(pos: Vector2i) -> void:

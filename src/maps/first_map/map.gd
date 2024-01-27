@@ -26,7 +26,9 @@ func _ready() -> void:
 func start_game() -> void:
 	set_up_player()
 	set_up_enemies()
-	$Background.init(Vector2.ZERO)
+
+	$Background.init(_player.position)
+	print(get_player_position())
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
 
