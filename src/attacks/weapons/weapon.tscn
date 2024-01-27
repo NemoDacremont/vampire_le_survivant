@@ -1,14 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1jpnjn0ndn0t"]
 
-[ext_resource type="Script" path="res://src/attacks/armes/Arme.gd" id="1_5iugv"]
+[ext_resource type="Script" path="res://src/attacks/weapons/weapon.gd" id="1_yrdry"]
 
 [sub_resource type="Gradient" id="Gradient_pgw2x"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qb0s8"]
 gradient = SubResource("Gradient_pgw2x")
 
-[node name="Arme" type="Node2D"]
-script = ExtResource("1_5iugv")
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_yrdry")
+pos_offset = 50.0
+w_idle = 1.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_qb0s8")
