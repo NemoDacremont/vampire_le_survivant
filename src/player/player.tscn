@@ -11,8 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b68pchrd28udl" path="res://src/attacks/weapons/shotgun/shotgun.tscn" id="8_5x01g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ye7vv"]
-radius = 15.0
-height = 34.0
+height = 20.0
 
 [sub_resource type="Gradient" id="Gradient_mryy5"]
 interpolation_mode = 1
