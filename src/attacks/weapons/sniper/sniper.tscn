@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://6mha7d6cl2er"]
+
+[ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="1_fbdvx"]
+[ext_resource type="Script" path="res://src/attacks/weapons/sniper/sniper.gd" id="2_5wnue"]
+[ext_resource type="Texture2D" uid="uid://cga5j8ni35f5" path="res://assets/guns/[NO_BOLT]_Sniper_rifle_[KAR98]_V1.00.png" id="2_hxqer"]
+
+[node name="Sniper" instance=ExtResource("1_fbdvx")]
+script = ExtResource("2_5wnue")
+pos_offset = 100.0
+w_idle = 1.0
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_hxqer")
+
+[node name="TimerShots" parent="." index="1"]
+wait_time = 1.5
