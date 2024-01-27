@@ -30,7 +30,7 @@ func _physics_process(_delta) -> void:
 
 		velocity = ENEMY_DEFAULT_VELOCITY * _movement_direction
 
-		move_and_collide(velocity * _delta)
+		move_and_slide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

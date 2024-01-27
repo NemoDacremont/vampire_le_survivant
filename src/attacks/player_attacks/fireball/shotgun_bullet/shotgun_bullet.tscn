@@ -1,17 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://btdx26t8ujy1i"]
+[gd_scene load_steps=6 format=3 uid="uid://btdx26t8ujy1i"]
 
 [ext_resource type="PackedScene" uid="uid://cocv5cejfqdmt" path="res://src/attacks/player_attacks/fireball/fireball.tscn" id="1_5x264"]
 [ext_resource type="Script" path="res://src/attacks/player_attacks/fireball/shotgun_bullet/shotgun_bullet.gd" id="2_536cq"]
 
 [sub_resource type="Gradient" id="Gradient_5ybpq"]
-offsets = PackedFloat32Array(0, 0.547619, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.908978, 0.32958, 0.142467, 1, 1, 1, 1, 1)
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.410714, 1)
+colors = PackedColorArray(0.908978, 0.32958, 0.142467, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w4mar"]
 gradient = SubResource("Gradient_5ybpq")
+width = 16
+height = 96
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kceua"]
+radius = 6.0
+height = 48.0
 
 [node name="ShotgunBullet" instance=ExtResource("1_5x264")]
 script = ExtResource("2_536cq")
 
 [node name="Sprite" parent="." index="0"]
+scale = Vector2(1.01563, 1.01563)
 texture = SubResource("GradientTexture2D_w4mar")
+
+[node name="CollisionShape2D" parent="CollisionComponent" index="0"]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_kceua")
+
+[node name="AttackComponent" parent="." index="2"]
+dmg = 120.0

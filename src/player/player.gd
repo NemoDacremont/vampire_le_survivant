@@ -27,6 +27,7 @@ func _ready():
 	$Weapons/AssaultRiffle.init(self)
 	$Weapons/Pistol.init(self)
 	$Weapons/Sniper.init(self)
+	$Weapons/Shotgun.init(self)
 
 
 # Context should be the map
@@ -39,11 +40,11 @@ func init(context: Node2D, spawn_position: Vector2, hp: float):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
 	set_direction()
 	velocity = direction.normalized() * speed
 
-	move_and_collide(velocity * delta)
+	move_and_slide()
 
 
 func _process(_delta):

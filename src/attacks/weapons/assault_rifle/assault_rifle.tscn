@@ -11,4 +11,4 @@ script = ExtResource("2_b8il8")
 texture = ExtResource("2_duxt1")
 
 [node name="TimerShots" parent="." index="1"]
-wait_time = 0.1
+wait_time = 0.4
