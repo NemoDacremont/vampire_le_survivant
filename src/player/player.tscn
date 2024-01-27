@@ -132,17 +132,18 @@ autoplay = "default"
 
 [node name="AssaultRiffle" parent="Weapons" instance=ExtResource("5_7b8pn")]
 pos_offset = 75.0
-w_idle = 1.0
+w_idle = 2.0
 
 [node name="Pistol" parent="Weapons" instance=ExtResource("6_kd7q8")]
 pos_offset = 40.0
-w_idle = 1.0
+w_idle = 3.0
 
 [node name="Sniper" parent="Weapons" instance=ExtResource("7_vmnes")]
 pos_offset = 75.0
 
 [node name="Shotgun" parent="Weapons" instance=ExtResource("8_5x01g")]
 pos_offset = 60.0
+w_idle = 1.5
 
 [connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
 [connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]

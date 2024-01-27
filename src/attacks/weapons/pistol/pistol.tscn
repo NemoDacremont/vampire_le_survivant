@@ -1,14 +1,107 @@
-[gd_scene load_steps=4 format=3 uid="uid://t0skqbmj0pl7"]
+[gd_scene load_steps=17 format=3 uid="uid://t0skqbmj0pl7"]
 
 [ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="1_kwkah"]
 [ext_resource type="Texture2D" uid="uid://ql2ffdwiemyk" path="res://assets/guns/GUN_01_[square_frame]_01_V1.00.png" id="2_6ffyl"]
 [ext_resource type="Script" path="res://src/attacks/weapons/pistol/pistol.gd" id="2_nnj6o"]
+[ext_resource type="Texture2D" uid="uid://bpvm5itjk1e2x" path="res://assets/pistols/Pistol_V1.00 - SHOOTING (ALL FX).png" id="4_thfvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snddd"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(80, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0424g"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(160, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ars1b"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(240, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1rb13"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(320, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vom8c"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(400, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl2on"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(480, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu780"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(560, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v181"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(640, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds7n8"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(720, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucueh"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(800, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_daxbm"]
+atlas = ExtResource("4_thfvg")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fe8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snddd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0424g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ars1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1rb13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vom8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl2on")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu780")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v181")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds7n8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucueh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_daxbm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 44.0
+}]
 
 [node name="Pistol" instance=ExtResource("1_kwkah")]
 script = ExtResource("2_nnj6o")
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 texture = ExtResource("2_6ffyl")
 
 [node name="TimerShots" parent="." index="1"]
 wait_time = 0.6
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_2fe8y")
+autoplay = "default"
+frame = 9
+frame_progress = 1.0
