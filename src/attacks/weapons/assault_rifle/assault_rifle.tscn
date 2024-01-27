@@ -6,6 +6,7 @@
 
 [node name="AssaultRiffle" instance=ExtResource("1_wneip")]
 script = ExtResource("2_b8il8")
+damage = 20.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_duxt1")

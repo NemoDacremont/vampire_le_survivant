@@ -10,8 +10,8 @@ func _ready():
 	collision_shape.rotation = -theta
 
 
-func init(spawn_position, direction, speed, max_distance = 1000.0):
-	super(spawn_position, direction, speed, max_distance)
+func init(spawn_position, direction, damage, speed, max_distance = 1000.0):
+	super(spawn_position, direction, damage, speed, max_distance)
 
 
 func _physics_process(delta):

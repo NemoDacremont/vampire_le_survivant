@@ -8,6 +8,7 @@
 script = ExtResource("2_kg8ih")
 pos_offset = 80.0
 w_idle = 1.0
+damage = 30.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource("2_4errm")

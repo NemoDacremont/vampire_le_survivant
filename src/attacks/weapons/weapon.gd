@@ -15,10 +15,12 @@ var dir: Vector2 = Vector2.RIGHT
 
 @onready var bullets_node: Node = $Bullets
 @onready var sprite_node: Sprite2D = $Sprite
+@onready var timer_node: Timer = $TimerShots
 
 var shoot_direction: Vector2 = Vector2.RIGHT
 var nearest_enemy_pos: Vector2 = Vector2.ZERO
 
+@export var damage: float = 1
 
 # parent_position is a node, the weapon will follow it
 func init(parent_position: Node):
@@ -46,7 +48,7 @@ func shoot():
 
 	_wanted_theta = atan2(shoot_direction.y, shoot_direction.x)
 
-	bullet.init(position, shoot_direction, 500)
+	bullet.init(position, shoot_direction, damage, 500)
 
 	bullets_node.add_child(bullet)
 
@@ -54,3 +56,7 @@ func shoot():
 func _on_timer_shots_timeout():
 	shoot()
 
+func update_properties(fire_rate: float, _damage: float, piercing: int) -> void:
+	timer_node.wait_time = 1 / fire_rate
+	damage = _damage
+	

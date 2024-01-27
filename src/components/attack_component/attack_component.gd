@@ -18,3 +18,5 @@ func _process_collision(node: CollisionComponent):
 		node.health_component.recieve_dmg(dmg)
 		emit_signal("hit", node.owner)
 
+func set_damage(damage: float) -> void:
+	dmg = damage

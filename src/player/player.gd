@@ -54,7 +54,7 @@ func _process(_delta):
 		var dir: Vector2 = Context.get_nearest_enemy(position)
 
 		new_fireball = _Fireball.instantiate()
-		new_fireball.init(position, (dir - position).normalized(), 2 * speed)
+		new_fireball.init(position, (dir - position).normalized(), 1, 2 * speed)
 
 		_attacks_node.add_child(new_fireball)
 
