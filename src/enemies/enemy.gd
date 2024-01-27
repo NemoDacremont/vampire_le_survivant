@@ -20,6 +20,7 @@ func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> v
 	_target = target
 	position = spawn_position
 	$HealthComponent.init(hp)
+	$HealthBar.init(hp, $HealthComponent)
 
 
 func _physics_process(_delta) -> void:

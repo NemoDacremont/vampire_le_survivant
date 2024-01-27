@@ -20,7 +20,7 @@ func get_hps() -> float:
 # Returns hps after applying dmg
 func recieve_dmg(dmgs: float) -> float:
 	_hp -= dmgs
-
+	
 	if get_hps() <= 0:
 		emit_signal("death")
 		return 0

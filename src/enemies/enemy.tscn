@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://5vu2n6l6ynqc"]
+[gd_scene load_steps=11 format=3 uid="uid://5vu2n6l6ynqc"]
 
 [ext_resource type="Script" path="res://src/enemies/enemy.gd" id="1_hbecg"]
 [ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_vx7h5"]
 [ext_resource type="PackedScene" uid="uid://xce6v051cpqc" path="res://src/components/attack_component/attack_component.tscn" id="2_yeuwv"]
 [ext_resource type="PackedScene" uid="uid://dcie4unskisrs" path="res://src/components/health_component/health_component.tscn" id="3_88tou"]
+[ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="5_0ogwk"]
 
 [sub_resource type="Gradient" id="Gradient_pxuvj"]
 interpolation_mode = 1
@@ -58,4 +59,11 @@ shape = SubResource("RectangleShape2D_aagsn")
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("2_yeuwv")]
 hitbox = NodePath("../AttackCollisionComponent")
 
+[node name="HealthBar" parent="." instance=ExtResource("5_0ogwk")]
+offset_left = -28.0
+offset_top = 0.0
+offset_right = 28.0
+offset_bottom = 5.0
+
 [connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
+[connection signal="health_lost" from="HealthComponent" to="HealthBar" method="_on_health_component_health_lost"]
