@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp3bv27fsskk2"]
+
+[ext_resource type="Texture2D" uid="uid://djvnnhkb5e5fl" path="res://assets/main_menu/background_main_menu.png" id="1_4ks1l"]
+[ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="1_vf3o2"]
+
+[sub_resource type="Animation" id="Animation_7fa4q"]
+resource_name = "RESET"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer:theme_override_constants/separation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-400, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yabrf"]
+_data = {
+"start": SubResource("Animation_7fa4q")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_vf3o2")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 289)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_4ks1l")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 230
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -79
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "PLAY"
+
+[node name="HowToPlay" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "HOW TO PLAY"
+
+[node name="Parameters" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "PARAMETERS"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 60
+text = "QUIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_yabrf")
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
