@@ -11,14 +11,14 @@ colors = PackedColorArray(0.908978, 0.32958, 0.142467, 1, 1, 1, 1, 0)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_w4mar"]
 gradient = SubResource("Gradient_5ybpq")
 width = 16
-height = 16
+height = 96
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kceua"]
-radius = 4.5
-height = 9.0
+radius = 6.0
+height = 48.0
 
 [node name="ShotgunBullet" instance=ExtResource("1_5x264")]
 script = ExtResource("2_536cq")
