@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://t0skqbmj0pl7" path="res://src/attacks/weapons/pistol/pistol.tscn" id="6_kd7q8"]
 [ext_resource type="PackedScene" uid="uid://6mha7d6cl2er" path="res://src/attacks/weapons/sniper/sniper.tscn" id="7_vmnes"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_snu32"]
-radius = 18.0
-height = 50.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ye7vv"]
+radius = 15.0
+height = 34.0
 
 [sub_resource type="Gradient" id="Gradient_mryy5"]
 interpolation_mode = 1
@@ -89,12 +89,15 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 0
+collision_mask = 16
+floor_block_on_wall = false
+platform_floor_layers = 4294967040
 script = ExtResource("1_16vid")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_snu32")
+position = Vector2(-1, 15)
+shape = SubResource("CapsuleShape2D_ye7vv")
 
 [node name="BodySprite" type="Sprite2D" parent="."]
 visible = false
