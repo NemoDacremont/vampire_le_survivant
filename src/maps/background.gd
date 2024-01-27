@@ -3,15 +3,12 @@ class_name Background
 
 @onready var noise: Noise = FastNoiseLite.new()
 
-var _center_position: Vector2 = Vector2.ZERO
-
 var tile_width: int = 160
 var tile_height: int = 160
 
 var width: int = 16
 var height: int = 8
 
-var _origin: Vector2
 var player_old_pos: Vector2i = Vector2i.ZERO
 var player_cur_pos: Vector2i = Vector2i.ZERO
 
@@ -20,12 +17,12 @@ var player_cur_pos: Vector2i = Vector2i.ZERO
 var maps: Array[Resource]
 var probas: Array[float]
 
-
 func init(init_center_position: Vector2):
 	# blocks_node.init()
 	maps = blocks_node.get_tilemaps()
 
 	player_cur_pos = Vector2i(init_center_position / tile_width)
+	player_old_pos = player_cur_pos
 
 	# noise = FastNoiseLite.new()
 	noise.seed = randi();
@@ -34,7 +31,6 @@ func init(init_center_position: Vector2):
 
 	load_all_chunks(player_cur_pos)
 
-	
 
 func load_chunk(pos: Vector2i) -> void:
 	var n: float = (noise.get_noise_2d(pos.x, pos.y) + 1) / 2
@@ -47,7 +43,6 @@ func load_chunk(pos: Vector2i) -> void:
 
 func load_all_chunks(origin: Vector2i):
 	for chunk in tilemaps_node.get_children():
-		print("FREE")
 		chunk.queue_free()
 
 	for x in range(width):
@@ -58,7 +53,6 @@ func load_all_chunks(origin: Vector2i):
 func update_chunks(diff: Vector2i) -> void:
 	var chunks = tilemaps_node.get_children()
 	var pos: Vector2i
-	print(diff)
 
 	for chunk in chunks:
 		pos = Vector2i(chunk.position.x / tile_width, chunk.position.y / tile_height)
@@ -101,7 +95,6 @@ func update_chunks(diff: Vector2i) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	player_cur_pos = round(Context.get_player_position() / tile_width)
-
 
 	if (player_cur_pos != player_old_pos):
 		var diff = player_old_pos - player_cur_pos
