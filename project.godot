@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Context="*res://src/context.gd"
+Levelling="*res://src/levelling.gd"
 
 [display]
 
