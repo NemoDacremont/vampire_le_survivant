@@ -25,7 +25,7 @@ var nearest_enemy_pos: Vector2 = Vector2.ZERO
 # parent_position is a node, the weapon will follow it
 func init(parent_position: Node):
 	_parent = parent_position
-	$Sprite.visible = false
+	sprite_node.visible = false
 	
 
 
@@ -60,10 +60,10 @@ func _on_timer_shots_timeout():
 		shoot()
 	
 func enable_weapon():
-	$Sprite.visible = true
+	sprite_node.visible = true
 	_is_enabled = true
 	
 func disable_weapon():
-	$Sprite.visible = false
+	sprite_node.visible = false
 	_is_enabled = false
 
