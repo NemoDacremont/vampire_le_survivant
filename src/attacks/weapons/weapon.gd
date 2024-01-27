@@ -16,7 +16,7 @@ var dir: Vector2 = Vector2.RIGHT
 var _is_enabled: bool = false
 
 @onready var bullets_node: Node = $Bullets
-@onready var sprite_node: Sprite2D = $Sprite
+@onready var sprite_node: Node2D = $Sprite
 
 var shoot_direction: Vector2 = Vector2.RIGHT
 var nearest_enemy_pos: Vector2 = Vector2.ZERO
