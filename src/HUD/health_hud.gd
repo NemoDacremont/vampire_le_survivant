@@ -6,7 +6,7 @@ var health_value: float
 @export var offset_display: Vector2
 	
 func init(max_player_health: float, healthComponent: Node) -> void:
-	position += offset_display
+	position.y = offset_display.y
 	healthComponent.death.connect(disappear)
 	healthComponent.health_lost.connect(set_hp_bar)
 	max_health_bar_value = max_player_health

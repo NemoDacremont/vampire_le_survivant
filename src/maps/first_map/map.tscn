@@ -12,7 +12,7 @@ script = ExtResource("1_xx1c6")
 [node name="Background" parent="." instance=ExtResource("4_pxwlf")]
 
 [node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 script = ExtResource("2_ayhjx")
 
