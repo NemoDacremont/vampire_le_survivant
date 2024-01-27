@@ -6,6 +6,13 @@ func set_context(map: Node2D):
 	_context = map
 
 
+func get_player_position() -> Vector2:
+	if _context.get_player_position:
+		return _context.get_player_position()
+
+	return Vector2.ZERO
+
+
 func get_nearest_enemy(pos: Vector2) -> Vector2:
 	var enemies_node = _context.get_node("Enemies")
 

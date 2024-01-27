@@ -13,6 +13,8 @@ var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	Context.set_context(self)
+
+	$Background.init(Vector2.ZERO)
 	_Enemies.append(_Enemy)
 	start_game()
 
@@ -79,6 +81,10 @@ func randomSpawn(origin: Vector2) -> Vector2:
 	var angle = random.randf_range(0, 2*PI)
 
 	return origin + Vector2(cos(angle), sin(angle)) * length
+
+
+func get_player_position() -> Vector2:
+	return _player.position
 
 
 func _on_spawn_enemy_timer_timeout():
