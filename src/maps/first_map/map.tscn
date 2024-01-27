@@ -1,28 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcdju00xq0w1d"]
+[gd_scene load_steps=5 format=3 uid="uid://dcdju00xq0w1d"]
 
 [ext_resource type="Script" path="res://src/maps/first_map/map.gd" id="1_xx1c6"]
 [ext_resource type="Script" path="res://src/maps/first_map/camera.gd" id="2_ayhjx"]
-[ext_resource type="PackedScene" uid="uid://dy6fhyrhagrxl" path="res://src/maps/background.tscn" id="3_1qeac"]
+[ext_resource type="PackedScene" uid="uid://o4hyy68u331l" path="res://src/player/player.tscn" id="4_37owa"]
+[ext_resource type="PackedScene" uid="uid://dy6fhyrhagrxl" path="res://src/maps/background.tscn" id="4_pxwlf"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xx1c6")
 
+[node name="Background" parent="." instance=ExtResource("4_pxwlf")]
+
 [node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("2_ayhjx")
 
 [node name="Enemies" type="Node" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_37owa")]
+z_index = 1
 
 [node name="Timers" type="Node" parent="."]
 
 [node name="SpawnEnemyTimer" type="Timer" parent="Timers"]
 process_callback = 0
 wait_time = 0.2
-
-[node name="TileMap" type="TileMap" parent="."]
-format = 2
-
-[node name="Background" parent="." instance=ExtResource("3_1qeac")]
 
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
