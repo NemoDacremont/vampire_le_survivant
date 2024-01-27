@@ -6,6 +6,13 @@ func set_context(map: Node2D):
 	_context = map
 
 
+func get_player_position() -> Vector2:
+	if _context.get_player_position:
+		return _context.get_player_position()
+
+	return Vector2.ZERO
+
+
 func get_nearest_enemy(pos: Vector2) -> Vector2:
 	var enemies_node = _context.get_node("Enemies")
 
@@ -15,7 +22,7 @@ func get_nearest_enemy(pos: Vector2) -> Vector2:
 	var enemies = enemies_node.get_children()
 
 	if len(enemies) == 0:
-		return Vector2.ZERO
+		return Vector2.RIGHT
 
 	var nearest = enemies[0]
 	var min_dist: float = pos.distance_to(nearest.position)

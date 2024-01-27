@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://o4hyy68u331l"]
+[gd_scene load_steps=21 format=3 uid="uid://o4hyy68u331l"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_16vid"]
 [ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_e21j6"]
 [ext_resource type="PackedScene" uid="uid://dcie4unskisrs" path="res://src/components/health_component/health_component.tscn" id="3_xfuwq"]
 [ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="4_2xby6"]
-[ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="5_m4lca"]
+[ext_resource type="PackedScene" uid="uid://dact1hn100x2h" path="res://src/attacks/weapons/assault_rifle/assault_rifle.tscn" id="5_7b8pn"]
+[ext_resource type="PackedScene" uid="uid://t0skqbmj0pl7" path="res://src/attacks/weapons/pistol/pistol.tscn" id="6_kd7q8"]
+[ext_resource type="PackedScene" uid="uid://6mha7d6cl2er" path="res://src/attacks/weapons/sniper/sniper.tscn" id="7_vmnes"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_snu32"]
 radius = 18.0
@@ -117,10 +119,15 @@ autoplay = "default"
 
 [node name="Weapons" type="Node" parent="."]
 
-[node name="Weapon" parent="Weapons" instance=ExtResource("5_m4lca")]
+[node name="AssaultRiffle" parent="Weapons" instance=ExtResource("5_7b8pn")]
+pos_offset = 100.0
+w_idle = 1.0
 
-[node name="Weapon2" parent="Weapons" instance=ExtResource("5_m4lca")]
-w_idle = 314.0
+[node name="Pistol" parent="Weapons" instance=ExtResource("6_kd7q8")]
+pos_offset = 50.0
+w_idle = 1.0
+
+[node name="Sniper" parent="Weapons" instance=ExtResource("7_vmnes")]
 
 [connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
 [connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]

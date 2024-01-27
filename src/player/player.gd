@@ -20,8 +20,9 @@ static var _context: Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = PLAYER_DEFAULT_VELOCITY
-	$Weapons/Weapon.init(self)
-	$Weapons/Weapon2.init(self)
+	$Weapons/AssaultRiffle.init(self)
+	$Weapons/Pistol.init(self)
+	$Weapons/Sniper.init(self)
 
 
 # Context should be the map

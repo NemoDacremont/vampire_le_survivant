@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://btdx26t8ujy1i"]
+
+[ext_resource type="PackedScene" uid="uid://cocv5cejfqdmt" path="res://src/attacks/player_attacks/fireball/fireball.tscn" id="1_5x264"]
+[ext_resource type="Script" path="res://src/attacks/player_attacks/fireball/shotgun_bullet/shotgun_bullet.gd" id="2_536cq"]
+
+[sub_resource type="Gradient" id="Gradient_5ybpq"]
+offsets = PackedFloat32Array(0, 0.547619, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.908978, 0.32958, 0.142467, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w4mar"]
+gradient = SubResource("Gradient_5ybpq")
+
+[node name="ShotgunBullet" instance=ExtResource("1_5x264")]
+script = ExtResource("2_536cq")
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource("GradientTexture2D_w4mar")

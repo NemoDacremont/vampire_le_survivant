@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dact1hn100x2h"]
+
+[ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="1_wneip"]
+[ext_resource type="Script" path="res://src/attacks/weapons/assault_rifle/assault_rifle.gd" id="2_b8il8"]
+[ext_resource type="Texture2D" uid="uid://bi0wj3vm0b4cg" path="res://assets/guns/[design] Assault_rifle_V1.00.png" id="2_duxt1"]
+
+[node name="AssaultRiffle" instance=ExtResource("1_wneip")]
+script = ExtResource("2_b8il8")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_duxt1")
+
+[node name="TimerShots" parent="." index="1"]
+wait_time = 0.1
