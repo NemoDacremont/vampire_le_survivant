@@ -7,7 +7,7 @@ var tile_width: int = 160
 var tile_height: int = 160
 
 var width: int = 16
-var height: int = 8
+var height: int = 10
 
 var player_old_pos: Vector2i = Vector2i.ZERO
 var player_cur_pos: Vector2i = Vector2i.ZERO
