@@ -1,7 +1,84 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp3bv27fsskk2"]
+[gd_scene load_steps=18 format=3 uid="uid://cp3bv27fsskk2"]
 
-[ext_resource type="Texture2D" uid="uid://djvnnhkb5e5fl" path="res://assets/main_menu/background_main_menu.png" id="1_4ks1l"]
 [ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="1_vf3o2"]
+[ext_resource type="Texture2D" uid="uid://eklidgjid8j2" path="res://assets/main_menu/background_main_menu_alone.png" id="2_lyvq3"]
+[ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="3_d2sc8"]
+[ext_resource type="Texture2D" uid="uid://d2b3h1tojukgn" path="res://assets/main_menu/maple_leaf.png" id="3_rwegn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nftkn"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(600, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(700, 10, 0)
+angle_max = 242.7
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 22.47
+initial_velocity_max = 22.47
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t706j"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtidt"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppbex"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oap6f"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcqkc"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlud4"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4wcu"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(1200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tky2"]
+atlas = ExtResource("3_d2sc8")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b13vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t706j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtidt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppbex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oap6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcqkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlud4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4wcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tky2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Animation" id="Animation_hi3vu"]
 resource_name = "RESET"
@@ -47,7 +124,21 @@ script = ExtResource("1_vf3o2")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 289)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_4ks1l")
+texture = ExtResource("2_lyvq3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_nftkn")
+texture = ExtResource("3_rwegn")
+lifetime = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(841, 519)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_b13vc")
+autoplay = "default"
+frame_progress = 0.682249
+flip_h = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
