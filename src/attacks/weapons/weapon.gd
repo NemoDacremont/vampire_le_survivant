@@ -69,7 +69,7 @@ func disable_weapon():
 	sprite_node.visible = false
 	_is_enabled = false
 
-func update_properties(fire_rate: float, _damage: float, piercing: int) -> void:
+func update_properties(fire_rate: float, _damage: float, _piercing: int) -> void:
 	timer_node.wait_time = 1 / fire_rate
 	damage = _damage
 	

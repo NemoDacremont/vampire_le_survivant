@@ -18,7 +18,7 @@ const DEFAULT_MAX_HP_PLAYER: float = 5
 ]
 
 var _player: Player
-var spawn_rate: float
+var spawn_rate: float = 1
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var is_intro_over = false
@@ -26,13 +26,11 @@ var is_intro_over = false
 
 func _ready() -> void:
 	Context.set_context(self)
-
-	_Enemies.append(_Enemy)
-	_Enemies.append(_Little_Enemy)
-
+	
 	_player = $Player
 	_player.death.connect(start_game)
 	$LevelUpMenu.connect_hud_to_player(_player, "choose_augment")
+	_player.connect_player_to_hud($LevelUpMenu, "augment_chosen")
 
 	start_intro()
 

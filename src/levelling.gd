@@ -4,8 +4,10 @@ enum {GUN=0, ASSAULT, SHOTGUN, SNIPER, NUMBER_OF_WEAPONS}
 enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER}
 
 #Level 0 <=> Player hasn't the weapon
-var weapons_levels: Array[int] = [0, 0, 1, 1]
+var weapons_levels: Array[int] = [1, 0, 0, 0]
 const weapons_max_levels: Array[int] = [1, 1, 1, 1]
+
+var choice: Array[int] = [0, 0, 0]
 
 var scaling: Array = [\
 [[], [1, 10, 1]],\
@@ -21,10 +23,18 @@ var level_description: Array = [\
 ["","Unlock [color=purple]Sniper[/color]"]\
 ]
 
-func level_up_weapon(weapon: int) -> Array[int]:
+func choice_to_weapon(choice_index: int) -> int:
+	print(choice)
+	return choice[choice_index]
+
+func level_up_weapon(weapon: int) -> Array:
 	if weapons_levels[weapon] < weapons_max_levels[weapon]:
+		print("new stats:")
+		print(scaling[weapon][weapons_levels[weapon]])
 		weapons_levels[weapon] += 1
-	return scaling[weapon][weapons_levels[weapon]]
+		return scaling[weapon][weapons_levels[weapon] - 1]
+	else:
+		return scaling[weapon][weapons_levels[weapon] - 1]
 
 func next_level_description(weapon: int) -> String:
 	if weapons_levels[weapon] < weapons_max_levels[weapon]:
@@ -47,8 +57,9 @@ func new_level() -> Array[String]:
 		weapons_available.remove_at(delete_index)
 		print(weapons_available)
 	var descriptions: Array[String]
-	for i in weapons_available:
-		descriptions.append(next_level_description(i))
+	for i in range(len(weapons_available)):
+		descriptions.append(next_level_description(weapons_available[i]))
+		choice[i] = weapons_available[i]
 	print("oui : ")
 	print(descriptions)
 	return descriptions

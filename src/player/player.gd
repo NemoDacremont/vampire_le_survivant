@@ -14,13 +14,16 @@ var new_fireball: Fireball
 
 var xp: float
 var level: int
-var xp_required: float = 5
-const MAX_LEVEL: int = 100
+var xp_required: float = 1
+const MAX_LEVEL: int = 3
 
 var direction: Vector2 = Vector2.ZERO
 
 static var _context: Node2D
 
+var weapons_enabled: Array[bool] = [true, false, false, false]
+
+@onready var weapons: Array[Node] = $Weapons.get_children()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,8 +32,8 @@ func _ready():
 	$Weapons/Pistol.init(self)
 	$Weapons/Sniper.init(self)
 	$Weapons/Shotgun.init(self)
-	for weapon in $Weapons.get_children():
-		weapon.disable_weapon()
+	
+	print(weapons)
 
 # Context should be the map
 func init(context: Node2D, spawn_position: Vector2, hp: float):
@@ -42,6 +45,9 @@ func init(context: Node2D, spawn_position: Vector2, hp: float):
 	level = 0
 	$HealthComponent.init(hp)
 	$HealthBar.init(hp, $HealthComponent)
+	
+	for weapon in $Weapons.get_children():
+		weapon.disable_weapon()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,15 +70,16 @@ func _process(_delta):
 		
 		$SegwaySprite.visible = false
 		speed = PLAYER_DEFAULT_VELOCITY * 0.2
-		for weapon in $Weapons.get_children():
-			weapon.enable_weapon()
+		for i in range(len(weapons)):
+			if weapons_enabled[i]:
+				weapons[i].enable_weapon()
 		
 	if Input.is_action_just_released("segway"):
 		
 		$SegwaySprite.visible = true
 		speed = PLAYER_DEFAULT_VELOCITY
-		for weapon in $Weapons.get_children():
-			weapon.disable_weapon()
+		for i in range(len(weapons)):
+			weapons[i].disable_weapon()
 
 
 func set_direction() -> void:
@@ -102,5 +109,19 @@ func give_xp(xp_given: float):
 func level_up():
 	print("level up "+str(level))
 	if level > MAX_LEVEL:
-		emit_signal("death")
-	emit_signal("choose_augment")
+		xp_required = 2**30
+	else:
+		emit_signal("choose_augment")
+
+func connect_player_to_hud(menu: Node, menu_signal: String) -> void:
+	menu.connect(menu_signal, aumgent_weapon)
+
+func aumgent_weapon(choice: int) -> void:
+	print("player choice : "+str(choice))
+	var weapon = Levelling.choice_to_weapon(choice)
+	var new_stats: Array = Levelling.level_up_weapon(weapon)
+	if len(new_stats) == 0:
+		print("weapon enabled : "+str(weapon))
+		weapons_enabled[weapon] = true
+	else:
+		$Weapons.get_child(weapon).update_properties(new_stats[0],new_stats[1], new_stats[2])
