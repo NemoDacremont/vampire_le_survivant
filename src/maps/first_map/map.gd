@@ -19,8 +19,8 @@ const DEFAULT_MAX_HP_PLAYER: float = 500
 	_Mini_Enemy
 ]
 
-var min_range_spawn: int = 500
-var max_range_spawn: int = 600
+var min_range_spawn: int = 400
+var max_range_spawn: int = 500
 
 var _player: Player
 var spawn_rate: float = 1
@@ -61,7 +61,8 @@ func start_boss():
 
 	boss = _Boss.instantiate()
 
-	boss.init(spawn_pos, spawn_pos, 0, 10000)
+	$BossSpawnTmp.position = spawn_pos
+	boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 10000)
 	boss.death.connect(start_outro)
 	is_boss = true
 
