@@ -127,8 +127,8 @@ func give_xp(xp_given: float):
 		augment_chosen = false
 		level += 1
 		xp = xp - xp_required
+		xp_required = fibonacci(level)
 		level_up()
-
 
 func level_up():
 	print("level up "+str(level))
@@ -154,3 +154,13 @@ func aumgent_weapon(choice: int) -> void:
 		print(get_tree().paused)
 		print("give xp")
 		give_xp(0.)
+
+func fibonacci(n):
+	var i: int = 2
+	var j: int = 3
+	var k: int
+	for l in range(n):
+		k = j
+		j = i + j
+		i = k
+	return i
