@@ -22,6 +22,8 @@ var spawn_rate: float = 1
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 var is_intro_over = false
+var intro__enemy_arrived = false
+@onready var intro__attack_timer: Timer = $Intro/AttackTimer
 
 
 func _ready() -> void:
@@ -41,24 +43,66 @@ func start_intro():
 	$Camera.zoom = Vector2(3.0, 3.0)
 	$Background.call_deferred("init", get_player_position())
 	$Camera.track($Intro/CameraPosition)
-	# $Camera.
+	$Intro/Label.set("theme_override_colors/font_color", Color(1, 1, 1, 0))
+	
+	_player.get_node("SegwaySprite").visible = false
 
 	var enemy = $Intro/Enemy
 	enemy.init($Intro/EnemyTarget, $Intro/EnemySpawn.position, 0, 1)
 	enemy.death.connect(end_intro)
-
 	
 
 func end_intro(_no_xp):
 	# show_hud()
 	# $Camera.zoom = Vector2(1.5, 1.5)
+	set_up_player()
+	set_up_enemies()
+	is_intro_over = true
+
+	# if not Input.is_action_just_pressed("segway"):
+	# 	var weapons: Array[Node] = _player.get_node("Weapons").get_children()
+	#
+	# 	for weapon in weapons:
+	# 		if weapon is Weapon:
+	# 			weapon.sprite_node.visible = false
+
+
 	$Camera.track(_player)
 	create_tween().tween_property($Camera, "zoom", Vector2(1.5, 1.5), 0.5).set_ease(Tween.EASE_IN)
+	create_tween().tween_property($Intro/Label, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.5).set_ease(Tween.EASE_IN)
+	_player.post_intro()
 
 	print("END INTRO!")
 	$TimerHUD.init()
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
+
+
+func intro__attack():
+	var weapons: Array[Node] = _player.get_node("Weapons").get_children()
+
+	for weapon in weapons:
+		if weapon is Weapon:
+			weapon.sprite_node.visible = true
+			weapon.sprite_node.rotation = 0
+			weapon.force_shoot(Vector2.RIGHT)
+
+
+func _process(_delta):
+	if is_intro_over:
+		return
+
+	if intro__enemy_arrived:
+		if Input.is_action_just_pressed("segway") and intro__attack_timer.time_left == 0:
+			_player.get_node("AnimatedSprite2D").play("Attack")
+			intro__attack_timer.start()
+			intro__attack_timer.timeout.connect(intro__attack)
+
+
+	elif $Intro/Enemy.velocity == Vector2.ZERO:
+		intro__enemy_arrived = true
+		create_tween().tween_property($Intro/Label, "theme_override_colors/font_color", Color(1, 1, 1, 1), 0.5).set_ease(Tween.EASE_IN)
+
 
 
 func start_game() -> void:
@@ -82,6 +126,7 @@ func set_up_player() -> void:
 func set_up_enemies() -> void:
 	for enemy in $Enemies.get_children():
 		enemy.queue_free()
+
 	spawn_rate = DEFAULT_SPAWN_RATE
 
 

@@ -18,4 +18,8 @@ autostart = true
 
 [node name="Bullets" type="Node" parent="."]
 
+[node name="Preshot" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="timeout" from="TimerShots" to="." method="_on_timer_shots_timeout"]

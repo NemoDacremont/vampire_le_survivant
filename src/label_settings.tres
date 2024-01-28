@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c7c4jsf712w4h"]
+
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="1_wc58q"]
+
+[resource]
+font = ExtResource("1_wc58q")
+outline_color = Color(1, 1, 1, 0)
+shadow_size = 0
+shadow_offset = Vector2(0, 0)

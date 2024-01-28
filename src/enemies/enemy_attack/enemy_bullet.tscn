@@ -30,4 +30,5 @@ texture = SubResource("GradientTexture2D_nfqan")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionComponent"]
 shape = SubResource("CircleShape2D_hnpm7")
 
-[node name="AttackComponent" parent="." instance=ExtResource("2_dsjjj")]
+[node name="AttackComponent" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("2_dsjjj")]
+hitbox = NodePath("../CollisionComponent")

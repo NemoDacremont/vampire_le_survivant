@@ -20,6 +20,7 @@ var xp_required: float = 1
 var direction: Vector2 = Vector2.ZERO
 
 static var _context: Node2D
+var is_in_intro = true
 
 var weapons_enabled: Array[bool] = [true, false, false, false]
 
@@ -50,8 +51,16 @@ func init(context: Node2D, spawn_position: Vector2, hp: float):
 		weapon.disable_weapon()
 
 
+func post_intro():
+	is_in_intro = false
+	$AnimatedSprite2D.play("default")
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
+	if is_in_intro:
+		return
+
 	set_direction()
 	velocity = direction.normalized() * speed
 
@@ -59,6 +68,9 @@ func _physics_process(_delta):
 
 
 func _process(_delta):
+	if is_in_intro:
+		return
+
 	if _context && Input.is_action_just_pressed("fireball"):
 		var dir: Vector2 = Context.get_nearest_enemy(position)
 
@@ -66,8 +78,8 @@ func _process(_delta):
 		new_fireball.init(position, (dir - position).normalized(), 1, 2 * speed)
 
 		_attacks_node.add_child(new_fireball)
+
 	if Input.is_action_pressed("segway"):
-		
 		$SegwaySprite.visible = false
 		speed = PLAYER_DEFAULT_VELOCITY * 0.2
 		for i in range(len(weapons)):
@@ -99,12 +111,14 @@ func _on_health_component_health_lost(new_hps: float):
 	print_hp(new_hps)
 	emit_signal("hit")
 
+
 func give_xp(xp_given: float):
 	xp += xp_given
 	while (xp >= xp_required):
 		level += 1
 		xp = xp - xp_required
 		level_up()
+
 
 func level_up():
 	print("level up "+str(level))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcdju00xq0w1d"]
+[gd_scene load_steps=10 format=3 uid="uid://dcdju00xq0w1d"]
 
 [ext_resource type="Script" path="res://src/maps/first_map/map.gd" id="1_xx1c6"]
 [ext_resource type="Script" path="res://src/maps/first_map/camera.gd" id="2_ayhjx"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duhbars45r78x" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
 [ext_resource type="PackedScene" uid="uid://ckqxnu87mipht" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
 [ext_resource type="PackedScene" uid="uid://dxdysqo40t3gr" path="res://src/enemies/little_enemy.tscn" id="8_npv3b"]
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="9_h2mq4"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xx1c6")
@@ -16,7 +17,7 @@ script = ExtResource("1_xx1c6")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(140, 0)
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 script = ExtResource("2_ayhjx")
 
@@ -53,5 +54,21 @@ position = Vector2(500, 0)
 
 [node name="CameraPosition" type="Marker2D" parent="Intro"]
 position = Vector2(140, 0)
+
+[node name="Label" type="Label" parent="Intro"]
+offset_left = -52.0
+offset_top = 47.0
+offset_right = 330.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_h2mq4")
+text = "Keep pressing CTRL to bring 
+the smiley happiness"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackTimer" type="Timer" parent="Intro"]
+wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
