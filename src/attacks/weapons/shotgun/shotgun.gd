@@ -4,6 +4,7 @@ extends Weapon
 func init(parent_position: Node):
 	super(parent_position)
 	_Fireball = load("res://src/attacks/player_attacks/fireball/shotgun_bullet/shotgun_bullet.tscn")
+	sprite_node = $AnimatedSprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,9 +28,10 @@ func true_shoot(angle : float):
 	bullets_node.add_child(bullet)
 
 func _on_timer_shots_timeout():
-	true_shoot(PI / 12)
-	true_shoot(-PI / 12)
-	true_shoot(2 * PI / 12)
-	true_shoot(- 2 * PI / 12)
-	true_shoot(0)
-	
+	if _is_enabled:
+		true_shoot(PI / 12)
+		true_shoot(-PI / 12)
+		true_shoot(2 * PI / 12)
+		true_shoot(- 2 * PI / 12)
+		true_shoot(0)
+		sprite_node.play()

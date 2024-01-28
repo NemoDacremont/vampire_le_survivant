@@ -1,14 +1,146 @@
-[gd_scene load_steps=4 format=3 uid="uid://dact1hn100x2h"]
+[gd_scene load_steps=22 format=3 uid="uid://dact1hn100x2h"]
 
 [ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="1_wneip"]
 [ext_resource type="Script" path="res://src/attacks/weapons/assault_rifle/assault_rifle.gd" id="2_b8il8"]
 [ext_resource type="Texture2D" uid="uid://bi0wj3vm0b4cg" path="res://assets/guns/[design] Assault_rifle_V1.00.png" id="2_duxt1"]
+[ext_resource type="Texture2D" uid="uid://dwsxo4ac2siy" path="res://assets/guns/Assault_rifle_V1.00_FULL.png" id="4_ah23o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn1jd"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(0, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4u4l"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(128, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuvbv"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(256, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xy6ma"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(384, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytges"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(512, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68e6l"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(640, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reqdb"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(768, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d71cs"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(896, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35d48"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1024, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuvrp"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1152, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0k8u"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1280, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ibuo"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1408, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trcwj"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1536, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggvk2"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1664, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kbu2"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1792, 0, 128, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58sr8"]
+atlas = ExtResource("4_ah23o")
+region = Rect2(1920, 0, 128, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2x2d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn1jd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4u4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuvbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xy6ma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytges")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68e6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reqdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d71cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35d48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wuvrp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0k8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ibuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trcwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggvk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kbu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58sr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn1jd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 32.0
+}]
 
 [node name="AssaultRiffle" instance=ExtResource("1_wneip")]
 script = ExtResource("2_b8il8")
 
 [node name="Sprite" parent="." index="0"]
+visible = false
 texture = ExtResource("2_duxt1")
 
 [node name="TimerShots" parent="." index="1"]
 wait_time = 0.4
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." index="3"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_h2x2d")
+autoplay = "default"
+frame = 16
+frame_progress = 1.0
