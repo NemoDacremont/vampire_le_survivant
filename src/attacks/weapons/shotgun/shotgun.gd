@@ -34,8 +34,8 @@ func true_shoot(angle : float):
 	var shoot_angle: float = atan2(shoot_direction.y, shoot_direction.x)
 	shoot_direction = Vector2(cos(angle + shoot_angle), sin(angle + shoot_angle)).normalized()
 
-
-	bullet.init(position, shoot_direction, damage, speed, piercing_power)
+	shoot_direction = (nearest_enemy_pos - position).normalized()
+	bullet.init(position, shoot_direction, damage, 500, piercing_power)
 
 	bullets_node.add_child(bullet)
 

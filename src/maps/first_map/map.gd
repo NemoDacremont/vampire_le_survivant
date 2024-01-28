@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEFAULT_SPAWN_RATE: float = .2
+const DEFAULT_SPAWN_RATE: float = 1
 const DEFAULT_MAX_HP_PLAYER: float = 500
 
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
@@ -34,6 +34,9 @@ var is_outro = false
 var is_boss = false
 
 var boss: Enemy
+
+const BOSS_SPAWN_TIME: float = 300
+const MAX_HP: float = 35
 
 
 func _ready() -> void:
@@ -150,9 +153,13 @@ func intro__attack():
 
 
 func _process(_delta):
+	
+	spawn_rate = 1. / max($TimerHUD.get_time(), 1.)
+	#print(spawn_rate)
+	
 	if is_intro_over:
 		return
-
+	
 	if intro__enemy_arrived:
 		if Input.is_action_just_pressed("segway") and intro__attack_timer.time_left == 0:
 			_player.get_node("AnimatedSprite2D").play("Attack")
@@ -191,10 +198,15 @@ func set_up_enemies() -> void:
 
 	spawn_rate = DEFAULT_SPAWN_RATE
 
+func scaled_hp() -> float:
+	var time = $TimerHUD.get_time()
+	var hp_time = (1. - exp(1 - time / BOSS_SPAWN_TIME)) * MAX_HP
+	print(hp_time)
+	return max(hp_time + randi() % max(int(hp_time / 4.), 1), 1)
 
 func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
-	enemy.init(_player, spawn_position, 0, 3)
+	enemy.init(_player, spawn_position, 0, 7)
 	enemy.position = spawn_position
 	enemy.death.connect(_player.give_xp)
 
