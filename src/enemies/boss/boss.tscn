@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi6xyi4wt7jsm"]
+
+[ext_resource type="PackedScene" uid="uid://5vu2n6l6ynqc" path="res://src/enemies/enemy.tscn" id="1_02gey"]
+[ext_resource type="Texture2D" uid="uid://dbfksvks84561" path="res://assets/48x48 trees.png" id="2_d8lnd"]
+[ext_resource type="Script" path="res://src/enemies/boss/boss.gd" id="2_tbufh"]
+[ext_resource type="Texture2D" uid="uid://bgibqr3jdo56h" path="res://assets/Enemies/Sprites/enemy_sprites.png" id="4_p604h"]
+
+[node name="Boss" instance=ExtResource("1_02gey")]
+collision_layer = 24
+script = ExtResource("2_tbufh")
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_d8lnd")
+
+[node name="enemy_collision" parent="." index="1"]
+position = Vector2(-8, 32)
+
+[node name="AttackCollisionComponent" parent="." index="2"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="AttackCollisionComponent" index="0"]
+visible = true
+position = Vector2(-3, 36)
+
+[node name="BodyCollisionComponent" parent="." index="3"]
+collision_mask = 0
+
+[node name="body_collision" parent="BodyCollisionComponent" index="0"]
+position = Vector2(-6, 18)
+
+[node name="HealthComponent" parent="." index="4"]
+max_health = 1.0
+
+[node name="Weapons" type="Node" parent="." index="7"]
+
+[node name="AttackTimer" type="Timer" parent="." index="8"]
+wait_time = 0.5
+autostart = true
+
+[node name="Bullets" type="Node" parent="." index="9"]
+
+[node name="Text" type="Node" parent="." index="10"]
+
+[node name="Smiley" type="Sprite2D" parent="." index="11"]
+visible = false
+position = Vector2(1, -14)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_p604h")
+hframes = 8
+vframes = 2
+frame = 13
+
+[connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]

@@ -9,6 +9,8 @@ const DEFAULT_MAX_HP_PLAYER: float = 500
 @onready var _Shooting_Enemy = load("res://src/enemies/shooting_enemy.tscn")
 @onready var _Mini_Enemy = load("res://src/enemies/mini_enemy.tscn")
 
+@onready var _Boss: Resource = load("res://src/enemies/boss/boss.tscn")
+
 
 @onready var _Enemies: Array[Resource] = [
 	_Little_Enemy,
@@ -25,6 +27,8 @@ var is_intro_over = false
 var intro__enemy_arrived = false
 @onready var intro__attack_timer: Timer = $Intro/AttackTimer
 
+var is_outro = false
+
 
 func _ready() -> void:
 	Context.set_context(self)
@@ -37,14 +41,21 @@ func _ready() -> void:
 	start_intro()
 
 
+
+func start_outro():
+	is_outro = true
+	_player.start_outro()
+	print("OUTRO:")
+
+
 func start_intro():
 	#print("START INTRO")
 	set_up_player()
 	$Camera.zoom = Vector2(3.0, 3.0)
-	$Background.call_deferred("init", get_player_position())
+	$Background.init(get_player_position())
 	$Camera.track($Intro/CameraPosition)
 	$Intro/Label.set("theme_override_colors/font_color", Color(1, 1, 1, 0))
-	
+
 	_player.get_node("SegwaySprite").visible = false
 
 	var enemy = $Intro/Enemy
@@ -73,9 +84,16 @@ func end_intro(_no_xp):
 	_player.post_intro()
 
 	#print("END INTRO!")
+	var boss: Enemy = _Boss.instantiate()
+
+	boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
+	boss.death.connect(start_outro)
+
+	$Enemies.add_child(boss)
+
 	$TimerHUD.init()
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
-	$Timers/SpawnEnemyTimer.start()
+	# $Timers/SpawnEnemyTimer.start()
 
 
 func intro__attack():
@@ -109,7 +127,7 @@ func start_game() -> void:
 	set_up_player()
 	set_up_enemies()
 	$TimerHUD.init()
-	$Background.call_deferred("init", get_player_position())
+	$Background.init(get_player_position())
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
 

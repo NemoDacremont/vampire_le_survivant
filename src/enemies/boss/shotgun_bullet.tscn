@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7lf58ofugfnn"]
+
+[ext_resource type="PackedScene" uid="uid://btdx26t8ujy1i" path="res://src/attacks/player_attacks/fireball/shotgun_bullet/shotgun_bullet.tscn" id="1_fa6kp"]
+
+[node name="ShotgunBullet" instance=ExtResource("1_fa6kp")]

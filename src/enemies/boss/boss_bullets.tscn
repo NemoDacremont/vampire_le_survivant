@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://rqb8dcfyibks"]
+
+[ext_resource type="PackedScene" uid="uid://tv6tbnj42fvj" path="res://src/enemies/enemy_attack/enemy_bullet.tscn" id="1_cvw7q"]
+[ext_resource type="Script" path="res://src/enemies/boss/boss_bullets.gd" id="2_7282h"]
+[ext_resource type="Texture2D" uid="uid://dc1ugrypsiref" path="res://assets/boss_attack.png" id="3_kc7ct"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ahvy"]
+a = Vector2(17, -46)
+b = Vector2(13, 45)
+
+[node name="BossBullet" instance=ExtResource("1_cvw7q")]
+script = ExtResource("2_7282h")
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("3_kc7ct")
+
+[node name="CollisionShape2D" parent="CollisionComponent" index="0"]
+position = Vector2(-26, 0)
+shape = SubResource("SegmentShape2D_8ahvy")
