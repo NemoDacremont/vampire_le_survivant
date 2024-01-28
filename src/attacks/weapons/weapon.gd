@@ -65,6 +65,9 @@ func force_shoot(direction: Vector2):
 func shoot():
 	var bullet: Fireball = _Fireball.instantiate()
 
+	if $AudioStreamPlayer.stream:
+		$AudioStreamPlayer.play()
+
 	nearest_enemy_pos = Context.get_nearest_enemy(position)
 	shoot_direction = (nearest_enemy_pos - position).normalized()
 
