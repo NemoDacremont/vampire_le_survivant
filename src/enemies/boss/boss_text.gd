@@ -11,7 +11,6 @@ func _ready():
 
 
 func init(text: String, v0: Vector2, p0: Vector2):
-	print("INIT TEXT!")
 	$Label.text = text
 	$Label.rotation = atan2(v0.y, v0.x) - PI / 2
 	velocity = v0

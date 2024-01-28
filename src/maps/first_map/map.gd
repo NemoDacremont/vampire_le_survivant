@@ -85,7 +85,6 @@ func start_outro():
 	min_range_spawn = 200
 	max_range_spawn = 300
 
-	print(boss)
 	for i in range(30):
 		for j in range(10):
 			call_deferred("spawn_enemy_outro")
