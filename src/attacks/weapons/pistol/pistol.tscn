@@ -110,3 +110,4 @@ frame_progress = 1.0
 
 [node name="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("4_nbd6k")
+volume_db = -20.0
