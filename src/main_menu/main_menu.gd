@@ -10,3 +10,9 @@ func _on_quit_pressed():
 
 func _on_play_pressed():
 	get_tree().change_scene_to_file("res://src/maps/first_map/map.tscn")
+
+func _on_how_to_play_pressed():
+	get_tree().change_scene_to_file("res://src/main_menu/how_to_play_menu.tscn")
+
+func _on_parameters_pressed():
+	get_tree().change_scene_to_file("res://src/main_menu/settings.tscn") 
