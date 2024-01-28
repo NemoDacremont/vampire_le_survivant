@@ -111,8 +111,6 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4sksp"]
-
 [node name="Shotgun" instance=ExtResource("1_mhn3v")]
 position = Vector2(60, 0)
 script = ExtResource("2_kg8ih")

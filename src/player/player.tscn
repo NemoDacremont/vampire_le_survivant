@@ -149,11 +149,9 @@ w_idle = 3.0
 pos_offset = 75.0
 
 [node name="Shotgun" parent="Weapons" instance=ExtResource("8_5x01g")]
-<<<<<<< HEAD
-=======
 pos_offset = 60.0
->>>>>>> master
 w_idle = 1.5
 
 [connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]
 [connection signal="health_lost" from="HealthComponent" to="." method="_on_health_component_health_lost"]
+
