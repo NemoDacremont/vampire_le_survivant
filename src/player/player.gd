@@ -74,7 +74,7 @@ func _process(_delta):
 			if weapons_enabled[i]:
 				weapons[i].enable_weapon()
 		
-	if Input.is_action_just_released("segway"):
+	elif $SegwaySprite.visible == false:
 		
 		$SegwaySprite.visible = true
 		speed = PLAYER_DEFAULT_VELOCITY
