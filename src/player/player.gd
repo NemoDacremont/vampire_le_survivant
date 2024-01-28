@@ -22,17 +22,17 @@ var direction: Vector2 = Vector2.ZERO
 static var _context: Node2D
 var is_in_intro = true
 
+const default_stats: Array = [[1., 5., 1], [4., 3., 1], [0.8, 5., 1, 3., PI / 6], [0.4, 40., -1]]
 var weapons_enabled: Array[bool] = [true, false, false, false]
-
 @onready var weapons: Array[Node] = $Weapons.get_children()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = PLAYER_DEFAULT_VELOCITY
-	$Weapons/AssaultRiffle.init(self)
 	$Weapons/Pistol.init(self)
-	$Weapons/Sniper.init(self)
+	$Weapons/AssaultRiffle.init(self)
 	$Weapons/Shotgun.init(self)
+	$Weapons/Sniper.init(self)
 	
 	print(weapons)
 
@@ -43,18 +43,25 @@ func init(context: Node2D, spawn_position: Vector2, hp: float):
 	
 	$SegwaySprite.visible = true
 	xp = 0
-	level = 0
+	level = 1
 	$HealthComponent.init(hp)
 	$HealthBar.init(hp, $HealthComponent)
 	
-	for weapon in $Weapons.get_children():
-		weapon.disable_weapon()
-
+	reset_weapons()
 
 func post_intro():
 	is_in_intro = false
 	$AnimatedSprite2D.play("default")
+	reset_weapons()
 
+func reset_weapons():
+	Levelling.reset_levels()
+	for i in range(len(weapons)):
+		weapons_enabled[i] = false
+		weapons[i].update_properties(default_stats[i])
+		weapons[i].disable_weapon()
+	weapons_enabled[0] = true
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
@@ -134,10 +141,9 @@ func aumgent_weapon(choice: int) -> void:
 	print("player choice : "+str(choice))
 	var weapon = Levelling.choice_to_weapon(choice)
 	var new_stats: Array = Levelling.level_up_weapon(weapon)
-	if new_stats[-1] == 0:
+	if not weapons_enabled[weapon]:
 		print("weapon enabled : "+str(weapon))
 		weapons_enabled[weapon] = true
-		new_stats.erase(0)
 		$Weapons.get_child(weapon).update_properties(new_stats)
 	else:
 		$Weapons.get_child(weapon).update_properties(new_stats)
