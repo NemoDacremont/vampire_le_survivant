@@ -1,21 +1,21 @@
 extends Node
 
-enum {GUN=0, ASSAULT, SHOTGUN, SNIPER, NUMBER_OF_WEAPONS}
+enum {PISTOL=0, ASSAULT, SHOTGUN, SNIPER, NUMBER_OF_WEAPONS}
 enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER, SPRAY}
 
 var choice: Array[int] = [0, 0, 0]
 
 var scaling: Array = [\
-[[1, 5, 1], [1, 10, 1], [1.25, 10, 1], [1.25, 15, 1], [1.75, 15, 1], [1.75, 15, 3], [5, 100, 10]],\
-[[4, 3, 1], [5, 3, 1], [5, 5, 1], [5, 5, 4], [8, 5, 10], [10, 15, 10], [20, 50, 10]],\
-[[0.8, 5, 1, 3, PI / 6], [0.8, 10, 1, 3, PI / 6], [0.8, 15, 3, 4, PI / 6], [0.6, 20, 5, 5, PI / 6], \
-[0.5, 25, 5, 5, PI / 3], [0.75, 30, 5, PI / 3], [2, 35, 10, 90, 2 * PI]],\
-[[0.4, 40, -1], [0.5, 50, -1], [0.6, 55, -1], [0.6, 100, -1], [0.8, 120, -1], [1, 150, -1], [3, 1000, -1]]\
+[[1, 5, 1, 0], [1, 10, 1], [1.25, 10, 1], [1.25, 15, 1], [1.75, 15, 1], [1.75, 15, 3], [5, 100, 10]],\
+[[4, 3, 1, 0], [5, 3, 1], [5, 5, 1], [5, 5, 4], [8, 5, 10], [10, 15, 10], [20, 50, 10]],\
+[[0.8, 5, 1, 3, PI / 6, 0], [0.8, 10, 1, 3, PI / 6], [0.8, 15, 3, 4, PI / 6], [0.6, 20, 5, 5, PI / 6], \
+[0.5, 25, 5, 5, PI / 3], [0.75, 30, 5, 6, PI / 3], [2, 35, 10, 90, 2 * PI]],\
+[[0.4, 40, -1, 0], [0.5, 50, -1], [0.6, 55, -1], [0.6, 100, -1], [0.8, 120, -1], [1, 150, -1], [3, 1000, -1]]\
 ]
 
 #Level 0 <=> Player hasn't the weapon
 var weapons_levels: Array[int] = [1, 0, 0, 0]
-var weapons_max_levels: Array[int] = [len(scaling[0]), len(scaling[1]), len(scaling[2]), len(scaling[3])]
+var weapons_max_levels: Array[int] = [len(scaling[0]), len(scaling[1]), len(scaling[2]), 0]
 
 var level_description: Array = [\
 ["","Unlock [color=purple]Pistol[/color]"],\
@@ -25,12 +25,52 @@ var level_description: Array = [\
 ]
 
 func _ready():
+	var text: String
+	var stats_changed: int
 	for i in range(NUMBER_OF_WEAPONS):
-		for j in len(scaling[i]):
-			
+		for j in range(1, len(scaling[i])):
+			text = weapon_to_string(i) + ": "
+			stats_changed = 0
+			for k in range(min(4, len(scaling[i][j]))):
+				if scaling[i][j][k] < scaling[i][j - 1][k]:
+					text += "Decrease "+stat_to_string(k)+": "+str(scaling[i][j - 1][k])+" -> [color=red]"+str(scaling[i][j][k])+"[/color]"
+					stats_changed += 1
+				if scaling[i][j][k] > scaling[i][j - 1][k]:
+					text += "Increase "+stat_to_string(k)+": "+str(scaling[i][j - 1][k])+" -> [color=green]"+str(scaling[i][j][k])+"[/color]"
+					stats_changed += 1
+				if stats_changed == 2:
+					text += "\n"
+				if stats_changed >= 1:
+					text += "\t"
+			level_description[i].append(text)
+
+func weapon_to_string(weapon: int) -> String:
+	match weapon:
+		PISTOL:
+			return "[color=blue]Pistol[/color]"
+		ASSAULT:
+			return "[color=blue]Assault[/color]"
+		SHOTGUN:
+			return "[color=blue]Shotgun[/color]"
+		SNIPER:
+			return "[color=blue]Sniper[/color]"
+		_:
+			return "flop"
+
+func stat_to_string(stat: int) -> String:
+	match stat:
+		FIRE_RATE:
+			return "fire rate"
+		DAMAGE:
+			return "damage"
+		PIERCING:
+			return "piercing power"
+		NUMBER:
+			return "number of bullets"
+		_:
+			return "ratio"
 
 func choice_to_weapon(choice_index: int) -> int:
-	print(choice)
 	return choice[choice_index]
 
 func level_up_weapon(weapon: int) -> Array:
@@ -53,6 +93,9 @@ func init():
 		weapons_levels[i] = 0
 
 func new_level() -> Array[String]:
+	print("levels/maxlevels")
+	print(weapons_levels)
+	print(weapons_max_levels)
 	var weapons_available: Array
 	for i in range(NUMBER_OF_WEAPONS):
 		if weapons_levels[i] < weapons_max_levels[i]:
@@ -66,6 +109,4 @@ func new_level() -> Array[String]:
 	for i in range(len(weapons_available)):
 		descriptions.append(next_level_description(weapons_available[i]))
 		choice[i] = weapons_available[i]
-	print("oui : ")
-	print(descriptions)
 	return descriptions

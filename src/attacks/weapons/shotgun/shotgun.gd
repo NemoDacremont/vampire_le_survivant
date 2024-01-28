@@ -33,14 +33,10 @@ func _on_timer_shots_timeout():
 	if _is_enabled:
 		for i in range(bullet_number):
 			true_shoot(- spray + (i / bullet_number) * spray)
-		#true_shoot(PI / 12)
-		#true_shoot(-PI / 12)
-		#true_shoot(2 * PI / 12)
-		#true_shoot(- 2 * PI / 12)
-		#true_shoot(0)
 		sprite_node.play()
 
 func update_properties(stats: Array) -> void:
+	print(stats)
 	bullet_number = stats[NUMBER]
 	spray = stats[SPRAY]
 	super(stats)

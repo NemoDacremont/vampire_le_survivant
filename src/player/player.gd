@@ -15,7 +15,7 @@ var new_fireball: Fireball
 var xp: float
 var level: int
 var xp_required: float = 1
-const MAX_LEVEL: int = 3
+const MAX_LEVEL: int = 30
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -120,8 +120,8 @@ func aumgent_weapon(choice: int) -> void:
 	print("player choice : "+str(choice))
 	var weapon = Levelling.choice_to_weapon(choice)
 	var new_stats: Array = Levelling.level_up_weapon(weapon)
-	if len(new_stats) == 0:
+	if new_stats[-1] == 0:
 		print("weapon enabled : "+str(weapon))
 		weapons_enabled[weapon] = true
 	else:
-		$Weapons.get_child(weapon).update_properties(new_stats[0],new_stats[1], new_stats[2])
+		$Weapons.get_child(weapon).update_properties(new_stats)
