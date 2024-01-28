@@ -43,7 +43,7 @@ func spawn_text():
 
 	var v0: Vector2 = speed * Vector2(cos(angle), sin(angle))
 
-	text.init("I'm already happy morron", v0, position)
+	text.init("I'm already happy moron", v0, position)
 
 	$Text.add_child(text)
 
