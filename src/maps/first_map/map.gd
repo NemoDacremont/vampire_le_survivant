@@ -92,16 +92,16 @@ func end_intro(_no_xp):
 	_player.post_intro()
 
 	#print("END INTRO!")
-	var boss: Enemy = _Boss.instantiate()
+	#var boss: Enemy = _Boss.instantiate()
 
-	boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
-	boss.death.connect(start_outro)
+	#boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
+	#boss.death.connect(start_outro)
 
-	$Enemies.add_child(boss)
+	#$Enemies.add_child(boss)
 
 	$TimerHUD.init()
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
-	# $Timers/SpawnEnemyTimer.start()
+	$Timers/SpawnEnemyTimer.start()
 	
 	$xpHUD.visible = true
 	$xpHUD.refresh_xp(0, 1, 1)
