@@ -20,6 +20,7 @@ var _is_enabled: bool = false
 @onready var bullets_node: Node = $Bullets
 @onready var sprite_node: Node2D = $Sprite
 @onready var timer_node: Node = $TimerShots
+@onready var preshot_timer: Timer = $Preshot
 
 var shoot_direction: Vector2 = Vector2.RIGHT
 var nearest_enemy_pos: Vector2 = Vector2.ZERO
@@ -46,6 +47,20 @@ func _process(delta):
 	sprite_node.rotation = _theta
 
 
+func force_shoot(direction: Vector2):
+	var bullet: Fireball = _Fireball.instantiate()
+	visible = true
+
+	shoot_direction = direction
+	_wanted_theta = atan2(shoot_direction.y, shoot_direction.x)
+
+	preshot_timer.start()
+	await preshot_timer.timeout
+
+	bullet.init(position, shoot_direction, damage, 500)
+	bullets_node.add_child(bullet)
+
+
 func shoot():
 	var bullet: Fireball = _Fireball.instantiate()
 
@@ -54,8 +69,10 @@ func shoot():
 
 	_wanted_theta = atan2(shoot_direction.y, shoot_direction.x)
 
-	bullet.init(position, shoot_direction, damage, 500)
+	preshot_timer.start()
+	await preshot_timer.timeout
 
+	bullet.init(position, shoot_direction, damage, 500)
 	bullets_node.add_child(bullet)
 
 
@@ -70,6 +87,7 @@ func enable_weapon():
 func disable_weapon():
 	sprite_node.visible = false
 	_is_enabled = false
+
 
 func update_properties(stats: Array) -> void:
 	timer_node.wait_time = 1 / stats[FIRE_RATE]

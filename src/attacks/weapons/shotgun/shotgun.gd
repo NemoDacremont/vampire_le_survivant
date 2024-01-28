@@ -13,6 +13,15 @@ func _process(delta):
 	super(delta)
 
 
+func force_shoot(direction: Vector2):
+	preshot_timer.start()
+	await preshot_timer.timeout
+
+	for i in range(bullet_number):
+		true_shoot(- spray + (i / bullet_number) * spray)
+
+
+
 func true_shoot(angle : float):
 	var bullet: Fireball = _Fireball.instantiate()
 
@@ -21,7 +30,6 @@ func true_shoot(angle : float):
 	_wanted_theta = atan2(shoot_direction.y, shoot_direction.x)
 	
 	var shoot_angle: float = atan2(shoot_direction.y, shoot_direction.x)
-	
 	shoot_direction = Vector2(cos(angle + shoot_angle), sin(angle + shoot_angle)).normalized()
 
 
@@ -29,15 +37,15 @@ func true_shoot(angle : float):
 
 	bullets_node.add_child(bullet)
 
+
 func _on_timer_shots_timeout():
 	if _is_enabled:
+		preshot_timer.start()
+		await preshot_timer.timeout
+
 		for i in range(bullet_number):
 			true_shoot(- spray + (i / bullet_number) * spray)
-		#true_shoot(PI / 12)
-		#true_shoot(-PI / 12)
-		#true_shoot(2 * PI / 12)
-		#true_shoot(- 2 * PI / 12)
-		#true_shoot(0)
+
 		sprite_node.play()
 
 func update_properties(stats: Array) -> void:
