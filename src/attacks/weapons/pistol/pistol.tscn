@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://t0skqbmj0pl7"]
+[gd_scene load_steps=17 format=3 uid="uid://t0skqbmj0pl7"]
 
 [ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="1_kwkah"]
 [ext_resource type="Script" path="res://src/attacks/weapons/pistol/pistol.gd" id="2_nnj6o"]
+[ext_resource type="AudioStream" uid="uid://c7aw8dplpqtgi" path="res://assets/pistols/sounds/pistol_sound.mp3" id="4_nbd6k"]
 [ext_resource type="Texture2D" uid="uid://bpvm5itjk1e2x" path="res://assets/pistols/Pistol_V1.00 - SHOOTING (ALL FX).png" id="4_thfvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snddd"]
@@ -106,3 +107,6 @@ sprite_frames = SubResource("SpriteFrames_2fe8y")
 autoplay = "default"
 frame = 9
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("4_nbd6k")

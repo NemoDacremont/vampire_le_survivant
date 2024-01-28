@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://6mha7d6cl2er"]
+[gd_scene load_steps=35 format=3 uid="uid://6mha7d6cl2er"]
 
 [ext_resource type="PackedScene" uid="uid://c1jpnjn0ndn0t" path="res://src/attacks/weapons/weapon.tscn" id="1_fbdvx"]
 [ext_resource type="Script" path="res://src/attacks/weapons/sniper/sniper.gd" id="2_5wnue"]
 [ext_resource type="Texture2D" uid="uid://cga5j8ni35f5" path="res://assets/guns/[NO_BOLT]_Sniper_rifle_[KAR98]_V1.00.png" id="2_hxqer"]
 [ext_resource type="Texture2D" uid="uid://bjnqol02ptk2q" path="res://assets/guns/Sniper_rifle_V1.00_FULL.png" id="4_dcgog"]
+[ext_resource type="AudioStream" uid="uid://c7n4sr2jmr2vv" path="res://assets/pistols/sounds/sniper_sound.mp3" id="5_0t0ka"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ly3yq"]
 atlas = ExtResource("4_dcgog")
@@ -228,3 +229,6 @@ sprite_frames = SubResource("SpriteFrames_plh6g")
 autoplay = "default"
 frame = 27
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource("5_0t0ka")
