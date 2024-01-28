@@ -1,6 +1,8 @@
 extends Node2D
 class_name Weapon
 
+enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER, SPRAY}
+
 var _Fireball: Resource = load("res://src/attacks/player_attacks/fireball/fireball.tscn")
 var _parent: Node
 
@@ -69,7 +71,7 @@ func disable_weapon():
 	sprite_node.visible = false
 	_is_enabled = false
 
-func update_properties(fire_rate: float, _damage: float, _piercing: int) -> void:
-	timer_node.wait_time = 1 / fire_rate
-	damage = _damage
+func update_properties(stats: Array) -> void:
+	timer_node.wait_time = 1 / stats[FIRE_RATE]
+	damage = stats[DAMAGE]
 	

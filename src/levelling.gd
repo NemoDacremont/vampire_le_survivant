@@ -1,7 +1,7 @@
 extends Node
 
 enum {GUN=0, ASSAULT, SHOTGUN, SNIPER, NUMBER_OF_WEAPONS}
-enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER}
+enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER, SPRAY}
 
 #Level 0 <=> Player hasn't the weapon
 var weapons_levels: Array[int] = [1, 0, 0, 0]

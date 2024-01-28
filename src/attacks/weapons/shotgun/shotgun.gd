@@ -1,5 +1,7 @@
 extends Weapon
 
+var bullet_number: float = 3
+var spray: float = PI / 6
 
 func init(parent_position: Node):
 	super(parent_position)
@@ -29,9 +31,16 @@ func true_shoot(angle : float):
 
 func _on_timer_shots_timeout():
 	if _is_enabled:
-		true_shoot(PI / 12)
-		true_shoot(-PI / 12)
-		true_shoot(2 * PI / 12)
-		true_shoot(- 2 * PI / 12)
-		true_shoot(0)
+		for i in range(bullet_number):
+			true_shoot(- spray + (i / bullet_number) * spray)
+		#true_shoot(PI / 12)
+		#true_shoot(-PI / 12)
+		#true_shoot(2 * PI / 12)
+		#true_shoot(- 2 * PI / 12)
+		#true_shoot(0)
 		sprite_node.play()
+
+func update_properties(stats: Array) -> void:
+	bullet_number = stats[NUMBER]
+	spray = stats[SPRAY]
+	super(stats)
