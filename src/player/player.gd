@@ -116,7 +116,8 @@ func set_direction() -> void:
 
 
 func print_hp(new_hps) -> void:
-	print("hit ! new hp = ", new_hps)
+	pass
+	# print("hit ! new hp = ", new_hps)
 
 
 func _on_health_component_death():
@@ -170,8 +171,8 @@ func aumgent_weapon(choice: int) -> void:
 	emit_signal("get_xp", xp, xp_required, level)
 
 	if (xp >= xp_required):
-		print(get_tree().paused)
-		print("give xp")
+		# print(get_tree().paused)
+		# print("give xp")
 		give_xp(0.)
 
 
