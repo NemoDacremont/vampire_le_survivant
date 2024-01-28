@@ -28,6 +28,7 @@ var intro__enemy_arrived = false
 @onready var intro__attack_timer: Timer = $Intro/AttackTimer
 
 var is_outro = false
+var is_boss = false
 
 
 func _ready() -> void:
@@ -40,6 +41,10 @@ func _ready() -> void:
 
 	start_intro()
 
+
+
+func start_boss():
+	pass
 
 
 func start_outro():

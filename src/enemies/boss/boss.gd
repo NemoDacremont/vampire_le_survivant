@@ -59,9 +59,13 @@ func bring_weapons():
 		weapon.init(self)
 		weapon.enable_weapon()
 
+		$WeaponSpawnTimer.start(randf() * 0.1 + 0.1)
+		await $WeaponSpawnTimer.timeout
+
 
 func _on_health_component_death():
 	$AttackTimer.stop()
+	$BodyCollisionComponent.collision_layer = 0
 
 	$Smiley.visible = true
 	bring_weapons()
