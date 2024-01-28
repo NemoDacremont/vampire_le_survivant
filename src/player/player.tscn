@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://o4hyy68u331l"]
+[gd_scene load_steps=24 format=3 uid="uid://o4hyy68u331l"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_16vid"]
 [ext_resource type="PackedScene" uid="uid://chu3aj4svw30e" path="res://src/components/collision_component/collision_component.tscn" id="2_e21j6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="4_2xby6"]
 [ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="4_asecx"]
 [ext_resource type="PackedScene" uid="uid://dact1hn100x2h" path="res://src/attacks/weapons/assault_rifle/assault_rifle.tscn" id="5_7b8pn"]
+[ext_resource type="Texture2D" uid="uid://djsncjlrguwx2" path="res://assets/Martial Hero/Sprites/segwaytropcool.png" id="6_6ljwx"]
 [ext_resource type="PackedScene" uid="uid://t0skqbmj0pl7" path="res://src/attacks/weapons/pistol/pistol.tscn" id="6_kd7q8"]
 [ext_resource type="PackedScene" uid="uid://6mha7d6cl2er" path="res://src/attacks/weapons/sniper/sniper.tscn" id="7_vmnes"]
 [ext_resource type="PackedScene" uid="uid://b68pchrd28udl" path="res://src/attacks/weapons/shotgun/shotgun.tscn" id="8_5x01g"]
@@ -128,20 +129,30 @@ scale = Vector2(1.26, 1.26)
 sprite_frames = SubResource("SpriteFrames_41rr0")
 autoplay = "default"
 
+[node name="SegwaySprite" type="Sprite2D" parent="."]
+position = Vector2(1, -11)
+scale = Vector2(0.066469, 0.066469)
+texture = ExtResource("6_6ljwx")
+flip_h = true
+
 [node name="Weapons" type="Node" parent="."]
 
 [node name="AssaultRiffle" parent="Weapons" instance=ExtResource("5_7b8pn")]
 pos_offset = 75.0
-w_idle = 1.0
+w_idle = 2.0
 
 [node name="Pistol" parent="Weapons" instance=ExtResource("6_kd7q8")]
 pos_offset = 40.0
-w_idle = 1.0
+w_idle = 3.0
 
 [node name="Sniper" parent="Weapons" instance=ExtResource("7_vmnes")]
 pos_offset = 75.0
 
 [node name="Shotgun" parent="Weapons" instance=ExtResource("8_5x01g")]
+<<<<<<< HEAD
+=======
+pos_offset = 60.0
+>>>>>>> master
 w_idle = 1.5
 
 [connection signal="death" from="HealthComponent" to="." method="_on_health_component_death"]

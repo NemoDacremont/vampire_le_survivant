@@ -3,6 +3,7 @@ class_name Player
 
 signal death
 signal hit
+signal choose_augment
 
 @export var PLAYER_DEFAULT_VELOCITY: float = 300.0
 var speed: float = PLAYER_DEFAULT_VELOCITY
@@ -13,7 +14,7 @@ var new_fireball: Fireball
 
 var xp: float
 var level: int
-var xp_required: float = 1
+var xp_required: float = 1000000
 const MAX_LEVEL: int = 100
 
 var direction: Vector2 = Vector2.ZERO
@@ -34,6 +35,8 @@ func _ready():
 func init(context: Node2D, spawn_position: Vector2, hp: float):
 	_context = context
 	position = spawn_position
+	
+	$SegwaySprite.visible = true
 	xp = 0
 	level = 0
 	$HealthComponent.init(hp)
@@ -53,9 +56,23 @@ func _process(_delta):
 		var dir: Vector2 = Context.get_nearest_enemy(position)
 
 		new_fireball = _Fireball.instantiate()
-		new_fireball.init(position, (dir - position).normalized(), 2 * speed)
+		new_fireball.init(position, (dir - position).normalized(), 1, 2 * speed)
 
 		_attacks_node.add_child(new_fireball)
+	if Input.is_action_pressed("segway"):
+		
+		$SegwaySprite.visible = false
+		speed = PLAYER_DEFAULT_VELOCITY * 0.2
+		for weapon in $Weapons.get_children():
+			weapon.enable_weapon()
+		
+	if Input.is_action_just_released("segway"):
+		
+		$SegwaySprite.visible = true
+		speed = PLAYER_DEFAULT_VELOCITY
+		for weapon in $Weapons.get_children():
+			weapon.disable_weapon()
+		
 
 
 func set_direction() -> void:
@@ -84,5 +101,6 @@ func give_xp(xp_given: float):
 
 func level_up():
 	print("level up "+str(level))
+	emit_signal("choose_augment")
 	if level > MAX_LEVEL:
 		emit_signal("death")

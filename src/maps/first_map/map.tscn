@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcdju00xq0w1d"]
+[gd_scene load_steps=8 format=3 uid="uid://dcdju00xq0w1d"]
 
 [ext_resource type="Script" path="res://src/maps/first_map/map.gd" id="1_xx1c6"]
 [ext_resource type="Script" path="res://src/maps/first_map/camera.gd" id="2_ayhjx"]
 [ext_resource type="PackedScene" uid="uid://o4hyy68u331l" path="res://src/player/player.tscn" id="4_37owa"]
 [ext_resource type="PackedScene" uid="uid://dy6fhyrhagrxl" path="res://src/maps/background.tscn" id="4_pxwlf"]
 [ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="5_woeoy"]
+[ext_resource type="PackedScene" uid="uid://duhbars45r78x" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
+[ext_resource type="PackedScene" uid="uid://ckqxnu87mipht" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xx1c6")
@@ -29,5 +31,11 @@ process_callback = 0
 wait_time = 0.2
 
 [node name="HUD" parent="." instance=ExtResource("5_woeoy")]
+
+[node name="TimerHUD" parent="." instance=ExtResource("6_wcvya")]
+
+[node name="LevelUpMenu" parent="." instance=ExtResource("6_vus68")]
+process_mode = 2
+layer = 6
 
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]

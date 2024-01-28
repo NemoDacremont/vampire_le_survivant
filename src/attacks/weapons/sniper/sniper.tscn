@@ -213,6 +213,7 @@ animations = [{
 script = ExtResource("2_5wnue")
 pos_offset = 100.0
 w_idle = 1.0
+damage = 50.0
 
 [node name="Sprite" parent="." index="0"]
 visible = false

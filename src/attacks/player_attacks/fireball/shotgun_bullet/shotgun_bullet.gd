@@ -6,12 +6,12 @@ extends Fireball
 
 func _ready():
 	var theta : float = atan2(_direction.y, _direction.x)
-	sprite_node.rotation = -theta
-	collision_shape.rotation = -theta
+	sprite_node.rotation = theta + PI / 2
+	collision_shape.rotation = theta + PI / 2
 
 
-func init(spawn_position, direction, speed, max_distance = 1000.0):
-	super(spawn_position, direction, speed, max_distance)
+func init(spawn_position, direction, damage, speed, max_distance = 1000.0):
+	super(spawn_position, direction, damage, speed, max_distance)
 
 
 func _physics_process(delta):

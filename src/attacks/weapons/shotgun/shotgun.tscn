@@ -111,11 +111,14 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_4sksp"]
+
 [node name="Shotgun" instance=ExtResource("1_mhn3v")]
 position = Vector2(60, 0)
 script = ExtResource("2_kg8ih")
 pos_offset = 100.0
 w_idle = 1.0
+damage = 30.0
 
 [node name="Sprite" parent="." index="0"]
 visible = false
