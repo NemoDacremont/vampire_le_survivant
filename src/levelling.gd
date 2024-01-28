@@ -4,7 +4,7 @@ enum {GUN=0, ASSAULT, SHOTGUN, SNIPER, NUMBER_OF_WEAPONS}
 enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER}
 
 #Level 0 <=> Player hasn't the weapon
-var weapons_levels: Array[int] = [0, 0, 0, 0]
+var weapons_levels: Array[int] = [0, 0, 1, 1]
 const weapons_max_levels: Array[int] = [1, 1, 1, 1]
 
 var scaling: Array = [\

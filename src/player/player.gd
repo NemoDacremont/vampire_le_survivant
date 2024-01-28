@@ -14,7 +14,7 @@ var new_fireball: Fireball
 
 var xp: float
 var level: int
-var xp_required: float = 20
+var xp_required: float = 5
 const MAX_LEVEL: int = 100
 
 var direction: Vector2 = Vector2.ZERO
@@ -29,7 +29,8 @@ func _ready():
 	$Weapons/Pistol.init(self)
 	$Weapons/Sniper.init(self)
 	$Weapons/Shotgun.init(self)
-
+	for weapon in $Weapons.get_children():
+		weapon.disable_weapon()
 
 # Context should be the map
 func init(context: Node2D, spawn_position: Vector2, hp: float):
@@ -72,7 +73,6 @@ func _process(_delta):
 		speed = PLAYER_DEFAULT_VELOCITY
 		for weapon in $Weapons.get_children():
 			weapon.disable_weapon()
-		
 
 
 func set_direction() -> void:
