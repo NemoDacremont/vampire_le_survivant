@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="5_woeoy"]
 [ext_resource type="PackedScene" uid="uid://duhbars45r78x" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
 [ext_resource type="PackedScene" uid="uid://ckqxnu87mipht" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
-[ext_resource type="PackedScene" uid="uid://dbvciju6ohga3" path="res://src/HUD/xp_hud.tscn" id="8_nkhce"]
+[ext_resource type="PackedScene" path="res://src/HUD/xp_hud.tscn" id="8_nkhce"]
 [ext_resource type="PackedScene" uid="uid://dxdysqo40t3gr" path="res://src/enemies/little_enemy.tscn" id="8_npv3b"]
 [ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="9_h2mq4"]
 
@@ -41,6 +41,10 @@ one_shot = true
 
 [node name="TimerOutro" type="Timer" parent="Timers"]
 wait_time = 3.0
+
+[node name="BossTimer" type="Timer" parent="Timers"]
+wait_time = 300.0
+one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("5_woeoy")]
 
