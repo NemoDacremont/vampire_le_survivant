@@ -13,9 +13,9 @@ var new_fireball: Fireball
 @onready var _attacks_node: Node = $Attacks
 
 var xp: float
-var level: int
+var level: int = 1
 var xp_required: float = 1
-const MAX_LEVEL: int = 30
+@onready var MAX_LEVEL: int = Levelling.max_levels_reached()
 
 var direction: Vector2 = Vector2.ZERO
 

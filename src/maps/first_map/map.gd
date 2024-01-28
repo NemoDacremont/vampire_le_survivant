@@ -1,6 +1,6 @@
 extends Node2D
 
-const DEFAULT_SPAWN_RATE: float = .2
+const DEFAULT_SPAWN_RATE: float = .05
 const DEFAULT_MAX_HP_PLAYER: float = 5
 
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
