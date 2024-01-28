@@ -32,6 +32,10 @@ func choice(choice: int):
 	get_tree().paused = false
 
 func generate_choices():
+	get_tree().paused = true
 	self.visible = true
 	print("ratio")
 	clear_labels()
+
+func connect_hud_to_player(body: Node, body_signal: String):
+	body.connect(body_signal, generate_choices)

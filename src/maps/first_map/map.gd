@@ -20,7 +20,9 @@ func _ready() -> void:
 	
 	_player = $Player
 	_player.death.connect(start_game)
-	_player.choose_augment.connect(choose_augment)
+	
+	$LevelUpMenu.connect_hud_to_player(_player, "choose_augment")
+	
 	start_game()
 
 
@@ -94,7 +96,3 @@ func get_player_position() -> Vector2:
 
 func _on_spawn_enemy_timer_timeout():
 	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player.position))
-
-func choose_augment():
-	get_tree().paused = true
-	$LevelUpMenu.generate_choices()

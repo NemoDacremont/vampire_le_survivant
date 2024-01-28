@@ -14,7 +14,7 @@ var new_fireball: Fireball
 
 var xp: float
 var level: int
-var xp_required: float = 1000000
+var xp_required: float = 20
 const MAX_LEVEL: int = 100
 
 var direction: Vector2 = Vector2.ZERO
@@ -101,6 +101,6 @@ func give_xp(xp_given: float):
 
 func level_up():
 	print("level up "+str(level))
-	emit_signal("choose_augment")
 	if level > MAX_LEVEL:
 		emit_signal("death")
+	emit_signal("choose_augment")
