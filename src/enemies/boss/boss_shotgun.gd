@@ -35,6 +35,6 @@ func true_shoot(angle : float):
 	print(sprite_node.rotation)
 
 
-	bullet.init(position, shoot_direction, damage, speed, piercing_power)
+	bullet.init(position, shoot_direction, 150, speed, piercing_power)
 
 	bullets_node.add_child(bullet)

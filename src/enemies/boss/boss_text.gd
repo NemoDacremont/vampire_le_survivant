@@ -8,6 +8,8 @@ var velocity: Vector2 = Vector2.ZERO
 
 func _ready():
 	create_tween().tween_property($Label, "theme_override_colors/font_color", Color(1, 1, 1, 0), 1).set_ease(Tween.EASE_IN)
+	$Timer.start()
+	$Timer.timeout.connect(fre)
 
 
 func init(text: String, v0: Vector2, p0: Vector2):
@@ -16,8 +18,6 @@ func init(text: String, v0: Vector2, p0: Vector2):
 	velocity = v0
 	position = p0
 
-	$Timer.start()
-	$Timer.timeout.connect(fre)
 
 
 func _physics_process(delta):
