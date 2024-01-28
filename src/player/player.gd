@@ -4,6 +4,7 @@ class_name Player
 signal death
 signal hit
 signal choose_augment
+signal get_xp(float, int)
 
 @export var PLAYER_DEFAULT_VELOCITY: float = 300.0
 var speed: float = PLAYER_DEFAULT_VELOCITY
@@ -123,6 +124,7 @@ func _on_health_component_health_lost(new_hps: float):
 
 func give_xp(xp_given: float):
 	xp += xp_given
+	emit_signal("get_xp", xp, xp_required, level)
 	if (xp >= xp_required) and augment_chosen:
 		augment_chosen = false
 		level += 1
@@ -150,6 +152,7 @@ func aumgent_weapon(choice: int) -> void:
 	else:
 		$Weapons.get_child(weapon).update_properties(new_stats)
 	augment_chosen = true
+	emit_signal("get_xp", xp, xp_required, level)
 	if (xp >= xp_required):
 		print(get_tree().paused)
 		print("give xp")

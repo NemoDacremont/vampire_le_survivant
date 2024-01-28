@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcdju00xq0w1d"]
+[gd_scene load_steps=11 format=3 uid="uid://dcdju00xq0w1d"]
 
 [ext_resource type="Script" path="res://src/maps/first_map/map.gd" id="1_xx1c6"]
 [ext_resource type="Script" path="res://src/maps/first_map/camera.gd" id="2_ayhjx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="5_woeoy"]
 [ext_resource type="PackedScene" uid="uid://duhbars45r78x" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
 [ext_resource type="PackedScene" uid="uid://ckqxnu87mipht" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
+[ext_resource type="PackedScene" uid="uid://dbvciju6ohga3" path="res://src/HUD/xp_hud.tscn" id="8_nkhce"]
 [ext_resource type="PackedScene" uid="uid://dxdysqo40t3gr" path="res://src/enemies/little_enemy.tscn" id="8_npv3b"]
 [ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="9_h2mq4"]
 
@@ -40,6 +41,8 @@ wait_time = 0.2
 [node name="LevelUpMenu" parent="." instance=ExtResource("6_vus68")]
 process_mode = 2
 layer = 6
+
+[node name="xpHUD" parent="." instance=ExtResource("8_nkhce")]
 
 [node name="Intro" type="Node" parent="."]
 

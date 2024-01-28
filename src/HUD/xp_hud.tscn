@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbvciju6ohga3"]
+
+[ext_resource type="Script" path="res://src/HUD/xp_hud.gd" id="1_fifg3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk66i"]
+bg_color = Color(0, 0, 0, 0.796078)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_box0j"]
+bg_color = Color(0, 1, 0, 0.843137)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="xpHUD" type="CanvasLayer"]
+script = ExtResource("1_fifg3")
+
+[node name="xpBar" type="ProgressBar" parent="."]
+anchors_preset = -1
+anchor_left = 0.884
+anchor_top = 0.01
+anchor_right = 0.884
+anchor_bottom = 0.01
+offset_left = -56.368
+offset_top = -0.48
+offset_right = 118.632
+offset_bottom = 26.52
+theme_override_styles/background = SubResource("StyleBoxFlat_mk66i")
+theme_override_styles/fill = SubResource("StyleBoxFlat_box0j")
+show_percentage = false
+
+[node name="level" type="Label" parent="."]
+offset_left = 915.0
+offset_top = 7.0
+offset_right = 955.0
+offset_bottom = 30.0

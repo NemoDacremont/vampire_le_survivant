@@ -33,6 +33,7 @@ func _ready() -> void:
 	_player.death.connect(start_game)
 	$LevelUpMenu.connect_hud_to_player(_player, "choose_augment")
 	_player.connect_player_to_hud($LevelUpMenu, "augment_chosen")
+	$xpHUD.connect_hud_to_player(_player, "get_xp")
 
 	start_intro()
 
