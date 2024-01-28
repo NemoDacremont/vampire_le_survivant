@@ -13,6 +13,11 @@ func get_player_position() -> Vector2:
 	return Vector2.ZERO
 
 
+func get_enemies():
+	var enemies_node = _context.get_node("Enemies")
+	return enemies_node.get_children()
+
+
 func get_nearest_enemy(pos: Vector2) -> Vector2:
 	var enemies_node = _context.get_node("Enemies")
 
