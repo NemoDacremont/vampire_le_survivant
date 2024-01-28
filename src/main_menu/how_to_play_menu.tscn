@@ -1,0 +1,234 @@
+[gd_scene load_steps=23 format=3 uid="uid://bt5vt54v7wxd4"]
+
+[ext_resource type="Texture2D" uid="uid://eklidgjid8j2" path="res://assets/main_menu/background_main_menu_alone.png" id="1_366b2"]
+[ext_resource type="Script" path="res://src/main_menu/how_to_play_menu.gd" id="1_cr3wr"]
+[ext_resource type="Texture2D" uid="uid://d2b3h1tojukgn" path="res://assets/main_menu/maple_leaf.png" id="2_p0gre"]
+[ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="3_8lp1q"]
+[ext_resource type="Texture2D" uid="uid://b4y3d73uykjbq" path="res://assets/Martial Hero/Sprites/Attack1.png" id="4_p0x2t"]
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="6_i1kgg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_awobn"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(600, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(700, 10, 0)
+angle_max = 242.7
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 22.47
+initial_velocity_max = 22.47
+gravity = Vector3(0, 98, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n3m0"]
+atlas = ExtResource("4_p0x2t")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnqry"]
+atlas = ExtResource("4_p0x2t")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aulsd"]
+atlas = ExtResource("4_p0x2t")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb5wc"]
+atlas = ExtResource("4_p0x2t")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deq0a"]
+atlas = ExtResource("4_p0x2t")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mocu8"]
+atlas = ExtResource("4_p0x2t")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t706j"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtidt"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppbex"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oap6f"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcqkc"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlud4"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4wcu"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(1200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tky2"]
+atlas = ExtResource("3_8lp1q")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8ea3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n3m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnqry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aulsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb5wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deq0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mocu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb5wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aulsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnqry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n3m0")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t706j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtidt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppbex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oap6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcqkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlud4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4wcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tky2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="HowToPlayMenu" type="CanvasLayer"]
+script = ExtResource("1_cr3wr")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 289)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_366b2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_awobn")
+texture = ExtResource("2_p0gre")
+lifetime = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(841, 519)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_f8ea3")
+animation = &"attack"
+autoplay = "default"
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 89.0
+offset_top = 27.0
+offset_right = 889.0
+offset_bottom = 127.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = ExtResource("6_i1kgg")
+theme_override_font_sizes/normal_font_size = 60
+text = "HOW TO PLAY"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 58.0
+offset_top = 344.0
+offset_right = 370.0
+offset_bottom = 632.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("6_i1kgg")
+theme_override_font_sizes/normal_font_size = 30
+text = "- Use WASD/ZQSD to move "
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("6_i1kgg")
+theme_override_font_sizes/normal_font_size = 30
+text = "- Hold Ctrl to attack"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("6_i1kgg")
+theme_override_font_sizes/normal_font_size = 30
+text = "- Left Click on an upgrade to choose it "
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+offset_left = 970.0
+offset_top = 534.0
+offset_right = 1131.0
+offset_bottom = 625.0
+
+[node name="Quit" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_i1kgg")
+theme_override_font_sizes/font_size = 60
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer3/Quit" to="." method="_on_quit_pressed"]
