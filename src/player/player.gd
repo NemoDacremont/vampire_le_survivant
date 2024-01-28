@@ -27,6 +27,8 @@ const default_stats: Array = [[1., 5., 1], [4., 3., 1], [0.8, 5., 1, 3., PI / 6]
 var weapons_enabled: Array[bool] = [true, false, false, false]
 @onready var weapons: Array[Node] = $Weapons.get_children()
 
+var augment_chosen: bool = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	speed = PLAYER_DEFAULT_VELOCITY
@@ -121,7 +123,8 @@ func _on_health_component_health_lost(new_hps: float):
 
 func give_xp(xp_given: float):
 	xp += xp_given
-	if (xp >= xp_required):
+	if (xp >= xp_required) and augment_chosen:
+		augment_chosen = false
 		level += 1
 		xp = xp - xp_required
 		level_up()
@@ -146,5 +149,8 @@ func aumgent_weapon(choice: int) -> void:
 		$Weapons.get_child(weapon).update_properties(new_stats)
 	else:
 		$Weapons.get_child(weapon).update_properties(new_stats)
-	if (xp > xp_required):
+	augment_chosen = true
+	if (xp >= xp_required):
+		print(get_tree().paused)
+		print("give xp")
 		give_xp(0.)

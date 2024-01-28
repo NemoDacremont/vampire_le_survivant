@@ -42,8 +42,8 @@ func _on_button_3_pressed():
 
 func choice(c: int):
 	self.visible = false
-	emit_signal("augment_chosen", c)
 	get_tree().paused = false
+	emit_signal("augment_chosen", c)
 
 func generate_choices():
 	get_tree().paused = true
