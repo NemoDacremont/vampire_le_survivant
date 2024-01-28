@@ -159,7 +159,7 @@ func _process(_delta):
 	if not is_boss and $TimerHUD.get_time() == 300:
 		start_boss()
 	
-	spawn_rate = min(0.1, 1. / (max($TimerHUD.get_time(), 1.) ** 2))
+	spawn_rate = max(1./8., 1. / (max($TimerHUD.get_time(), 1.) ))
 	#print(spawn_rate)
 	
 	if is_intro_over:
@@ -213,13 +213,16 @@ func scaled_hp() -> float:
 	return max(int(hp_time), 1)
 	return max(hp_time + randi() % max(int(hp_time / 4.), 1), 1)
 
-func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
+func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2, n:int = 1) -> void:
 	var enemy = EnemyClass.instantiate()
 	enemy.init(_player, spawn_position, 0, scaled_hp(), max(sqrt($TimerHUD.get_time()), 1))
 	enemy.position = spawn_position
 	enemy.death.connect(_player.give_xp)
 
 	$Enemies.add_child(enemy)
+	
+	if n>1:
+		spawn_enemy(EnemyClass, randomSpawn(_player.position), n-1)
 
 
 func randomEnemy() -> int:
@@ -258,5 +261,5 @@ func get_player_position() -> Vector2:
 
 
 func _on_spawn_enemy_timer_timeout():
-	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player.position))
+	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player.position), 3)
 
