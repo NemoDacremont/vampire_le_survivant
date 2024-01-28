@@ -32,3 +32,5 @@ func _physics_process(delta):
 func fre():
 	queue_free()
 
+
+

@@ -61,6 +61,8 @@ func start_intro():
 	var enemy = $Intro/Enemy
 	enemy.init($Intro/EnemyTarget, $Intro/EnemySpawn.position, 0, 1)
 	enemy.death.connect(end_intro)
+	enemy.collision_layer = 0
+	enemy.collision_mask = 0
 	
 
 func end_intro(_no_xp):
