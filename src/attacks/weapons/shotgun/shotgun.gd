@@ -31,10 +31,14 @@ func true_shoot(angle : float):
 	shoot_direction = (nearest_enemy_pos - position).normalized()
 	_wanted_theta = atan2(shoot_direction.y, shoot_direction.x)
 	
+	preshot_timer.start()
+	await preshot_timer.timeout
+	
+	shoot_direction = (nearest_enemy_pos - position).normalized()
 	var shoot_angle: float = atan2(shoot_direction.y, shoot_direction.x)
 	shoot_direction = Vector2(cos(angle + shoot_angle), sin(angle + shoot_angle)).normalized()
 
-	shoot_direction = (nearest_enemy_pos - position).normalized()
+	
 	bullet.init(position, shoot_direction, damage, 500, piercing_power)
 
 	bullets_node.add_child(bullet)
