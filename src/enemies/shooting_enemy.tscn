@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://bjak7dm0qgfe7"]
+
+[ext_resource type="PackedScene" uid="uid://5vu2n6l6ynqc" path="res://src/enemies/enemy.tscn" id="1_ffbtc"]
+[ext_resource type="Script" path="res://src/enemies/shooting_enemy.gd" id="2_nm8pj"]
+[ext_resource type="Texture2D" uid="uid://bgibqr3jdo56h" path="res://assets/Enemies/Sprites/enemy_sprites.png" id="3_sqe7h"]
+
+[sub_resource type="Animation" id="Animation_6kmsc"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rtwcy"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.556863), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkqa5"]
+_data = {
+"RESET": SubResource("Animation_6kmsc"),
+"death": SubResource("Animation_rtwcy")
+}
+
+[node name="Enemy" instance=ExtResource("1_ffbtc")]
+script = ExtResource("2_nm8pj")
+damage = 1.0
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_sqe7h")
+hframes = 8
+vframes = 2
+
+[node name="CollisionShape2D" parent="AttackCollisionComponent" index="0"]
+visible = true
+
+[node name="body_collision" parent="BodyCollisionComponent" index="0"]
+visible = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+libraries = {
+"": SubResource("AnimationLibrary_fkqa5")
+}
+
+[node name="Bullets" type="Node" parent="." index="8"]
+
+[node name="TimerShots" type="Timer" parent="." index="9"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="TimerShots" to="." method="_on_timer_shots_timeout"]

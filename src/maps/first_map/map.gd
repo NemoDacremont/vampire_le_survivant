@@ -5,6 +5,10 @@ const DEFAULT_MAX_HP_PLAYER: float = 5
 
 @onready var _Enemy = load("res://src/enemies/enemy.tscn")
 @onready var _Little_Enemy = load("res://src/enemies/little_enemy.tscn")
+@onready var _Fast_Enemy = load("res://src/enemies/fast_enemy.tscn")
+@onready var _Shooting_Enemy = load("res://src/enemies/shooting_enemy.tscn")
+@onready var _Mini_Enemy = load("res://src/enemies/mini_enemy.tscn")
+
 
 var _Enemies: Array[Resource]
 var _player: Node2D
@@ -17,6 +21,15 @@ func _ready() -> void:
 
 	_Enemies.append(_Enemy)
 	_Enemies.append(_Little_Enemy)
+	_Enemies.append(_Little_Enemy)
+	_Enemies.append(_Little_Enemy)
+	_Enemies.append(_Little_Enemy)
+	_Enemies.append(_Little_Enemy)
+	_Enemies.append(_Little_Enemy)
+	_Enemies.append(_Mini_Enemy)
+	_Enemies.append(_Mini_Enemy)
+	_Enemies.append(_Shooting_Enemy)
+	_Enemies.append(_Fast_Enemy)
 	
 	_player = $Player
 	_player.death.connect(start_game)
@@ -60,7 +73,7 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 
 
 func randomEnemy() -> int:
-	return 1
+	return random.randi_range(1, 10)
 
 
 func get_nearest_enemy(pos: Vector2) -> Vector2:
