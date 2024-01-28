@@ -185,4 +185,4 @@ func fibonacci(n):
 		k = j
 		j = i + j
 		i = k
-	return i
+	return n ** 2

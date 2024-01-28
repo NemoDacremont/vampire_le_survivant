@@ -36,7 +36,7 @@ var is_boss = false
 var boss: Enemy
 
 const BOSS_SPAWN_TIME: float = 300
-const MAX_HP: float = 35
+const MAX_HP: float = 80
 
 
 func _ready() -> void:
@@ -159,7 +159,7 @@ func _process(_delta):
 	if not is_boss and $TimerHUD.get_time() == 300:
 		start_boss()
 	
-	spawn_rate = 1. / (max($TimerHUD.get_time(), 1.) ** 2)
+	spawn_rate = min(0.1, 1. / (max($TimerHUD.get_time(), 1.) ** 2))
 	#print(spawn_rate)
 	
 	if is_intro_over:

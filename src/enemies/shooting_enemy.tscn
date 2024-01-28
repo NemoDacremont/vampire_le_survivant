@@ -100,6 +100,9 @@ libraries = {
 "": SubResource("AnimationLibrary_fkqa5")
 }
 
+[node name="HealthBar" parent="." index="7"]
+offset_display = Vector2(0, -30)
+
 [node name="Bullets" type="Node" parent="." index="8"]
 
 [node name="TimerShots" type="Timer" parent="." index="9"]

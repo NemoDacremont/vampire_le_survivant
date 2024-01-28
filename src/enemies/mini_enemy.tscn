@@ -112,3 +112,6 @@ shape = SubResource("RectangleShape2D_gy443")
 libraries = {
 "": SubResource("AnimationLibrary_fkqa5")
 }
+
+[node name="HealthBar" parent="." index="7"]
+offset_display = Vector2(0, -30)
