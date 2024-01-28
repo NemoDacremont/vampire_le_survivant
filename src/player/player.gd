@@ -15,6 +15,7 @@ var new_fireball: Fireball
 var xp: float
 var level: int = 1
 var xp_required: float = 1
+const DEFAULT_XP_REQUIRED: float = 1
 @onready var MAX_LEVEL: int = Levelling.max_levels_reached()
 
 var direction: Vector2 = Vector2.ZERO
@@ -43,6 +44,7 @@ func init(context: Node2D, spawn_position: Vector2, hp: float):
 	
 	$SegwaySprite.visible = true
 	xp = 0
+	xp_required = DEFAULT_XP_REQUIRED
 	level = 1
 	$HealthComponent.init(hp)
 	$HealthBar.init(hp, $HealthComponent)
@@ -121,10 +123,12 @@ func _on_health_component_health_lost(new_hps: float):
 
 func give_xp(xp_given: float):
 	xp += xp_given
-	while (xp >= xp_required):
+	if (xp >= xp_required):
 		level += 1
 		xp = xp - xp_required
 		level_up()
+	if (xp > xp_required):
+		give_xp(0.)
 
 
 func level_up():

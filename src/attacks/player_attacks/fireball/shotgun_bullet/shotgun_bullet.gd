@@ -9,11 +9,6 @@ func _ready():
 	sprite_node.rotation = theta + PI / 2
 	collision_shape.rotation = theta + PI / 2
 
-
-func init(spawn_position, direction, damage, speed, max_distance = 1000.0):
-	super(spawn_position, direction, damage, speed, max_distance)
-
-
 func _physics_process(delta):
 	_velocity = _speed * _direction * 0.5
 
