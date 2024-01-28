@@ -11,9 +11,11 @@ const DEFAULT_MAX_HP_PLAYER: float = 5
 
 
 var _Enemies: Array[Resource]
-var _player: Node2D
+var _player: Player
 var spawn_rate: float
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
+
+var is_intro_over = false
 
 
 func _ready() -> void:
@@ -21,22 +23,38 @@ func _ready() -> void:
 
 	_Enemies.append(_Enemy)
 	_Enemies.append(_Little_Enemy)
-	_Enemies.append(_Little_Enemy)
-	_Enemies.append(_Little_Enemy)
-	_Enemies.append(_Little_Enemy)
-	_Enemies.append(_Little_Enemy)
-	_Enemies.append(_Little_Enemy)
-	_Enemies.append(_Mini_Enemy)
-	_Enemies.append(_Mini_Enemy)
-	_Enemies.append(_Shooting_Enemy)
-	_Enemies.append(_Fast_Enemy)
-	
+
 	_player = $Player
 	_player.death.connect(start_game)
+	_player.choose_augment.connect(choose_augment)
+
+	start_intro()
+
+
+func start_intro():
+	print("START INTRO")
+	set_up_player()
+	$Camera.zoom = Vector2(3.0, 3.0)
+	$Background.call_deferred("init", get_player_position())
+	$Camera.track($Intro/CameraPosition)
+	# $Camera.
+
+	var enemy = $Intro/Enemy
+	enemy.init($Intro/EnemyTarget, $Intro/EnemySpawn.position, 0, 1)
+	enemy.death.connect(end_intro)
+
 	
-	$LevelUpMenu.connect_hud_to_player(_player, "choose_augment")
-	
-	start_game()
+
+func end_intro(_no_xp):
+	# show_hud()
+	# $Camera.zoom = Vector2(1.5, 1.5)
+	$Camera.track(_player)
+	create_tween().tween_property($Camera, "zoom", Vector2(1.5, 1.5), 0.5).set_ease(Tween.EASE_IN)
+
+	print("END INTRO!")
+	$TimerHUD.init()
+	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
+	$Timers/SpawnEnemyTimer.start()
 
 
 func start_game() -> void:

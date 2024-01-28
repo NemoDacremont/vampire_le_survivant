@@ -6,7 +6,8 @@ var time_passed: int
 func init():
 	time_passed = 0
 	label.text = "00 : 00"
-	
+	$Timer.start()
+
 func get_time() -> int:
 	return time_passed
 

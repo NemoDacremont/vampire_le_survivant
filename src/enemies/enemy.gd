@@ -28,6 +28,10 @@ func _physics_process(_delta) -> void:
 		_movement_direction = _target.position - position
 		_movement_direction = _movement_direction.normalized()
 
+		if (_target.position.distance_to(position) < 0.5):
+			_movement_direction = Vector2.ZERO
+
+
 		velocity = ENEMY_DEFAULT_VELOCITY * _movement_direction
 
 		move_and_slide()
@@ -39,4 +43,5 @@ func _process(_delta) -> void:
 
 
 func _on_health_component_death():
+	emit_signal("death", 0)
 	queue_free()

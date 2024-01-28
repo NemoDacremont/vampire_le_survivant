@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcdju00xq0w1d"]
+[gd_scene load_steps=9 format=3 uid="uid://dcdju00xq0w1d"]
 
 [ext_resource type="Script" path="res://src/maps/first_map/map.gd" id="1_xx1c6"]
 [ext_resource type="Script" path="res://src/maps/first_map/camera.gd" id="2_ayhjx"]
 [ext_resource type="PackedScene" uid="uid://o4hyy68u331l" path="res://src/player/player.tscn" id="4_37owa"]
 [ext_resource type="PackedScene" uid="uid://dy6fhyrhagrxl" path="res://src/maps/background.tscn" id="4_pxwlf"]
 [ext_resource type="PackedScene" uid="uid://dr83jcyymig4m" path="res://src/HUD/health_hud.tscn" id="5_woeoy"]
-[ext_resource type="PackedScene" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
-[ext_resource type="PackedScene" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
+[ext_resource type="PackedScene" uid="uid://duhbars45r78x" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
+[ext_resource type="PackedScene" uid="uid://ckqxnu87mipht" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
+[ext_resource type="PackedScene" uid="uid://dxdysqo40t3gr" path="res://src/enemies/little_enemy.tscn" id="8_npv3b"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xx1c6")
@@ -14,6 +15,7 @@ script = ExtResource("1_xx1c6")
 [node name="Background" parent="." instance=ExtResource("4_pxwlf")]
 
 [node name="Camera" type="Camera2D" parent="."]
+position = Vector2(140, 0)
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 script = ExtResource("2_ayhjx")
@@ -37,5 +39,19 @@ wait_time = 0.2
 [node name="LevelUpMenu" parent="." instance=ExtResource("6_vus68")]
 process_mode = 2
 layer = 6
+
+[node name="Intro" type="Node" parent="."]
+
+[node name="EnemyTarget" type="Marker2D" parent="Intro"]
+position = Vector2(50, 0)
+
+[node name="Enemy" parent="Intro" instance=ExtResource("8_npv3b")]
+position = Vector2(480, -7)
+
+[node name="EnemySpawn" type="Marker2D" parent="Intro"]
+position = Vector2(500, 0)
+
+[node name="CameraPosition" type="Marker2D" parent="Intro"]
+position = Vector2(140, 0)
 
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
