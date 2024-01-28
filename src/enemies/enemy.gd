@@ -4,6 +4,7 @@ class_name Enemy
 signal death(xp_given: float)
 signal hit(dmg: int)
 
+var xp: float
 
 static var _target: Node2D
 
@@ -16,8 +17,9 @@ var is_alive: bool = true
 # var _velocity: Vector2
 
 
-func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> void:
+func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float, _xp: float = 1) -> void:
 	_target = target
+	xp = _xp
 	position = spawn_position
 	$HealthComponent.init(hp)
 	$HealthBar.init(hp, $HealthComponent)

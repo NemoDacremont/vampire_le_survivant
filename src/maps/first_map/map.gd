@@ -215,7 +215,7 @@ func scaled_hp() -> float:
 
 func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
-	enemy.init(_player, spawn_position, 0, scaled_hp())
+	enemy.init(_player, spawn_position, 0, scaled_hp(), max(sqrt($TimerHUD.get_time()), 1))
 	enemy.position = spawn_position
 	enemy.death.connect(_player.give_xp)
 

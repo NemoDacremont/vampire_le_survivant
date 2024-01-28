@@ -25,8 +25,8 @@ func attack():
 
 
 
-func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> void:
-	super(target, spawn_position, speed, hp)
+func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float, _xp: float = 1) -> void:
+	super(target, spawn_position, speed, hp, _xp)
 
 	$AttackTimer.timeout.connect(attack)
 

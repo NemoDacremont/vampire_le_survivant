@@ -4,11 +4,9 @@ extends Enemy
 var SPRITE_MAX_NUMBER: int = 8
 var areas: Array[CollisionShape2D] = [$enemy_collision, $AttackCollisionComponent/CollisionShape2D, $BodyCollisionComponent/body_collision]
 
-var xp: float = 1
 
-
-func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> void:
-	super(target, spawn_position, speed, hp)
+func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float, _xp: float = 1) -> void:
+	super(target, spawn_position, speed, hp, _xp)
 	$Sprite.frame = randi() % SPRITE_MAX_NUMBER
 
 func _physics_process(_delta) -> void:

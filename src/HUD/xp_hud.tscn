@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbvciju6ohga3"]
+[gd_scene load_steps=5 format=3 uid="uid://dbvciju6ohga3"]
 
 [ext_resource type="Script" path="res://src/HUD/xp_hud.gd" id="1_fifg3"]
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="2_l8de6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mk66i"]
 bg_color = Color(0, 0, 0, 0.796078)
@@ -34,7 +35,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_box0j")
 show_percentage = false
 
 [node name="level" type="Label" parent="."]
-offset_left = 915.0
-offset_top = 7.0
-offset_right = 955.0
-offset_bottom = 30.0
+offset_left = 927.0
+offset_top = 10.0
+offset_right = 967.0
+offset_bottom = 33.0
+theme_override_fonts/font = ExtResource("2_l8de6")
