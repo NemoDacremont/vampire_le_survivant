@@ -159,7 +159,7 @@ func _process(_delta):
 	if not is_boss and $TimerHUD.get_time() == 300:
 		start_boss()
 	
-	spawn_rate = 1. / max($TimerHUD.get_time(), 1.)
+	spawn_rate = 1. / (max($TimerHUD.get_time(), 1.) ** 2)
 	#print(spawn_rate)
 	
 	if is_intro_over:
