@@ -55,10 +55,15 @@ func _ready() -> void:
 func start_boss():
 	$Timers/SpawnEnemyTimer.stop()
 
+	var length = random.randi_range(200, 400)
+	var angle = random.randf_range(0, 2 * PI)
+	var spawn_pos = _player.position + Vector2(cos(angle), sin(angle)) * length
+
 	boss = _Boss.instantiate()
 
-	boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
+	boss.init(spawn_pos, spawn_pos, 0, 10000)
 	boss.death.connect(start_outro)
+	is_boss = true
 
 
 
@@ -138,9 +143,6 @@ func end_intro(_no_xp):
 	$xpHUD.refresh_xp(0, 1, 1)
 
 
-	$Timers/BossTimer.start()
-	$Timers/BossTimer.timeout.connect(start_boss)
-
 
 func intro__attack():
 	var weapons: Array[Node] = _player.get_node("Weapons").get_children()
@@ -154,6 +156,8 @@ func intro__attack():
 
 
 func _process(_delta):
+	if not is_boss and $TimerHUD.get_time() == 300:
+		start_boss()
 	
 	spawn_rate = 1. / max($TimerHUD.get_time(), 1.)
 	#print(spawn_rate)

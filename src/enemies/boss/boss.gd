@@ -8,7 +8,7 @@ var _Fireball: Resource = preload("res://src/enemies/boss/boss_bullets.tscn")
 var _Text: Resource = preload("res://src/enemies/boss/boss_text.tscn")
 
 var shoot_direction: Vector2
-var damage: float = 0
+var damage: float = 20
 
 
 func attack():
