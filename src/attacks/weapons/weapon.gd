@@ -72,7 +72,9 @@ func shoot():
 
 	preshot_timer.start()
 	await preshot_timer.timeout
-
+	
+	#nearest_enemy_pos = Context.get_nearest_enemy(position)
+	shoot_direction = (nearest_enemy_pos - position).normalized()
 	bullet.init(position, shoot_direction, damage, 500, piercing_power)
 	bullets_node.add_child(bullet)
 
