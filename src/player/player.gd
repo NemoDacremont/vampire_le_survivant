@@ -123,5 +123,7 @@ func aumgent_weapon(choice: int) -> void:
 	if new_stats[-1] == 0:
 		print("weapon enabled : "+str(weapon))
 		weapons_enabled[weapon] = true
+		new_stats.erase(0)
+		$Weapons.get_child(weapon).update_properties(new_stats)
 	else:
 		$Weapons.get_child(weapon).update_properties(new_stats)

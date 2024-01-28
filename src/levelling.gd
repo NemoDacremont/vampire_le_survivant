@@ -6,11 +6,11 @@ enum {FIRE_RATE=0, DAMAGE, PIERCING, NUMBER, SPRAY}
 var choice: Array[int] = [0, 0, 0]
 
 var scaling: Array = [\
-[[1, 5, 1, 0], [1, 10, 1], [1.25, 10, 1], [1.25, 15, 1], [1.75, 15, 1], [1.75, 15, 3], [5, 100, 10]],\
-[[4, 3, 1, 0], [5, 3, 1], [5, 5, 1], [5, 5, 4], [8, 5, 10], [10, 15, 10], [20, 50, 10]],\
-[[0.8, 5, 1, 3, PI / 6, 0], [0.8, 10, 1, 3, PI / 6], [0.8, 15, 3, 4, PI / 6], [0.6, 20, 5, 5, PI / 6], \
-[0.5, 25, 5, 5, PI / 3], [0.75, 30, 5, 6, PI / 3], [2, 35, 10, 90, 2 * PI]],\
-[[0.4, 40, -1, 0], [0.5, 50, -1], [0.6, 55, -1], [0.6, 100, -1], [0.8, 120, -1], [1, 150, -1], [3, 1000, -1]]\
+[[1., 5., 1, 0], [1., 10., 1], [1.25, 10., 1], [1.25, 15., 1], [1.75, 15., 1], [1.75, 15., 3], [5., 100., 10]],\
+[[4., 3., 1, 0], [5., 3., 1], [5., 5., 1], [5., 5., 4], [8., 5., 10], [10., 15., 10], [20., 50., 10]],\
+[[0.8, 5., 1, 3., PI / 6, 0], [0.8, 10., 1, 3., PI / 6], [0.8, 15., 3, 4., PI / 6], [0.6, 20., 5, 5., PI / 6], \
+[0.5, 25., 5, 5., PI / 3], [0.75, 30., 5, 6., PI / 3], [2., 35., 10, 90., 2 * PI]],\
+[[0.4, 40., -1, 0], [0.5, 50., -1], [0.6, 55, -1], [0.6, 100., -1], [0.8, 120., -1], [1., 150., -1], [3., 1000., -1]]\
 ]
 
 #Level 0 <=> Player hasn't the weapon
@@ -33,27 +33,25 @@ func _ready():
 			stats_changed = 0
 			for k in range(min(4, len(scaling[i][j]))):
 				if scaling[i][j][k] < scaling[i][j - 1][k]:
-					text += "Decrease "+stat_to_string(k)+": "+str(scaling[i][j - 1][k])+" -> [color=red]"+str(scaling[i][j][k])+"[/color]"
+					text += "Decrease "+stat_to_string(k)+": "+str(scaling[i][j - 1][k])+" -> [color=red]"+str(scaling[i][j][k])+"[/color]   "
 					stats_changed += 1
 				if scaling[i][j][k] > scaling[i][j - 1][k]:
-					text += "Increase "+stat_to_string(k)+": "+str(scaling[i][j - 1][k])+" -> [color=green]"+str(scaling[i][j][k])+"[/color]"
+					text += "Increase "+stat_to_string(k)+": "+str(scaling[i][j - 1][k])+" -> [color=green]"+str(scaling[i][j][k])+"[/color]   "
 					stats_changed += 1
 				if stats_changed == 2:
 					text += "\n"
-				if stats_changed >= 1:
-					text += "\t"
 			level_description[i].append(text)
 
 func weapon_to_string(weapon: int) -> String:
 	match weapon:
 		PISTOL:
-			return "[color=blue]Pistol[/color]"
+			return "[color=purple]Pistol[/color]"
 		ASSAULT:
-			return "[color=blue]Assault[/color]"
+			return "[color=purple]Assault[/color]"
 		SHOTGUN:
-			return "[color=blue]Shotgun[/color]"
+			return "[color=purple]Shotgun[/color]"
 		SNIPER:
-			return "[color=blue]Sniper[/color]"
+			return "[color=purple]Sniper[/color]"
 		_:
 			return "flop"
 
