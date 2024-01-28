@@ -1,7 +1,10 @@
 extends Weapon
+class_name ShotGun
 
 var bullet_number: float = 3
 var spray: float = PI / 6
+var speed: float = 500
+
 
 func init(parent_position: Node):
 	super(parent_position)
@@ -21,7 +24,6 @@ func force_shoot(direction: Vector2):
 		true_shoot(- spray + (i / bullet_number) * spray)
 
 
-
 func true_shoot(angle : float):
 	var bullet: Fireball = _Fireball.instantiate()
 
@@ -33,7 +35,7 @@ func true_shoot(angle : float):
 	shoot_direction = Vector2(cos(angle + shoot_angle), sin(angle + shoot_angle)).normalized()
 
 
-	bullet.init(position, shoot_direction, damage, 500, piercing_power)
+	bullet.init(position, shoot_direction, damage, speed, piercing_power)
 
 	bullets_node.add_child(bullet)
 

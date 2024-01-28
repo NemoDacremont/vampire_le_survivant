@@ -19,6 +19,9 @@ const DEFAULT_MAX_HP_PLAYER: float = 500
 	_Mini_Enemy
 ]
 
+var min_range_spawn: int = 500
+var max_range_spawn: int = 600
+
 var _player: Player
 var spawn_rate: float = 1
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -29,6 +32,8 @@ var intro__enemy_arrived = false
 
 var is_outro = false
 var is_boss = false
+
+var boss: Enemy
 
 
 func _ready() -> void:
@@ -45,13 +50,40 @@ func _ready() -> void:
 
 
 func start_boss():
-	pass
+	$Timers/SpawnEnemyTimer.stop()
+
+	boss = _Boss.instantiate()
+
+	boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
+	boss.death.connect(start_outro)
+
+	$Enemies.add_child(boss)
 
 
 func start_outro():
 	is_outro = true
 	_player.start_outro()
-	print("OUTRO:")
+
+	$Camera.track(boss)
+	create_tween().tween_property($Camera, "zoom", Vector2(.5, .5), 0.5).set_ease(Tween.EASE_IN)
+
+	min_range_spawn = 200
+	max_range_spawn = 300
+
+	for i in range(30):
+		for j in range(10):
+			spawn_enemy(_Enemies[randomEnemy()], randomSpawn(boss.position))
+
+		$Timers/SpawnEnemyTimerOutro.start()
+		await $Timers/SpawnEnemyTimerOutro.timeout
+
+	$Timers/TimerOutro.start()
+	await $Timers/TimerOutro.timeout
+
+	
+
+
+
 
 
 func start_intro():
@@ -194,8 +226,8 @@ func get_nearest_enemy(pos: Vector2) -> Vector2:
 
 
 func randomSpawn(origin: Vector2) -> Vector2:
-	var length = random.randi_range(500, 600)
-	var angle = random.randf_range(0, 2*PI)
+	var length = random.randi_range(min_range_spawn, max_range_spawn)
+	var angle = random.randf_range(0, 2 * PI)
 
 	return origin + Vector2(cos(angle), sin(angle)) * length
 
@@ -206,3 +238,4 @@ func get_player_position() -> Vector2:
 
 func _on_spawn_enemy_timer_timeout():
 	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(_player.position))
+

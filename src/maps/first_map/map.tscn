@@ -34,6 +34,14 @@ scale = Vector2(0.75, 0.75)
 process_callback = 0
 wait_time = 0.2
 
+[node name="SpawnEnemyTimerOutro" type="Timer" parent="Timers"]
+process_callback = 0
+wait_time = 0.1
+one_shot = true
+
+[node name="TimerOutro" type="Timer" parent="Timers"]
+wait_time = 3.0
+
 [node name="HUD" parent="." instance=ExtResource("5_woeoy")]
 
 [node name="TimerHUD" parent="." instance=ExtResource("6_wcvya")]
