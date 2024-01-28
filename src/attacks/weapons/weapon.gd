@@ -26,6 +26,7 @@ var shoot_direction: Vector2 = Vector2.RIGHT
 var nearest_enemy_pos: Vector2 = Vector2.ZERO
 
 @export var damage: float = 1
+var piercing_power: float = 1
 
 # parent_position is a node, the weapon will follow it
 func init(parent_position: Node):
@@ -57,7 +58,7 @@ func force_shoot(direction: Vector2):
 	preshot_timer.start()
 	await preshot_timer.timeout
 
-	bullet.init(position, shoot_direction, damage, 500)
+	bullet.init(position, shoot_direction, damage, 500, piercing_power)
 	bullets_node.add_child(bullet)
 
 
@@ -72,7 +73,7 @@ func shoot():
 	preshot_timer.start()
 	await preshot_timer.timeout
 
-	bullet.init(position, shoot_direction, damage, 500)
+	bullet.init(position, shoot_direction, damage, 500, piercing_power)
 	bullets_node.add_child(bullet)
 
 
@@ -92,4 +93,5 @@ func disable_weapon():
 func update_properties(stats: Array) -> void:
 	timer_node.wait_time = 1 / stats[FIRE_RATE]
 	damage = stats[DAMAGE]
+	piercing_power = stats[PIERCING]
 	

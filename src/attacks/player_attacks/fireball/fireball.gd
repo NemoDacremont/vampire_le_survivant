@@ -11,7 +11,7 @@ var _speed: float
 
 var _piercing_power: float
 
-func init(spawn_position: Vector2, direction: Vector2, damage: float, speed: float, max_distance: float = 1000.0, piercing_power: float = 1) -> void:
+func init(spawn_position: Vector2, direction: Vector2, damage: float, speed: float, piercing_power: int, max_distance: float = 1000.0) -> void:
 	_direction = direction
 	_speed = speed
 	position = spawn_position
