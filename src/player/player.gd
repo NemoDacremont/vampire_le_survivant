@@ -125,8 +125,6 @@ func give_xp(xp_given: float):
 		level += 1
 		xp = xp - xp_required
 		level_up()
-	if (xp > xp_required):
-		give_xp(0.)
 
 
 func level_up():
@@ -148,3 +146,5 @@ func aumgent_weapon(choice: int) -> void:
 		$Weapons.get_child(weapon).update_properties(new_stats)
 	else:
 		$Weapons.get_child(weapon).update_properties(new_stats)
+	if (xp > xp_required):
+		give_xp(0.)
