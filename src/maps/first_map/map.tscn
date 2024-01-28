@@ -74,4 +74,7 @@ vertical_alignment = 1
 wait_time = 2.0
 one_shot = true
 
+[node name="BossSpawnTmp" type="Marker2D" parent="."]
+position = Vector2(193, -217)
+
 [connection signal="timeout" from="Timers/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]

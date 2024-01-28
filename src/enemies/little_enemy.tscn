@@ -97,7 +97,7 @@ collision_mask = 0
 [node name="body_collision" parent="BodyCollisionComponent" index="0"]
 visible = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_fkqa5")
 }

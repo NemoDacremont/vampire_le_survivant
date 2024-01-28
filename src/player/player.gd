@@ -66,6 +66,10 @@ func reset_weapons():
 	weapons_enabled[0] = true
 	
 
+func start_outro():
+	is_in_intro = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	if is_in_intro:

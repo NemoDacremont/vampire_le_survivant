@@ -18,7 +18,7 @@ var player_pos: Vector2 = Vector2.RIGHT
 func init(target: Node2D, spawn_position: Vector2, speed: float, hp: float) -> void:
 	super(target, spawn_position, speed, hp)
 	$Sprite.frame = randi() % SPRITE_MAX_NUMBER
-	
+
 func _physics_process(_delta) -> void:
 	if is_alive:
 		_movement_direction = _target.position - position
