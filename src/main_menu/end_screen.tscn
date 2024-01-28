@@ -1,0 +1,202 @@
+[gd_scene load_steps=22 format=3 uid="uid://shse21q0qd56"]
+
+[ext_resource type="Script" path="res://src/main_menu/end_screen.gd" id="1_5yap5"]
+[ext_resource type="Texture2D" uid="uid://vubqu2w4ddoj" path="res://assets/End_screen.png" id="2_6hbiq"]
+[ext_resource type="Texture2D" uid="uid://b4y3d73uykjbq" path="res://assets/Martial Hero/Sprites/Attack1.png" id="4_kk8ot"]
+[ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="5_qmg8a"]
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="6_mg7ek"]
+[ext_resource type="Texture2D" uid="uid://djsncjlrguwx2" path="res://assets/Martial Hero/Sprites/segwaytropcool.png" id="6_qubmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n3m0"]
+atlas = ExtResource("4_kk8ot")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnqry"]
+atlas = ExtResource("4_kk8ot")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aulsd"]
+atlas = ExtResource("4_kk8ot")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb5wc"]
+atlas = ExtResource("4_kk8ot")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deq0a"]
+atlas = ExtResource("4_kk8ot")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mocu8"]
+atlas = ExtResource("4_kk8ot")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t706j"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtidt"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppbex"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oap6f"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcqkc"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlud4"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4wcu"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(1200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tky2"]
+atlas = ExtResource("5_qmg8a")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f8ea3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n3m0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnqry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aulsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb5wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deq0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mocu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb5wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aulsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnqry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n3m0")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t706j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtidt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppbex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oap6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcqkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlud4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4wcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tky2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="EndScreen" type="CanvasLayer"]
+script = ExtResource("1_5yap5")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.224, 289.224)
+scale = Vector2(1.0487, 1.0487)
+texture = ExtResource("2_6hbiq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1021.5, 287.5)
+scale = Vector2(2.335, 2.335)
+sprite_frames = SubResource("SpriteFrames_f8ea3")
+animation = &"attack"
+autoplay = "default"
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1024.5, 258.5)
+scale = Vector2(0.129666, 0.129666)
+texture = ExtResource("6_qubmt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 61.0
+offset_top = 62.0
+offset_right = 1136.0
+offset_bottom = 216.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_mg7ek")
+theme_override_font_sizes/normal_font_size = 100
+text = "CONGRATULATIONS !!!"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 66.0
+offset_top = 228.0
+offset_right = 955.0
+offset_bottom = 404.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("6_mg7ek")
+theme_override_font_sizes/normal_font_size = 40
+text = "You made everyone very happy, and the samurai is now happy too ! He now doesnt have to use his guns anymore and can ride his segway all day long !"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+offset_left = 134.0
+offset_top = 459.0
+offset_right = 1023.0
+offset_bottom = 528.0
+
+[node name="Quit" type="Button" parent="VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.890196, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("6_mg7ek")
+theme_override_font_sizes/font_size = 60
+text = "Main Menu"
+
+[connection signal="pressed" from="VBoxContainer3/Quit" to="." method="_on_quit_pressed"]
