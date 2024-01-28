@@ -38,7 +38,7 @@ func _ready() -> void:
 	$LevelUpMenu.connect_hud_to_player(_player, "choose_augment")
 	_player.connect_player_to_hud($LevelUpMenu, "augment_chosen")
 	$xpHUD.connect_hud_to_player(_player, "get_xp")
-
+	$xpHUD.visible = false
 	start_intro()
 
 
@@ -97,6 +97,9 @@ func end_intro(_no_xp):
 	$TimerHUD.init()
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	# $Timers/SpawnEnemyTimer.start()
+	
+	$xpHUD.visible = true
+	$xpHUD.refresh_xp(0, 1, 1)
 
 
 func intro__attack():
@@ -133,6 +136,7 @@ func start_game() -> void:
 	$Background.init(get_player_position())
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
+	$xpHUD.refresh_xp(0, 1, 1)
 
 
 func game_over(player: Node2D) -> void:
