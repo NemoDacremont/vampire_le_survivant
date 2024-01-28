@@ -10,7 +10,13 @@ const DEFAULT_MAX_HP_PLAYER: float = 5
 @onready var _Mini_Enemy = load("res://src/enemies/mini_enemy.tscn")
 
 
-var _Enemies: Array[Resource]
+@onready var _Enemies: Array[Resource] = [
+	_Little_Enemy,
+	_Fast_Enemy,
+	_Shooting_Enemy,
+	_Mini_Enemy
+]
+
 var _player: Player
 var spawn_rate: float
 var random: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -26,7 +32,7 @@ func _ready() -> void:
 
 	_player = $Player
 	_player.death.connect(start_game)
-	_player.choose_augment.connect(choose_augment)
+	$LevelUpMenu.connect_hud_to_player(_player, "choose_augment")
 
 	start_intro()
 
@@ -91,7 +97,7 @@ func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 
 
 func randomEnemy() -> int:
-	return random.randi_range(1, 10)
+	return random.randi_range(0, len(_Enemies) - 1)
 
 
 func get_nearest_enemy(pos: Vector2) -> Vector2:
