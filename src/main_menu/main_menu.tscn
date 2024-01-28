@@ -7,7 +7,7 @@
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nftkn"]
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(600, 0, 0)
+emission_shape_offset = Vector3(600, -20, 0)
 emission_shape = 3
 emission_box_extents = Vector3(700, 10, 0)
 angle_max = 242.7
