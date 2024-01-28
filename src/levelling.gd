@@ -84,8 +84,8 @@ func choice_to_weapon(choice_index: int) -> int:
 
 func level_up_weapon(weapon: int) -> Array:
 	if weapons_levels[weapon] < weapons_max_levels[weapon]:
-		print("new stats:")
-		print(scaling[weapon][weapons_levels[weapon]])
+		#print("new stats:")
+		#print(scaling[weapon][weapons_levels[weapon]])
 		weapons_levels[weapon] += 1
 		return scaling[weapon][weapons_levels[weapon] - 1]
 	else:
@@ -102,9 +102,6 @@ func init():
 		weapons_levels[i] = 0
 
 func new_level() -> Array[String]:
-	print("levels/maxlevels")
-	print(weapons_levels)
-	print(weapons_max_levels)
 	var weapons_available: Array
 	for i in range(NUMBER_OF_WEAPONS):
 		if weapons_levels[i] < weapons_max_levels[i]:
@@ -113,7 +110,7 @@ func new_level() -> Array[String]:
 	while len(weapons_available) > 3:
 		delete_index = randi() % len(weapons_available)
 		weapons_available.remove_at(delete_index)
-		print(weapons_available)
+		#print(weapons_available)
 	var descriptions: Array[String]
 	for i in range(len(weapons_available)):
 		descriptions.append(next_level_description(weapons_available[i]))

@@ -34,8 +34,6 @@ func _ready():
 	$Weapons/AssaultRiffle.init(self)
 	$Weapons/Shotgun.init(self)
 	$Weapons/Sniper.init(self)
-	
-	print(weapons)
 
 # Context should be the map
 func init(context: Node2D, spawn_position: Vector2, hp: float):
@@ -117,7 +115,7 @@ func _on_health_component_death():
 
 
 func _on_health_component_health_lost(new_hps: float):
-	print_hp(new_hps)
+	#print_hp(new_hps)
 	emit_signal("hit")
 
 
@@ -142,11 +140,10 @@ func connect_player_to_hud(menu: Node, menu_signal: String) -> void:
 	menu.connect(menu_signal, aumgent_weapon)
 
 func aumgent_weapon(choice: int) -> void:
-	print("player choice : "+str(choice))
+	#print("player choice : "+str(choice))
 	var weapon = Levelling.choice_to_weapon(choice)
 	var new_stats: Array = Levelling.level_up_weapon(weapon)
 	if not weapons_enabled[weapon]:
-		print("weapon enabled : "+str(weapon))
 		weapons_enabled[weapon] = true
 		$Weapons.get_child(weapon).update_properties(new_stats)
 	else:

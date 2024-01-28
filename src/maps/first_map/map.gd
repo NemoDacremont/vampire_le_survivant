@@ -38,7 +38,7 @@ func _ready() -> void:
 
 
 func start_intro():
-	print("START INTRO")
+	#print("START INTRO")
 	set_up_player()
 	$Camera.zoom = Vector2(3.0, 3.0)
 	$Background.call_deferred("init", get_player_position())
@@ -72,7 +72,7 @@ func end_intro(_no_xp):
 	create_tween().tween_property($Intro/Label, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.5).set_ease(Tween.EASE_IN)
 	_player.post_intro()
 
-	print("END INTRO!")
+	#print("END INTRO!")
 	$TimerHUD.init()
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()

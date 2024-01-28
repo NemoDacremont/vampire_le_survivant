@@ -35,6 +35,6 @@ func _process(_delta):
 
 func _on_collision_component_collision(_node: CollisionComponent):
 	_piercing_power -= 1
-	if _piercing_power <= 0:
+	if _piercing_power == 0:
 		queue_free()
 

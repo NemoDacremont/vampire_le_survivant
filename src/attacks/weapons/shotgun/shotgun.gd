@@ -49,7 +49,6 @@ func _on_timer_shots_timeout():
 		sprite_node.play()
 
 func update_properties(stats: Array) -> void:
-	print(stats)
 	bullet_number = stats[NUMBER]
 	spray = stats[SPRAY]
 	super(stats)

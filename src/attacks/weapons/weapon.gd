@@ -90,7 +90,6 @@ func disable_weapon():
 
 
 func update_properties(stats: Array) -> void:
-	print("fire rate"+str(1. / stats[FIRE_RATE]))
 	timer_node.wait_time = 1 / stats[FIRE_RATE]
 	damage = stats[DAMAGE]
 	
