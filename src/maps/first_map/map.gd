@@ -138,8 +138,8 @@ func end_intro(_no_xp):
 	$xpHUD.refresh_xp(0, 1, 1)
 
 
-	$BossTimer.start()
-	$BossTimer.timeout.connect(start_boss())
+	$Timers/BossTimer.start()
+	$Timers/BossTimer.timeout.connect(start_boss)
 
 
 func intro__attack():

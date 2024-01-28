@@ -68,6 +68,8 @@ func reset_weapons():
 
 func start_outro():
 	is_in_intro = true
+	$BodyCollisionComponent.collision_layer = 0
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
