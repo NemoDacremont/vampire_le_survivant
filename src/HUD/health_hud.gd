@@ -7,8 +7,10 @@ var health_value: float
 	
 func init(max_player_health: float, healthComponent: Node) -> void:
 	position.y = offset_display.y
-	healthComponent.death.connect(disappear)
-	healthComponent.health_lost.connect(set_hp_bar)
+	if not healthComponent.death.is_connected(disappear):
+		healthComponent.death.connect(disappear)
+	if not healthComponent.health_lost.is_connected(set_hp_bar):
+		healthComponent.health_lost.connect(set_hp_bar)
 	max_health_bar_value = max_player_health
 	health_value = max_player_health
 	refresh_health_bar()
