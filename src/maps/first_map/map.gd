@@ -199,14 +199,18 @@ func set_up_enemies() -> void:
 	spawn_rate = DEFAULT_SPAWN_RATE
 
 func scaled_hp() -> float:
-	var time = $TimerHUD.get_time()
-	var hp_time = (1. - exp(1 - time / BOSS_SPAWN_TIME)) * MAX_HP
-	print(hp_time)
+	var time: float = $TimerHUD.get_time()
+	var hp_time = (1. - exp(- time / BOSS_SPAWN_TIME)) * MAX_HP
+	#print("hp")
+	#print(time / BOSS_SPAWN_TIME)
+	#print(exp(- time / BOSS_SPAWN_TIME))
+	#print(hp_time)
+	return max(int(hp_time), 1)
 	return max(hp_time + randi() % max(int(hp_time / 4.), 1), 1)
 
 func spawn_enemy(EnemyClass: Resource, spawn_position: Vector2) -> void:
 	var enemy = EnemyClass.instantiate()
-	enemy.init(_player, spawn_position, 0, 7)
+	enemy.init(_player, spawn_position, 0, scaled_hp())
 	enemy.position = spawn_position
 	enemy.death.connect(_player.give_xp)
 

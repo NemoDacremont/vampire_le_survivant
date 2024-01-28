@@ -137,7 +137,7 @@ func give_xp(xp_given: float):
 		level_up()
 
 func level_up():
-	print("level up "+str(level))
+	#print("level up "+str(level))
 	if level > MAX_LEVEL:
 		xp_required = 2**30
 	else:
