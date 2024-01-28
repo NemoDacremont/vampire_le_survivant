@@ -6,6 +6,9 @@ func set_context(map: Node2D):
 	_context = map
 
 
+func is_outro():
+	return _context.is_outro
+
 func get_player_position() -> Vector2:
 	if _context.get_player_position:
 		return _context.get_player_position()

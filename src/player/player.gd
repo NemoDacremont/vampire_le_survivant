@@ -127,6 +127,9 @@ func _on_health_component_health_lost(new_hps: float):
 
 
 func give_xp(xp_given: float):
+	if Context.is_outro():
+		return
+
 	xp += xp_given
 	emit_signal("get_xp", xp, xp_required, level)
 	if (xp >= xp_required) and augment_chosen:
@@ -136,6 +139,7 @@ func give_xp(xp_given: float):
 		xp_required = fibonacci(level)
 		level_up()
 
+
 func level_up():
 	print("level up "+str(level))
 	if level > MAX_LEVEL:
@@ -143,29 +147,37 @@ func level_up():
 	else:
 		emit_signal("choose_augment")
 
+
 func connect_player_to_hud(menu: Node, menu_signal: String) -> void:
 	menu.connect(menu_signal, aumgent_weapon)
+
 
 func aumgent_weapon(choice: int) -> void:
 	#print("player choice : "+str(choice))
 	var weapon = Levelling.choice_to_weapon(choice)
 	var new_stats: Array = Levelling.level_up_weapon(weapon)
+
 	if not weapons_enabled[weapon]:
 		weapons_enabled[weapon] = true
 		$Weapons.get_child(weapon).update_properties(new_stats)
+
 	else:
 		$Weapons.get_child(weapon).update_properties(new_stats)
+
 	augment_chosen = true
 	emit_signal("get_xp", xp, xp_required, level)
+
 	if (xp >= xp_required):
 		print(get_tree().paused)
 		print("give xp")
 		give_xp(0.)
 
+
 func fibonacci(n):
 	var i: int = 2
 	var j: int = 3
 	var k: int
+
 	for l in range(n):
 		k = j
 		j = i + j

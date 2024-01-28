@@ -60,7 +60,13 @@ func start_boss():
 	boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
 	boss.death.connect(start_outro)
 
+
+
 	$Enemies.add_child(boss)
+
+
+func spawn_enemy_outro():
+	spawn_enemy(_Enemies[randomEnemy()], randomSpawn(boss.position))
 
 
 func start_outro():
@@ -73,9 +79,10 @@ func start_outro():
 	min_range_spawn = 200
 	max_range_spawn = 300
 
+	print(boss)
 	for i in range(30):
 		for j in range(10):
-			spawn_enemy(_Enemies[randomEnemy()], randomSpawn(boss.position))
+			call_deferred("spawn_enemy_outro")
 
 		$Timers/SpawnEnemyTimerOutro.start()
 		await $Timers/SpawnEnemyTimerOutro.timeout
@@ -83,10 +90,7 @@ func start_outro():
 	$Timers/TimerOutro.start()
 	await $Timers/TimerOutro.timeout
 
-	
-
-
-
+	get_tree().change_scene_to_file("res://src/main_menu/end_screen.tscn")
 
 
 func start_intro():
@@ -126,20 +130,16 @@ func end_intro(_no_xp):
 	create_tween().tween_property($Intro/Label, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.5).set_ease(Tween.EASE_IN)
 	_player.post_intro()
 
-	#print("END INTRO!")
-	#var boss: Enemy = _Boss.instantiate()
-
-	#boss.init($BossSpawnTmp, $BossSpawnTmp.position, 0, 1)
-	#boss.death.connect(start_outro)
-
-	#$Enemies.add_child(boss)
-
 	$TimerHUD.init()
 	$Timers/SpawnEnemyTimer.wait_time = spawn_rate
 	$Timers/SpawnEnemyTimer.start()
-	
+
 	$xpHUD.visible = true
 	$xpHUD.refresh_xp(0, 1, 1)
+
+
+	$BossTimer.start()
+	$BossTimer.timeout.connect(start_boss())
 
 
 func intro__attack():
@@ -148,6 +148,7 @@ func intro__attack():
 	for weapon in weapons:
 		if weapon is Weapon:
 			weapon.sprite_node.visible = true
+			weapon.position = weapon.pos_offset * Vector2.RIGHT
 			weapon.sprite_node.rotation = 0
 			weapon.force_shoot(Vector2.RIGHT)
 
