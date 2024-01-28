@@ -4,7 +4,7 @@ var time_passed: int
 @onready var label: Node = $Label
 
 func init():
-	create_tween().tween_property($Label, "position:y", 0, 0.5).set_ease(Tween.EASE_IN)
+	create_tween().tween_property($Label, "position:y", 10, 0.5).set_ease(Tween.EASE_IN)
 	time_passed = 0
 	label.text = "00 : 00"
 	$Timer.start(0)

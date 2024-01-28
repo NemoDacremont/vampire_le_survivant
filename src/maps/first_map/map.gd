@@ -43,7 +43,8 @@ func start_intro():
 	$Camera.zoom = Vector2(3.0, 3.0)
 	$Background.call_deferred("init", get_player_position())
 	$Camera.track($Intro/CameraPosition)
-	$Intro/Label.label_settings.font_color = Color(1, 1, 1, 0)
+	$Intro/Label.set("theme_override_colors/font_color", Color(1, 1, 1, 0))
+	
 	_player.get_node("SegwaySprite").visible = false
 
 	var enemy = $Intro/Enemy
@@ -68,7 +69,7 @@ func end_intro(_no_xp):
 
 	$Camera.track(_player)
 	create_tween().tween_property($Camera, "zoom", Vector2(1.5, 1.5), 0.5).set_ease(Tween.EASE_IN)
-	create_tween().tween_property($Intro/Label, "label_settings:font_color", Color(1, 1, 1, 0), 0.5).set_ease(Tween.EASE_IN)
+	create_tween().tween_property($Intro/Label, "theme_override_colors/font_color", Color(1, 1, 1, 0), 0.5).set_ease(Tween.EASE_IN)
 	_player.post_intro()
 
 	print("END INTRO!")
@@ -92,7 +93,7 @@ func _process(_delta):
 		return
 
 	if intro__enemy_arrived:
-		if Input.is_action_just_pressed("segway") and intro__attack_timer.is_stopped():
+		if Input.is_action_just_pressed("segway") and intro__attack_timer.time_left == 0:
 			_player.get_node("AnimatedSprite2D").play("Attack")
 			intro__attack_timer.start()
 			intro__attack_timer.timeout.connect(intro__attack)
@@ -100,7 +101,7 @@ func _process(_delta):
 
 	elif $Intro/Enemy.velocity == Vector2.ZERO:
 		intro__enemy_arrived = true
-		create_tween().tween_property($Intro/Label, "label_settings:font_color", Color(1, 1, 1, 1), 0.5).set_ease(Tween.EASE_IN)
+		create_tween().tween_property($Intro/Label, "theme_override_colors/font_color", Color(1, 1, 1, 1), 0.5).set_ease(Tween.EASE_IN)
 
 
 

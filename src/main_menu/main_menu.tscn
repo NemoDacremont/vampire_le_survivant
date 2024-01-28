@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://cp3bv27fsskk2"]
+[gd_scene load_steps=19 format=3 uid="uid://cp3bv27fsskk2"]
 
 [ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="1_vf3o2"]
 [ext_resource type="Texture2D" uid="uid://eklidgjid8j2" path="res://assets/main_menu/background_main_menu_alone.png" id="2_lyvq3"]
 [ext_resource type="Texture2D" uid="uid://d3xbi4sn06vy7" path="res://assets/Martial Hero/Sprites/Idle.png" id="3_d2sc8"]
 [ext_resource type="Texture2D" uid="uid://d2b3h1tojukgn" path="res://assets/main_menu/maple_leaf.png" id="3_rwegn"]
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="5_sh5eo"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nftkn"]
 particle_flag_disable_z = true
@@ -156,6 +157,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_sh5eo")
 theme_override_font_sizes/font_size = 60
 text = "PLAY"
 
@@ -165,6 +167,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_sh5eo")
 theme_override_font_sizes/font_size = 60
 text = "HOW TO PLAY"
 
@@ -174,6 +177,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_sh5eo")
 theme_override_font_sizes/font_size = 60
 text = "PARAMETERS"
 
@@ -183,6 +187,7 @@ size_flags_vertical = 8
 theme_override_colors/font_color = Color(0.890196, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_sh5eo")
 theme_override_font_sizes/font_size = 60
 text = "QUIT"
 

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duhbars45r78x" path="res://src/HUD/level_up_menu.tscn" id="6_vus68"]
 [ext_resource type="PackedScene" uid="uid://ckqxnu87mipht" path="res://src/HUD/timer_hud.tscn" id="6_wcvya"]
 [ext_resource type="PackedScene" uid="uid://dxdysqo40t3gr" path="res://src/enemies/little_enemy.tscn" id="8_npv3b"]
-[ext_resource type="LabelSettings" uid="uid://c7c4jsf712w4h" path="res://src/label_settings.tres" id="9_l58e1"]
+[ext_resource type="FontFile" uid="uid://df1jyk2ulwlhf" path="res://assets/lunchds.ttf" id="9_h2mq4"]
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_xx1c6")
@@ -60,9 +60,10 @@ offset_left = -52.0
 offset_top = 47.0
 offset_right = 330.0
 offset_bottom = 96.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("9_h2mq4")
 text = "Keep pressing CTRL to bring 
 the smiley happiness"
-label_settings = ExtResource("9_l58e1")
 horizontal_alignment = 1
 vertical_alignment = 1
 

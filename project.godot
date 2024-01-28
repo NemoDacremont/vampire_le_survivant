@@ -13,6 +13,7 @@ config_version=5
 config/name="vampire_le_survivant"
 run/main_scene="res://src/maps/first_map/map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/flush_stdout_on_print.debug=false
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 config/icon="res://assets/icon.svg"
 
@@ -24,6 +25,12 @@ Levelling="*res://src/levelling.gd"
 [display]
 
 window/stretch/mode="canvas_items"
+
+[gui]
+
+fonts/dynamic_fonts/use_oversampling=false
+theme/default_font_hinting=0
+theme/default_font_subpixel_positioning=0
 
 [input]
 
